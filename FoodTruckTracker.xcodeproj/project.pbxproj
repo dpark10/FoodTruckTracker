@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		E2FE44831CC67876005748E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44821CC67876005748E9 /* AppDelegate.swift */; };
-		E2FE44851CC67876005748E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44841CC67876005748E9 /* ViewController.swift */; };
+		E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44841CC67876005748E9 /* MapViewController.swift */; };
 		E2FE44881CC67876005748E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2FE44861CC67876005748E9 /* Main.storyboard */; };
 		E2FE448B1CC67876005748E9 /* FoodTruckTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44891CC67876005748E9 /* FoodTruckTracker.xcdatamodeld */; };
 		E2FE448D1CC67876005748E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2FE448C1CC67876005748E9 /* Assets.xcassets */; };
 		E2FE44901CC67876005748E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2FE448E1CC67876005748E9 /* LaunchScreen.storyboard */; };
+		E2FE44981CC67A11005748E9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44971CC67A11005748E9 /* ListViewController.swift */; };
+		E2FE449A1CC67CBC005748E9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FE44991CC67CBC005748E9 /* MapKit.framework */; };
+		E2FE449C1CC67CE8005748E9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FE449B1CC67CE8005748E9 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E2FE447F1CC67876005748E9 /* FoodTruckTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTruckTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2FE44821CC67876005748E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E2FE44841CC67876005748E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2FE44841CC67876005748E9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E2FE44871CC67876005748E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2FE448A1CC67876005748E9 /* FoodTruckTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodTruckTracker.xcdatamodel; sourceTree = "<group>"; };
 		E2FE448C1CC67876005748E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2FE448F1CC67876005748E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2FE44911CC67876005748E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2FE44971CC67A11005748E9 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		E2FE44991CC67CBC005748E9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E2FE449B1CC67CE8005748E9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2FE449C1CC67CE8005748E9 /* CoreLocation.framework in Frameworks */,
+				E2FE449A1CC67CBC005748E9 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +48,8 @@
 		E2FE44761CC67876005748E9 = {
 			isa = PBXGroup;
 			children = (
+				E2FE449B1CC67CE8005748E9 /* CoreLocation.framework */,
+				E2FE44991CC67CBC005748E9 /* MapKit.framework */,
 				E2FE44811CC67876005748E9 /* FoodTruckTracker */,
 				E2FE44801CC67876005748E9 /* Products */,
 			);
@@ -57,7 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				E2FE44821CC67876005748E9 /* AppDelegate.swift */,
-				E2FE44841CC67876005748E9 /* ViewController.swift */,
+				E2FE44841CC67876005748E9 /* MapViewController.swift */,
+				E2FE44971CC67A11005748E9 /* ListViewController.swift */,
 				E2FE44861CC67876005748E9 /* Main.storyboard */,
 				E2FE448C1CC67876005748E9 /* Assets.xcassets */,
 				E2FE448E1CC67876005748E9 /* LaunchScreen.storyboard */,
@@ -138,8 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2FE44851CC67876005748E9 /* ViewController.swift in Sources */,
+				E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */,
 				E2FE448B1CC67876005748E9 /* FoodTruckTracker.xcdatamodeld in Sources */,
+				E2FE44981CC67A11005748E9 /* ListViewController.swift in Sources */,
 				E2FE44831CC67876005748E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

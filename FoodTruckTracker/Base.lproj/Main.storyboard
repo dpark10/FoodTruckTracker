@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tdp-jb-UR2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,104 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpY-wN-Ok8">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </mapView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6dU-V8-jVF">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xpY-wN-Ok8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9hv-nf-z4r"/>
+                            <constraint firstAttribute="trailing" secondItem="xpY-wN-Ok8" secondAttribute="trailing" id="DF0-K0-Qhq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xpY-wN-Ok8" secondAttribute="bottom" id="DXo-kP-lqB"/>
+                            <constraint firstItem="6dU-V8-jVF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Naf-Mm-dNr"/>
+                            <constraint firstAttribute="trailing" secondItem="6dU-V8-jVF" secondAttribute="trailing" id="Nn2-fv-YxD"/>
+                            <constraint firstItem="xpY-wN-Ok8" firstAttribute="top" secondItem="6dU-V8-jVF" secondAttribute="bottom" id="bPi-6z-oHx"/>
+                            <constraint firstItem="6dU-V8-jVF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rQd-bn-dYy"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="cJv-tK-NCY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1172" y="-33"/>
+        </scene>
+        <!--List-->
+        <scene sceneID="bAX-p0-Ylf">
+            <objects>
+                <viewController id="w5l-5z-Zdm" customClass="ListViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Prk-bp-pLk"/>
+                        <viewControllerLayoutGuide type="bottom" id="sV0-4h-gFE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="crn-ac-swP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C0a-PT-gR5">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1rA-Yu-iUP" customClass="FoodTruckCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1rA-Yu-iUP" id="dAy-QI-91r">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="w5l-5z-Zdm" id="Ode-qr-uKx"/>
+                                    <outlet property="delegate" destination="w5l-5z-Zdm" id="vVw-QV-a1I"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="llr-iv-QJf">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="llr-iv-QJf" secondAttribute="trailing" id="YSz-bA-5uS"/>
+                            <constraint firstAttribute="trailing" secondItem="C0a-PT-gR5" secondAttribute="trailing" id="aWG-Yo-ClW"/>
+                            <constraint firstItem="llr-iv-QJf" firstAttribute="top" secondItem="Prk-bp-pLk" secondAttribute="bottom" id="eP0-r7-oDr"/>
+                            <constraint firstItem="C0a-PT-gR5" firstAttribute="leading" secondItem="crn-ac-swP" secondAttribute="leading" id="qcx-w8-fQI"/>
+                            <constraint firstItem="C0a-PT-gR5" firstAttribute="top" secondItem="llr-iv-QJf" secondAttribute="bottom" id="r96-ZF-mLh"/>
+                            <constraint firstItem="llr-iv-QJf" firstAttribute="leading" secondItem="crn-ac-swP" secondAttribute="leading" id="wwE-32-X8q"/>
+                            <constraint firstItem="sV0-4h-gFE" firstAttribute="top" secondItem="C0a-PT-gR5" secondAttribute="bottom" id="yFM-Hd-mVw"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="List" id="Xai-Uz-26c"/>
+                    <connections>
+                        <outlet property="foodTruckTableView" destination="C0a-PT-gR5" id="oWM-Rd-eCf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHd-u1-GNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1116" y="956"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="TG4-Mc-oQ3">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="tdp-jb-UR2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="6lv-gb-yYU">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="hhd-2c-zRH"/>
+                        <segue destination="w5l-5z-Zdm" kind="relationship" relationship="viewControllers" id="bc6-rS-v3X"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FLq-jb-01X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="429"/>
         </scene>
     </scenes>
 </document>
