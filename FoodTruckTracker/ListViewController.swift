@@ -10,10 +10,15 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
+    // MARK: - Properties
     var foodTrucks = []
     
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var foodTruckTableView: UITableView!
     
+    
+    // MARK: - View Management
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +26,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     // MARK: - TableViewDelegate Methods
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodTrucks.count
     }

@@ -11,21 +11,52 @@ import MapKit
 import CoreLocation
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+    // MARK: - Properties
     var locationManager = CLLocationManager()
     
+    
+    // MARK: - IBOutlets
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
+    // MARK: - View Management
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         
+        mapView.delegate = self
+    }
+
+    func zoomCenter() {
+        let userLocation = mapView.userLocation
+        let region = MKCoordinateRegionMakeWithDistance(userLocation.location!.coordinate, 2000, 2000)
+        mapView.setRegion(region, animated: true)
     }
     
+    
+    // MARK: - CLLocationManagerDelegate Methods
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error)
     }
-
+    
+    
+    // MARK: - MKMapViewDelegate Methods
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        self.zoomCenter()
+    }
+    
+    
+    // MARK: - IBActions
+    @IBAction func onZoomButtonTapped(sender: UIButton) {
+        self.zoomCenter()
+    }
+    
+    
 }
 

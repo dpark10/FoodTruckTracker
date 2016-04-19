@@ -69,8 +69,8 @@
 				E2FE44821CC67876005748E9 /* AppDelegate.swift */,
 				E2FE44841CC67876005748E9 /* MapViewController.swift */,
 				E2FE44971CC67A11005748E9 /* ListViewController.swift */,
-				E2FE44861CC67876005748E9 /* Main.storyboard */,
 				E2FE448C1CC67876005748E9 /* Assets.xcassets */,
+				E2FE44861CC67876005748E9 /* Main.storyboard */,
 				E2FE448E1CC67876005748E9 /* LaunchScreen.storyboard */,
 				E2FE44911CC67876005748E9 /* Info.plist */,
 				E2FE44891CC67876005748E9 /* FoodTruckTracker.xcdatamodeld */,
@@ -302,6 +302,7 @@
 				E2FE44961CC67876005748E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
