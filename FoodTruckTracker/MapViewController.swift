@@ -41,10 +41,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
    
-            let name = "ashalot"
+//            let name = "thefatshallot"
         
-            let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline/\(name).json"
+//            let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline/\(name).json"
+        
+        
+//        let statusesShowEndpoint = "https://api.twitter.com/1.1/lists/statuses.json?slug=chicago-food-trucks&owner_screen_name=dbruschi54"
+        
+        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=list:chifoodtruckz/tracking&count:15"
+        //can add hashtag to refine search
+        
 //            let params = ["id": "20"]
+        
+        
             var clientError : NSError?
             
             let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: nil, error: &clientError)
@@ -57,7 +66,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 do {
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
                     print("json: \(json)")
-//                    print(json.objectForKey("geo"))
+                    if let tweets = json["statuses"] as? [NSDictionary] {
+                        var count = 0
+                        for tweetsDict: NSDictionary! in tweets {
+                            count += 1
+                            let title = tweetsDict?["text"] as? NSString
+                            print("text: \(title)")
+                            let coordinates = tweetsDict?["coordinates"]
+                            print("coordinates: \(coordinates)")
+                            let user = tweetsDict?["user"]?["screen_name"]
+                            print("user: \(user)")
+                            print("done")
+                            if count == tweets.count{
+                                break
+                            }
+                        }
+                    }
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
                 }
