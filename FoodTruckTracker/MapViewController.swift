@@ -9,7 +9,9 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import Twitter
+import TwitterKit
+import TwitterCore
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -31,6 +33,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.startUpdatingLocation()
         
         mapView.delegate = self
+        
+        self.fetchTwitterJSON()
+        
     }
 
     func zoomCenter() {
@@ -58,5 +63,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
+    // MARK: - Twitter methods
+    func fetchTwitterJSON() {
+        let client = TWTRAPIClient()
+        let name = "ashalot"
+        
+        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline/\(name).json"
+        var clientError : NSError?
+        
+        let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: nil, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                print("json: \(json)")
+            } catch let jsonError as NSError {
+                print("json error: \(jsonError.localizedDescription)")
+            }
+        }
+    }
+
 }
 
