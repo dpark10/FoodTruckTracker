@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tdp-jb-UR2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TO1-tL-fVc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -115,6 +115,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHd-u1-GNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="956"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="TbD-Ci-Rcu">
+            <objects>
+                <viewController id="TO1-tL-fVc" customClass="LoginViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VKt-WA-zdc"/>
+                        <viewControllerLayoutGuide type="bottom" id="MoD-oE-dvY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wGC-EC-Ty6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSe-75-Nza">
+                                <rect key="frame" x="200" y="188" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Kqg-9j-sYC"/>
+                                    <constraint firstAttribute="width" constant="200" id="xmN-4c-fj6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfg-9S-rcn">
+                                <rect key="frame" x="200" y="226" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="8Vb-8s-CEd"/>
+                                    <constraint firstAttribute="height" constant="30" id="qnj-AR-rFp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFr-WS-82H">
+                                <rect key="frame" x="200" y="388" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0eM-1D-gNQ"/>
+                                    <constraint firstAttribute="width" constant="100" id="CHh-4D-Yux"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="tdp-jb-UR2" kind="presentation" id="TUb-Px-LGm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF6-UM-FxW">
+                                <rect key="frame" x="200" y="264" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Don't have an account?  Sign up">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mfg-9S-rcn" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="8DT-bX-cdS"/>
+                            <constraint firstItem="PF6-UM-FxW" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="JJK-ti-52q"/>
+                            <constraint firstItem="vSe-75-Nza" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="cQg-MR-dgP"/>
+                            <constraint firstItem="WFr-WS-82H" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="n92-qF-rol"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nmf-z2-XLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-398" y="429"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TG4-Mc-oQ3">
