@@ -84,6 +84,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ksg-zu-ouw" kind="show" identifier="ProfileSegue" id="jgW-tn-o9N"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -115,6 +118,119 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHd-u1-GNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="956"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="tMA-au-sEn">
+            <objects>
+                <viewController id="GlN-Id-C2Q" customClass="FTProfileViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E0Q-3V-BY5"/>
+                        <viewControllerLayoutGuide type="bottom" id="b8C-Ic-oHL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hoV-1a-WV5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Truck Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vN8-Ka-JZJ">
+                                <rect key="frame" x="20" y="72" width="240" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="YRw-OJ-Od3"/>
+                                    <constraint firstAttribute="width" constant="240" id="oJt-36-LEE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.foodtruckurl.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBW-Qx-4mI">
+                                <rect key="frame" x="20" y="177" width="173" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="173" id="RDh-3E-N0o"/>
+                                    <constraint firstAttribute="height" constant="20" id="iJq-Dv-D1c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZHW-8s-Ldt">
+                                <rect key="frame" x="20" y="115" width="98" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="HlP-Zs-1Bc"/>
+                                    <constraint firstAttribute="height" constant="25" id="iNp-U4-hyK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-7A-5Lr">
+                                <rect key="frame" x="126" y="115" width="81" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="Gwk-KW-xpc"/>
+                                    <constraint firstAttribute="height" constant="25" id="NeN-qW-G43"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312-555-5555" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bo-7T-oac">
+                                <rect key="frame" x="20" y="205" width="173" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="173" id="Ecz-cr-sTt"/>
+                                    <constraint firstAttribute="height" constant="21" id="tv1-Ab-agw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sandwiches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ma-XY-oKU">
+                                <rect key="frame" x="20" y="148" width="173" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="173" id="Jum-xy-NKh"/>
+                                    <constraint firstAttribute="height" constant="21" id="TWm-4b-NW5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reM-W5-lCQ">
+                                <rect key="frame" x="520" y="72" width="60" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="4xb-0g-tFv"/>
+                                    <constraint firstAttribute="height" constant="21" id="nv6-05-2Lr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="reM-W5-lCQ" secondAttribute="trailing" constant="20" id="0W1-xq-nT6"/>
+                            <constraint firstItem="ehp-7A-5Lr" firstAttribute="top" secondItem="vN8-Ka-JZJ" secondAttribute="bottom" constant="8" id="7uZ-91-Vcm"/>
+                            <constraint firstItem="vN8-Ka-JZJ" firstAttribute="top" secondItem="E0Q-3V-BY5" secondAttribute="bottom" constant="8" id="BIe-gv-bgA"/>
+                            <constraint firstItem="reM-W5-lCQ" firstAttribute="top" secondItem="E0Q-3V-BY5" secondAttribute="bottom" constant="8" id="CVK-Us-rPc"/>
+                            <constraint firstItem="ehp-7A-5Lr" firstAttribute="leading" secondItem="ZHW-8s-Ldt" secondAttribute="trailing" constant="8" id="Vgu-cM-ned"/>
+                            <constraint firstItem="ZHW-8s-Ldt" firstAttribute="top" secondItem="vN8-Ka-JZJ" secondAttribute="bottom" constant="8" id="Vza-07-H2B"/>
+                            <constraint firstItem="eBW-Qx-4mI" firstAttribute="top" secondItem="9Ma-XY-oKU" secondAttribute="bottom" constant="8" id="fgz-vr-Jsj"/>
+                            <constraint firstItem="0bo-7T-oac" firstAttribute="top" secondItem="eBW-Qx-4mI" secondAttribute="bottom" constant="8" id="ifF-n0-05G"/>
+                            <constraint firstItem="eBW-Qx-4mI" firstAttribute="leading" secondItem="hoV-1a-WV5" secondAttribute="leading" constant="20" id="klj-16-eFO"/>
+                            <constraint firstItem="9Ma-XY-oKU" firstAttribute="leading" secondItem="hoV-1a-WV5" secondAttribute="leading" constant="20" id="muw-Wv-HpE"/>
+                            <constraint firstItem="0bo-7T-oac" firstAttribute="leading" secondItem="hoV-1a-WV5" secondAttribute="leading" constant="20" id="q3l-W2-uup"/>
+                            <constraint firstItem="vN8-Ka-JZJ" firstAttribute="leading" secondItem="hoV-1a-WV5" secondAttribute="leading" constant="20" id="vTZ-Rh-fss"/>
+                            <constraint firstItem="ZHW-8s-Ldt" firstAttribute="leading" secondItem="hoV-1a-WV5" secondAttribute="leading" constant="20" id="x9M-FJ-HlA"/>
+                            <constraint firstItem="9Ma-XY-oKU" firstAttribute="top" secondItem="ehp-7A-5Lr" secondAttribute="bottom" constant="8" id="xOv-mA-hDD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nxZ-MN-DdN"/>
+                    <connections>
+                        <outlet property="distanceLabel" destination="reM-W5-lCQ" id="v1e-LT-n5c"/>
+                        <outlet property="foodTruckNameLabel" destination="vN8-Ka-JZJ" id="b4q-4U-aLH"/>
+                        <outlet property="foodTruckURLLabel" destination="eBW-Qx-4mI" id="4vk-lU-Vsv"/>
+                        <outlet property="numberOfReviewsLabel" destination="ehp-7A-5Lr" id="JE4-0v-EtD"/>
+                        <outlet property="phoneNumberLabel" destination="0bo-7T-oac" id="YD3-3F-64R"/>
+                        <outlet property="yelpCategoriesLabel" destination="9Ma-XY-oKU" id="fmP-xC-dHV"/>
+                        <outlet property="yelpRatingImageView" destination="ZHW-8s-Ldt" id="t6j-DE-YYH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLm-jz-6Ea" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2602" y="956"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="TbD-Ci-Rcu">
@@ -262,6 +378,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLq-jb-01X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="305" y="429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3K7-tD-FQ6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ksg-zu-ouw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tl4-mH-b76">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GlN-Id-C2Q" kind="relationship" relationship="rootViewController" id="VXr-sw-RiN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LaB-rJ-rmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1867" y="956"/>
         </scene>
     </scenes>
 </document>
