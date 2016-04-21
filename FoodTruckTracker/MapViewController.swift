@@ -149,11 +149,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    
     // MARK: - IBActions
-//    @IBAction func onZoomButtonTapped(sender: UIButton) {
-//        self.zoomCenter()
-//    }
+    @IBAction func onZoomButtonTapped(sender: UIButton) {
+        self.zoomCenter()
+    }
     
     
     // MARK: - Twitter methods
