@@ -20,12 +20,9 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func onLoginButtonTapped(sender: UIButton) {
-        let email = emailAddressTextField.text
-        let password = passwordTextField.text
-        
-        guard email?.characters.count > 0 else { return }
-        guard password?.characters.count > 0 else { return }
-        self.loginUser(email!, password: password!)
+        guard let email = emailAddressTextField!.text where !email.isEmpty else { return }
+        guard let password = passwordTextField!.text where !password.isEmpty else { return }
+        self.loginUser(email, password: password)
     }
     
     func loginUser(email: String, password: String) {
@@ -34,7 +31,7 @@ class LoginViewController: UIViewController {
             if error != nil {
                 print(error)
             } else {
-                self.performSegueWithIdentifier("ToMainScreen", sender: nil)
+                self.performSegueWithIdentifier("ToMapSegue", sender: nil)
             }
         }
         

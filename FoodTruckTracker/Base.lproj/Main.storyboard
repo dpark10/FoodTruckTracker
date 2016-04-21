@@ -158,7 +158,6 @@
                                 </state>
                                 <connections>
                                     <action selector="onLoginButtonTapped:" destination="TO1-tL-fVc" eventType="touchUpInside" id="MtK-Hn-YaJ"/>
-                                    <segue destination="tdp-jb-UR2" kind="presentation" identifier="ToMainScreen" id="TUb-Px-LGm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF6-UM-FxW">
@@ -183,11 +182,12 @@
                     <connections>
                         <outlet property="emailAddressTextField" destination="vSe-75-Nza" id="TVC-Qq-apr"/>
                         <outlet property="passwordTextField" destination="Mfg-9S-rcn" id="x9z-U0-1Ks"/>
+                        <segue destination="tdp-jb-UR2" kind="presentation" identifier="ToMapSegue" id="2ue-nb-dW6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nmf-z2-XLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-437" y="429"/>
+            <point key="canvasLocation" x="-461" y="429"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="kOb-E7-tz5">
