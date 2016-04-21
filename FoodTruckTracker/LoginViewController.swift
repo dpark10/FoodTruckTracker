@@ -23,8 +23,8 @@ class LoginViewController: UIViewController {
         let email = emailAddressTextField.text
         let password = passwordTextField.text
         
-        guard email?.characters.count != 0 else { return }
-        guard password?.characters.count != 0 else { return }
+        guard email?.characters.count > 0 else { return }
+        guard password?.characters.count > 0 else { return }
         self.loginUser(email!, password: password!)
     }
     
