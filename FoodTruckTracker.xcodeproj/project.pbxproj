@@ -26,6 +26,19 @@
 		E2FE449C1CC67CE8005748E9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FE449B1CC67CE8005748E9 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CDF52FE81CC68A8E0088DDEA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00A4876AFB7A32BC2F48EC3E /* Pods_FoodTruckTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodTruckTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7923C7EA4D0FA741FE580C73 /* Pods-FoodTruckTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,7 +211,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C91FCF1160A0AD9D74DC105F /* Copy Pods Resources */ = {
+		28715CC305DD90AD642333FB /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -213,7 +226,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DA43CEFC9B961BCD2B2EFABF /* Check Pods Manifest.lock */ = {
+		A97C02E8CB27C66AB09F9C44 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -228,20 +241,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E2D010971CC7CF0F00E61AAC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 0ca472fcdfa71a967cc560e03c9a0d51a3ef36d6 91a996177df2e1cc4811138b6508a537fd6b9f09091b98ca97b970182847e1a7";
-		};
-		F6804ED01F90901CB04F193B /* Embed Pods Frameworks */ = {
+		BA0610B221CDB7B0B99D0C0D /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,6 +255,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CDF52FEB1CC6B6720088DDEA /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 315e5fefc37b3c61638cb68ffbb968f7be1f975b d7ec0a28bf3f2f31f036a419d743007ddfab29419aefd78955acbb882877e657";
 		};
 /* End PBXShellScriptBuildPhase section */
 
