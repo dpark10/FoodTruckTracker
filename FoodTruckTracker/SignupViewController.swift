@@ -33,11 +33,19 @@ class SignupViewController: UIViewController {
         ref.createUser(email, password: password) { (error, result) in
             if error != nil {
                 print(error)
+                self.alertSignupError()
             } else {
                 let uid = result["uid"] as? String
                 print("Successfully created user account with uid: \(uid)")
             }
         }
+    }
+    
+    func alertSignupError () {
+        let alertController = UIAlertController(title: "Signup Error", message: "User email already exists. Please try again.", preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        alertController.addAction(OKAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 }
