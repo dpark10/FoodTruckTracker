@@ -157,7 +157,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tdp-jb-UR2" kind="presentation" id="TUb-Px-LGm"/>
+                                    <action selector="onLoginButtonTapped:" destination="TO1-tL-fVc" eventType="touchUpInside" id="MtK-Hn-YaJ"/>
+                                    <segue destination="tdp-jb-UR2" kind="presentation" identifier="ToMainScreen" id="TUb-Px-LGm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF6-UM-FxW">
@@ -166,6 +167,9 @@
                                 <state key="normal" title="Don't have an account?  Sign up">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="L0m-w3-Z3V" kind="presentation" identifier="SignupSegue" id="26B-qn-BOs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -176,10 +180,69 @@
                             <constraint firstItem="WFr-WS-82H" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="n92-qF-rol"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailAddressTextField" destination="vSe-75-Nza" id="TVC-Qq-apr"/>
+                        <outlet property="passwordTextField" destination="Mfg-9S-rcn" id="x9z-U0-1Ks"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nmf-z2-XLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-398" y="429"/>
+            <point key="canvasLocation" x="-437" y="429"/>
+        </scene>
+        <!--Signup View Controller-->
+        <scene sceneID="kOb-E7-tz5">
+            <objects>
+                <viewController id="L0m-w3-Z3V" customClass="SignupViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MKr-td-sZ0"/>
+                        <viewControllerLayoutGuide type="bottom" id="4e2-WM-fy3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="laP-Tj-VU9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0GY-dL-9xL">
+                                <rect key="frame" x="200" y="201" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PRI-AL-CDD">
+                                <rect key="frame" x="200" y="239" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h7-3y-Ili">
+                                <rect key="frame" x="200" y="384" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Create New Account">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCreateButtonTapped:" destination="L0m-w3-Z3V" eventType="touchUpInside" id="dwc-jH-mPz"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLD-Sn-R6k">
+                                <rect key="frame" x="200" y="163" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PRI-AL-CDD" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="Bd5-l3-jWc"/>
+                            <constraint firstItem="0GY-dL-9xL" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="ZME-tU-iBK"/>
+                            <constraint firstItem="2h7-3y-Ili" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="aEs-YW-hf7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="0GY-dL-9xL" id="RXA-xS-oU4"/>
+                        <outlet property="nameTextField" destination="qLD-Sn-R6k" id="kfa-4X-xSP"/>
+                        <outlet property="passwordTextField" destination="PRI-AL-CDD" id="Tj6-Pw-iAy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zp2-4Z-0bW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-277"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TG4-Mc-oQ3">
