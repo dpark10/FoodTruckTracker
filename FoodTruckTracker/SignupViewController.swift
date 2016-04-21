@@ -23,8 +23,8 @@ class SignupViewController: UIViewController {
         let email = emailTextField.text
         let password = passwordTextField.text
         
-        guard email?.characters.count != 0 else { return }
-        guard password?.characters.count != 0 else { return }
+        guard email?.characters.count > 0 else { return }
+        guard password?.characters.count > 0 else { return }
         self.newUserCreation(email!, password: password!)
     }
     
