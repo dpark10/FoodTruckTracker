@@ -18,6 +18,7 @@ import TwitterCore
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     var locationManager = CLLocationManager()
+    var currentLocation = CLLocation()
     
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
@@ -25,10 +26,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
-        // Swift
-        // Get the current userID. This value should be managed by the developer but can be retrieved from the TWTRSessionStore.
-//        if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
-//            let client = TWTRAPIClient(userID: userID)
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+        self.zoomMap()
         
      
             let client = TWTRAPIClient()
@@ -46,10 +46,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
 //            let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline/\(name).json"
         
+//        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=list:chifoodtruckz/tracking&count:50"
         
-//        let statusesShowEndpoint = "https://api.twitter.com/1.1/lists/statuses.json?slug=chicago-food-trucks&owner_screen_name=dbruschi54"
-        
-        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=list:chifoodtruckz/tracking&count:50"
+        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=%23chicago&count:50"
         //can add hashtag to refine search
         
 //            let params = ["id": "20"]
@@ -77,14 +76,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                             print("coordinates: \(coordinates)")
                             let user = tweetsDict?["user"]!["name"]
                             print("user: \(user)")
-                            print("done\n")
+
                             
                             if coordinates != nil {
                             let annotation = MKPointAnnotation()
                             annotation.title = user! as? String
-                            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![0], longitude: coordinates![1])
+                            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![1], longitude: coordinates![0])
                             self.mapView.addAnnotation(annotation)
-                                print("Added annotation")
+                                print("Added annotation\n")
+                            } else {
+                                print("No annotation\n")
                             }
                             if count == tweets.count{
                                 break
@@ -99,14 +100,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     // MARK: MKMapViewDelegate
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-            let pin = MKPinAnnotationView()
+        if annotation.isEqual(mapView.userLocation) {
+            return nil
+        }
+        else {
+            let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            pin.canShowCallout = true
+            pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             return pin
+        }
     }
     
         
    
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error)
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = locations.first!
+//        if currentLocation.horizontalAccuracy < 1000 && currentLocation.verticalAccuracy < 1000 {
+//         
+//        }
+    }
+    
+    func reverseGeocode(location: CLLocation){
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks: [CLPlacemark]?, error: NSError?) in
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+            self.locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func zoomMap() {
+        
+        //Eventually make center average or median coordinate of of locations array
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.89374, longitude: -87.637519), span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+        
+        self.mapView.setRegion(region, animated: true)
     }
     
 
