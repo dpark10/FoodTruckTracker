@@ -221,7 +221,7 @@
                                     <action selector="onCreateButtonTapped:" destination="L0m-w3-Z3V" eventType="touchUpInside" id="dwc-jH-mPz"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLD-Sn-R6k">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLD-Sn-R6k">
                                 <rect key="frame" x="200" y="163" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -229,6 +229,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qLD-Sn-R6k" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="30s-Lh-tGu"/>
                             <constraint firstItem="PRI-AL-CDD" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="Bd5-l3-jWc"/>
                             <constraint firstItem="0GY-dL-9xL" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="ZME-tU-iBK"/>
                             <constraint firstItem="2h7-3y-Ili" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="aEs-YW-hf7"/>
