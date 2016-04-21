@@ -15,10 +15,11 @@ import TwitterCore
 
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     var locationManager = CLLocationManager()
     
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +49,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
 //        let statusesShowEndpoint = "https://api.twitter.com/1.1/lists/statuses.json?slug=chicago-food-trucks&owner_screen_name=dbruschi54"
         
-        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=list:chifoodtruckz/tracking&count:15"
+        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=list:chifoodtruckz/tracking&count:50"
         //can add hashtag to refine search
         
 //            let params = ["id": "20"]
@@ -70,13 +71,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         var count = 0
                         for tweetsDict: NSDictionary! in tweets {
                             count += 1
-                            let title = tweetsDict?["text"] as? NSString
+                            let title = tweetsDict?["text"] as! NSString
                             print("text: \(title)")
-                            let coordinates = tweetsDict?["coordinates"]
+                            let coordinates = tweetsDict?["coordinates"]!["coordinates"] as? [Double]
                             print("coordinates: \(coordinates)")
-                            let user = tweetsDict?["user"]?["screen_name"]
+                            let user = tweetsDict?["user"]!["name"]
                             print("user: \(user)")
-                            print("done")
+                            print("done\n")
+                            
+                            if coordinates != nil {
+                            let annotation = MKPointAnnotation()
+                            annotation.title = user! as? String
+                            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![0], longitude: coordinates![1])
+                            self.mapView.addAnnotation(annotation)
+                                print("Added annotation")
+                            }
                             if count == tweets.count{
                                 break
                             }
@@ -88,11 +97,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         }
     
+    // MARK: MKMapViewDelegate
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+            let pin = MKPinAnnotationView()
+            return pin
+    }
+    
         
    
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error)
     }
+    
+
 
 }
 

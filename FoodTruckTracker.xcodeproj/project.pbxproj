@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CDF52FEA1CC69DC00088DDEA /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF52FE91CC69DC00088DDEA /* Twitter.framework */; };
-		D4EB4E53588FE2258F0427A8 /* Pods_FoodTruckTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C02517ECACA3D196687AE62B /* Pods_FoodTruckTracker.framework */; };
+		CDF52FED1CC81C380088DDEA /* TruckPinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF52FEC1CC81C380088DDEA /* TruckPinAnnotation.swift */; };
+		CDF52FEE1CC8282E0088DDEA /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF52FE91CC69DC00088DDEA /* Twitter.framework */; };
+		CDF52FEF1CC828440088DDEA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FE449B1CC67CE8005748E9 /* CoreLocation.framework */; };
+		CDF52FF01CC8284A0088DDEA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FE44991CC67CBC005748E9 /* MapKit.framework */; };
 		E2FE44831CC67876005748E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44821CC67876005748E9 /* AppDelegate.swift */; };
 		E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44841CC67876005748E9 /* MapViewController.swift */; };
 		E2FE44881CC67876005748E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2FE44861CC67876005748E9 /* Main.storyboard */; };
@@ -16,8 +18,6 @@
 		E2FE448D1CC67876005748E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2FE448C1CC67876005748E9 /* Assets.xcassets */; };
 		E2FE44901CC67876005748E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2FE448E1CC67876005748E9 /* LaunchScreen.storyboard */; };
 		E2FE44981CC67A11005748E9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44971CC67A11005748E9 /* ListViewController.swift */; };
-		E2FE449A1CC67CBC005748E9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FE44991CC67CBC005748E9 /* MapKit.framework */; };
-		E2FE449C1CC67CE8005748E9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FE449B1CC67CE8005748E9 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,8 +36,8 @@
 /* Begin PBXFileReference section */
 		25507ABB7A78D28FEAAA97AD /* Pods-FoodTruckTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.release.xcconfig"; sourceTree = "<group>"; };
 		55201D411AEBFF9122743544 /* Pods-FoodTruckTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.debug.xcconfig"; sourceTree = "<group>"; };
-		C02517ECACA3D196687AE62B /* Pods_FoodTruckTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodTruckTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF52FE91CC69DC00088DDEA /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		CDF52FEC1CC81C380088DDEA /* TruckPinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckPinAnnotation.swift; sourceTree = "<group>"; };
 		E2FE447F1CC67876005748E9 /* FoodTruckTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTruckTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2FE44821CC67876005748E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2FE44841CC67876005748E9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -56,10 +56,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDF52FEA1CC69DC00088DDEA /* Twitter.framework in Frameworks */,
-				E2FE449C1CC67CE8005748E9 /* CoreLocation.framework in Frameworks */,
-				E2FE449A1CC67CBC005748E9 /* MapKit.framework in Frameworks */,
-				D4EB4E53588FE2258F0427A8 /* Pods_FoodTruckTracker.framework in Frameworks */,
+				CDF52FF01CC8284A0088DDEA /* MapKit.framework in Frameworks */,
+				CDF52FEF1CC828440088DDEA /* CoreLocation.framework in Frameworks */,
+				CDF52FEE1CC8282E0088DDEA /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				CDF52FE91CC69DC00088DDEA /* Twitter.framework */,
-				C02517ECACA3D196687AE62B /* Pods_FoodTruckTracker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -109,6 +107,7 @@
 			children = (
 				E2FE44821CC67876005748E9 /* AppDelegate.swift */,
 				E2FE44841CC67876005748E9 /* MapViewController.swift */,
+				CDF52FEC1CC81C380088DDEA /* TruckPinAnnotation.swift */,
 				E2FE44971CC67A11005748E9 /* ListViewController.swift */,
 				E2FE44861CC67876005748E9 /* Main.storyboard */,
 				E2FE448C1CC67876005748E9 /* Assets.xcassets */,
@@ -257,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF52FED1CC81C380088DDEA /* TruckPinAnnotation.swift in Sources */,
 				E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */,
 				E2FE448B1CC67876005748E9 /* FoodTruckTracker.xcdatamodeld in Sources */,
 				E2FE44981CC67A11005748E9 /* ListViewController.swift in Sources */,
@@ -374,6 +374,7 @@
 			baseConfigurationReference = 55201D411AEBFF9122743544 /* Pods-FoodTruckTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = FoodTruckTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dp.FoodTruckTracker;
