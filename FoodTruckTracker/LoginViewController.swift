@@ -18,10 +18,16 @@ class LoginViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil {
+            self.performSegueWithIdentifier("ToMapSegue", sender: nil)
+        }
+    }
+    
     
     @IBAction func onLoginButtonTapped(sender: UIButton) {
-        guard let email = emailAddressTextField!.text where !email.isEmpty else { return }
-        guard let password = passwordTextField!.text where !password.isEmpty else { return }
+        guard let email = self.emailAddressTextField!.text where !email.isEmpty else { return }
+        guard let password = self.passwordTextField!.text where !password.isEmpty else { return }
         self.loginUser(email, password: password)
     }
     
@@ -30,12 +36,20 @@ class LoginViewController: UIViewController {
         ref.authUser(email, password: password) { (error, authData) in
             if error != nil {
                 print(error)
+                self.alertLoginError()
             } else {
+                NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
+                print("Succesfully logged in")
                 self.performSegueWithIdentifier("ToMapSegue", sender: nil)
             }
         }
-        
-        
+    }
+    
+    func alertLoginError () {
+        let alertController = UIAlertController(title: "Login Error", message: "Invalid Email Address or Password. Please retry", preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        alertController.addAction(OKAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 

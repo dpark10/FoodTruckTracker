@@ -108,7 +108,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     func zoomCenter() {
         let userLocation = mapView.userLocation
-        let region = MKCoordinateRegionMakeWithDistance(userLocation.location!.coordinate, 2000, 2000)
+        let region = MKCoordinateRegionMakeWithDistance(userLocation.location!.coordinate, 10000, 10000)
         mapView.setRegion(region, animated: true)
     }
     
