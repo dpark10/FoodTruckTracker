@@ -161,6 +161,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("callout accessory tapped")
+        self.performSegueWithIdentifier("MapToProfileSegue", sender: nil)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //TO DO - pass food truck to profile vc
+    }
+    
     // MARK: - IBActions
     @IBAction func onZoomButtonTapped(sender: UIButton) {
         self.zoomCenter()
