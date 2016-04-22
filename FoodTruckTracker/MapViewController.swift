@@ -17,6 +17,7 @@ import TwitterCore
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var foodTrucks = [FoodTruck]()
+    var foodTruckOfAnnotation  = FoodTruck()
 
     // MARK: - Properties
     var locationManager = CLLocationManager()
@@ -90,10 +91,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         
                         
                         if coordinates != nil {
-                            let annotation = MKPointAnnotation()
-                            annotation.title = user! as? String
-                            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![1], longitude: coordinates![0])
-                            self.mapView.addAnnotation(annotation)
+//                            let annotation = MKPointAnnotation()
+//                            annotation.title = user! as? String
+//                            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![1], longitude: coordinates![0])
+//                            self.mapView.addAnnotation(annotation)
                             let foodTruck = FoodTruck.init()
                             foodTruck.name = user as! String
                             foodTruck.lat = coordinates![1]
@@ -102,6 +103,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             let barViewControllers = self.tabBarController?.viewControllers
                             let svc = barViewControllers![1] as! ListViewController
                             svc.foodTrucks = self.foodTrucks
+                            let annotation = FoodTruckAnnotation()
+                            annotation.title = user! as? String
+                            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![1], longitude: coordinates![0])
+                            annotation.foodTruck = foodTruck
+                            self.mapView.addAnnotation(annotation)
                             print("Added annotation\n")
                         } else {
                             print("No annotation\n")
@@ -163,12 +169,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print("callout accessory tapped")
+        let truckAnnotation = view.annotation as! FoodTruckAnnotation
+        foodTruckOfAnnotation = truckAnnotation.foodTruck!
         self.performSegueWithIdentifier("MapToProfileSegue", sender: nil)
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //TO DO - pass food truck to profile vc
+        if (segue.identifier == "MapToProfileSegue") {
+            let destVC = segue.destinationViewController as! FTProfileViewController
+            destVC.foodTruck = foodTruckOfAnnotation
+        }
+        
     }
     
     // MARK: - IBActions
