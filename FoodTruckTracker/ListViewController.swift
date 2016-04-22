@@ -11,7 +11,8 @@ import UIKit
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     // MARK: - Properties
-    var foodTrucks = []
+    var foodTrucks = [FoodTruck]()
+
     
     
     // MARK: - IBOutlets
@@ -24,6 +25,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.foodTruckTableView.reloadData()
+    }
+    
     
     // MARK: - TableViewDelegate Methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,6 +38,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = foodTruckTableView.dequeueReusableCellWithIdentifier("FoodTruckCell", forIndexPath: indexPath)
+        let foodTruck = foodTrucks[indexPath.row]
+        cell.textLabel!.text = foodTruck.name
         return cell
     }
 

@@ -15,6 +15,8 @@ import TwitterCore
 
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    var foodTrucks = [FoodTruck]()
 
     // MARK: - Properties
     var locationManager = CLLocationManager()
@@ -28,6 +30,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // MARK: - View Management
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -90,6 +94,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             annotation.title = user! as? String
                             annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![1], longitude: coordinates![0])
                             self.mapView.addAnnotation(annotation)
+                            let foodTruck = FoodTruck.init()
+                            foodTruck.name = user as! String
+                            foodTruck.lat = coordinates![1]
+                            foodTruck.long = coordinates![0]
+                            self.foodTrucks.append(foodTruck)
+                            let barViewControllers = self.tabBarController?.viewControllers
+                            let svc = barViewControllers![1] as! ListViewController
+                            svc.foodTrucks = self.foodTrucks
                             print("Added annotation\n")
                         } else {
                             print("No annotation\n")
