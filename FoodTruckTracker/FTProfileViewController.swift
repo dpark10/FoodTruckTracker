@@ -22,6 +22,11 @@ class FTProfileViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    @IBAction func onDoneButtonTapped(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 
 
 }

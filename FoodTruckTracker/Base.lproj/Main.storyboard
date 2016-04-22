@@ -217,7 +217,13 @@
                             <constraint firstItem="9Ma-XY-oKU" firstAttribute="top" secondItem="ehp-7A-5Lr" secondAttribute="bottom" constant="8" id="xOv-mA-hDD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nxZ-MN-DdN"/>
+                    <navigationItem key="navigationItem" id="nxZ-MN-DdN">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="agd-g2-7o5">
+                            <connections>
+                                <action selector="onDoneButtonTapped:" destination="GlN-Id-C2Q" id="fKg-B9-zdS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="distanceLabel" destination="reM-W5-lCQ" id="v1e-LT-n5c"/>
                         <outlet property="foodTruckNameLabel" destination="vN8-Ka-JZJ" id="b4q-4U-aLH"/>
@@ -382,7 +388,7 @@
         <!--Navigation Controller-->
         <scene sceneID="3K7-tD-FQ6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ksg-zu-ouw" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" id="Ksg-zu-ouw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tl4-mH-b76">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
