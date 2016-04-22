@@ -90,5 +90,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let indexPath = foodTruckTableView.indexPathForCell(sender as! UITableViewCell)
+        let foodTruck = foodTrucks[indexPath!.row]
+        let destVC = segue.destinationViewController as! FTProfileViewController
+        destVC.foodTruck = foodTruck
+    }
 
 }

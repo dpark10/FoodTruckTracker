@@ -18,15 +18,19 @@ class FTProfileViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    var foodTruck = FoodTruck()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        foodTruckNameLabel.text = foodTruck.name
+        
+        
 
     }
-    
-    @IBAction func onDoneButtonTapped(sender: UIBarButtonItem) {
+
+    @IBAction func onBackButtonTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 
 
 }
