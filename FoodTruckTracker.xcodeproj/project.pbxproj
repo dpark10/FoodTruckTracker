@@ -10,6 +10,7 @@
 		42E74165EE6FD21A6F048851 /* Pods_FoodTruckTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4876AFB7A32BC2F48EC3E /* Pods_FoodTruckTracker.framework */; };
 		E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */; };
 		E2A8E9B91CC92AA5009A72B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B81CC92AA5009A72B3 /* DataService.swift */; };
+		E2A8E9BD1CC97DD5009A72B3 /* FTProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */; };
 		E2C5BAD51CC8035400871750 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5BAD41CC8035400871750 /* LoginViewController.swift */; };
 		E2D0109C1CC7CF4C00E61AAC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D010981CC7CF4C00E61AAC /* Fabric.framework */; };
 		E2D0109D1CC7CF4C00E61AAC /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D010991CC7CF4C00E61AAC /* TwitterKit.framework */; };
@@ -45,6 +46,7 @@
 		D5C5E2DF1BDA446EC9231C7C /* Pods-FoodTruckTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.release.xcconfig"; sourceTree = "<group>"; };
 		E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E2A8E9B81CC92AA5009A72B3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTProfileViewController.swift; sourceTree = "<group>"; };
 		E2C5BAD41CC8035400871750 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E2D010981CC7CF4C00E61AAC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		E2D010991CC7CF4C00E61AAC /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				E2FE44971CC67A11005748E9 /* ListViewController.swift */,
 				E2FE448C1CC67876005748E9 /* Assets.xcassets */,
 				E2FE44861CC67876005748E9 /* Main.storyboard */,
+				E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */,
 				E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */,
 				E2C5BAD41CC8035400871750 /* LoginViewController.swift */,
 				E2FE448E1CC67876005748E9 /* LaunchScreen.storyboard */,
@@ -279,6 +282,7 @@
 			files = (
 				E2A8E9B91CC92AA5009A72B3 /* DataService.swift in Sources */,
 				E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */,
+				E2A8E9BD1CC97DD5009A72B3 /* FTProfileViewController.swift in Sources */,
 				E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */,
 				E2FE448B1CC67876005748E9 /* FoodTruckTracker.xcdatamodeld in Sources */,
 				E2FE44981CC67A11005748E9 /* ListViewController.swift in Sources */,
