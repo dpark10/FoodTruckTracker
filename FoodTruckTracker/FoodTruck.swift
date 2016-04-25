@@ -11,7 +11,8 @@ import Foundation
 class FoodTruck: NSObject {
     var twitterHandle:      String = ""
     var yelpID:             String = ""
-    var address:            String = ""
+    var lat:                Double = 0
+    var long:               Double = 0
     var name:               String = ""
     var desc:               String = ""
     var ratingImage:        String = ""

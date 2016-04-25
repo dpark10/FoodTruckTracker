@@ -68,38 +68,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         print("address: \(address)")
                         let phone = yelpDict?["phone"]
                         print("phone: \(phone)")
-                        let coordinate = yelpDict?["location"]!["coordinates"]
+                        let coordinate = yelpDict?["location"]!["coordinate"] as? NSDictionary
                         print("coordinate = \(coordinate) \n")
+                        let description = yelpDict?["snippet_text"]
+                        let reviewCount = yelpDict?["review_count"]
+                        let url = yelpDict?["url"]
+                        let ratingImage = yelpDict?["rating_img_url"]
+                        let logo = yelpDict?["image_url"]
+                        
                         let business = FoodTruck.init()
                         business.name = name as String
 //                        business.phoneNumber = phone as! String
-                        if address?.count == 3 {
-                            business.address = address![0] + ", " + address![1] + ", " + address![2]
-                            dispatch_async(dispatch_get_main_queue()) {
-                                self.dropPinForFoodTruck(business)
-                                print("Added annotation")
-                            }
-                        }
-                        else if address!.count == 2 {
-                            if address![0] != "Varies" {
-                            business.address = address![0] + ", " + address![1]
-                            } else {
-                                 //Temporary Address Placeholder
-                                business.address = "223 W Erie St #4nw, Chicago, IL 60654"
-                            }
+                        business.logo = logo as! String
+                        business.desc = description as! String
+                        business.ratingImage = ratingImage as! String
+                        business.url = url as! String
+                        business.yelpReviewCount = reviewCount as! Int
                         
+                        if coordinate != nil {
+                            business.lat = coordinate!["latitude"] as! Double
+                            business.long = coordinate!["longitude"] as! Double
+                            }
+                        else {
+                            //Placeholder address for nil cooridates = Mobile Makers office
+                            business.lat = 41.89374
+                            business.long = -87.637519
+                        }
                         dispatch_async(dispatch_get_main_queue()) {
                             self.dropPinForFoodTruck(business)
                             print("Added annotation")
-                        }
-                        }
-                        else {
-                              //Temporary Address Placeholder
-                            business.address = "223 W Erie St #4nw, Chicago, IL 60654"
-                            dispatch_async(dispatch_get_main_queue()) {
-                                self.dropPinForFoodTruck(business)
-                                print("Added annotation")
-                        }
                         }
                         self.foodTrucks.append(business)
                         let barViewControllers = self.tabBarController?.viewControllers
@@ -199,18 +196,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     
     func dropPinForFoodTruck(foodTruck: FoodTruck) {
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(foodTruck.address) { (placemarks : [CLPlacemark]?, error : NSError?) in
-            for placemark in placemarks! {
+//        let geoCoder = CLGeocoder()
+//        geoCoder.geocodeAddressString(foodTruck.address) { (placemarks : [CLPlacemark]?, error : NSError?) in
+//            for placemark in placemarks! {
                 let annotation = FoodTruckAnnotation()
-                annotation.coordinate = placemark.location!.coordinate
+                annotation.coordinate = CLLocationCoordinate2D(latitude: foodTruck.lat, longitude: foodTruck.long)
                 annotation.title = foodTruck.name
                 annotation.foodTruck = foodTruck
                 self.mapView.addAnnotation(annotation)
                 
             }
-        }
-    }
+//        }
+//    }
     
 
 }
