@@ -92,10 +92,18 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         let indexPath = foodTruckTableView.indexPathForCell(sender as! UITableViewCell)
+        if (searchActive) {
+            let foodTruck = filteredFoodTrucks[indexPath!.row]
+            let destVC = segue.destinationViewController as! FTProfileViewController
+            destVC.foodTruck = foodTruck
+        } else {
         let foodTruck = foodTrucks[indexPath!.row]
-        let destVC = segue.destinationViewController as! FTProfileViewController
-        destVC.foodTruck = foodTruck
+            let destVC = segue.destinationViewController as! FTProfileViewController
+            destVC.foodTruck = foodTruck
+        }
+        
     }
 
 }

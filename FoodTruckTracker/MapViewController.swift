@@ -81,6 +81,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             }
                         }
                         self.foodTrucks.append(business)
+                        let barViewControllers = self.tabBarController?.viewControllers
+                        let svc = barViewControllers![1] as! ListViewController
+                        svc.foodTrucks = self.foodTrucks
 //                        else if address!.count == 2 {
 //                            business.address = address![0] + ", " + address![1]
 //                        }
@@ -90,7 +93,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //                        }
                         
                         
-                        
+                        print(self.foodTrucks)
                         
                         if count == yelpBusinesses.count{
                             break
