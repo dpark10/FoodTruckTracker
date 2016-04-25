@@ -80,26 +80,40 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                 print("Added annotation")
                             }
                         }
+                        else if address!.count == 2 {
+                            if address![0] != "Varies" {
+                            business.address = address![0] + ", " + address![1]
+                            } else {
+                                 //Temporary Address Placeholder
+                                business.address = "223 W Erie St #4nw, Chicago, IL 60654"
+                            }
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.dropPinForFoodTruck(business)
+                            print("Added annotation")
+                        }
+                        }
+                        else {
+                              //Temporary Address Placeholder
+                            business.address = "223 W Erie St #4nw, Chicago, IL 60654"
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.dropPinForFoodTruck(business)
+                                print("Added annotation")
+                        }
+                        }
                         self.foodTrucks.append(business)
                         let barViewControllers = self.tabBarController?.viewControllers
                         let svc = barViewControllers![1] as! ListViewController
                         svc.foodTrucks = self.foodTrucks
-//                        else if address!.count == 2 {
-//                            business.address = address![0] + ", " + address![1]
-//                        }
-//                        dispatch_async(dispatch_get_main_queue()) {
-//                           self.dropPinForFoodTruck(business)
-//                            print("Added annotation")
-//                        }
+
                         
-                        
-                        print(self.foodTrucks)
                         
                         if count == yelpBusinesses.count{
                             break
                         }
                     }
                 }
+                
                 
             } catch let jsonError as NSError {
                 print("json error: \(jsonError.localizedDescription)")
