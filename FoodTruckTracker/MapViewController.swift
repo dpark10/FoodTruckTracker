@@ -51,7 +51,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        let session = NSURLSession.sharedSession()
 //        let task = session.dataTaskWithURL(yelpFoodTrucksURL!) { (data, response, error) in
         
-        var parameters = ["category_filter": "foodtrucks", "location": "Chicago"]
+        let parameters = ["category_filter": "foodtrucks", "location": "Chicago"]
         
         client.searchPlacesWithParameters(parameters, successSearch: { (data, response) -> Void in
            
@@ -67,7 +67,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         let address = yelpDict?["location"]!["display_address"] as? [String]
                         print("address: \(address)")
                         let phone = yelpDict?["phone"]
-                        print("user: \(phone)\n")
+                        print("phone: \(phone)")
+                        let coordinate = yelpDict?["location"]!["coordinates"]
+                        print("coordinate = \(coordinate) \n")
+                        let business = FoodTruck.init()
+                        business.name = name as String
+//                        business.phoneNumber = phone as! String
+                        if address?.count == 3 {
+                            business.address = address![0] + ", " + address![1] + ", " + address![2]
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.dropPinForFoodTruck(business)
+                                print("Added annotation")
+                            }
+                        }
+                        self.foodTrucks.append(business)
+//                        else if address!.count == 2 {
+//                            business.address = address![0] + ", " + address![1]
+//                        }
+//                        dispatch_async(dispatch_get_main_queue()) {
+//                           self.dropPinForFoodTruck(business)
+//                            print("Added annotation")
+//                        }
+                        
                         
                         
                         
@@ -157,6 +178,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // MARK: - IBActions
     @IBAction func onZoomButtonTapped(sender: UIButton) {
         self.zoomCenter()
+    }
+
+    
+    func dropPinForFoodTruck(foodTruck: FoodTruck) {
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(foodTruck.address) { (placemarks : [CLPlacemark]?, error : NSError?) in
+            for placemark in placemarks! {
+                let annotation = FoodTruckAnnotation()
+                annotation.coordinate = placemark.location!.coordinate
+                annotation.title = foodTruck.name
+                annotation.foodTruck = foodTruck
+                self.mapView.addAnnotation(annotation)
+                
+            }
+        }
     }
     
 
