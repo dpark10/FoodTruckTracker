@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42E74165EE6FD21A6F048851 /* Pods_FoodTruckTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4876AFB7A32BC2F48EC3E /* Pods_FoodTruckTracker.framework */; };
 		CD1AF01E1CC96DAB00AE3E92 /* FoodTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1AF01D1CC96DAB00AE3E92 /* FoodTruck.swift */; };
+		CD1AF0221CCE93DB00AE3E92 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1AF0211CCE93DB00AE3E92 /* YelpAPIClient.swift */; };
 		E236017B1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */; };
 		E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */; };
 		E2A8E9B91CC92AA5009A72B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B81CC92AA5009A72B3 /* DataService.swift */; };
@@ -33,6 +34,7 @@
 		00A4876AFB7A32BC2F48EC3E /* Pods_FoodTruckTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodTruckTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7923C7EA4D0FA741FE580C73 /* Pods-FoodTruckTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		CD1AF01D1CC96DAB00AE3E92 /* FoodTruck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruck.swift; sourceTree = "<group>"; };
+		CD1AF0211CCE93DB00AE3E92 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpAPIClient.swift; path = /Users/dylanbruschi54/Desktop/FoodTruckTracker/YelpAPIClient.swift; sourceTree = "<absolute>"; };
 		D5C5E2DF1BDA446EC9231C7C /* Pods-FoodTruckTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.release.xcconfig"; sourceTree = "<group>"; };
 		E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckAnnotation.swift; sourceTree = "<group>"; };
 		E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		E2FE44811CC67876005748E9 /* FoodTruckTracker */ = {
 			isa = PBXGroup;
 			children = (
+				CD1AF0211CCE93DB00AE3E92 /* YelpAPIClient.swift */,
 				E2FE44821CC67876005748E9 /* AppDelegate.swift */,
 				E2FE44841CC67876005748E9 /* MapViewController.swift */,
 				E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */,
@@ -145,6 +148,7 @@
 				E2FE447B1CC67876005748E9 /* Sources */,
 				E2FE447C1CC67876005748E9 /* Frameworks */,
 				E2FE447D1CC67876005748E9 /* Resources */,
+				71D041C746EFB8C31E66020F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,6 +206,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		71D041C746EFB8C31E66020F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E2FE447B1CC67876005748E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -209,6 +231,7 @@
 			files = (
 				E236017B1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift in Sources */,
 				E2A8E9B91CC92AA5009A72B3 /* DataService.swift in Sources */,
+				CD1AF0221CCE93DB00AE3E92 /* YelpAPIClient.swift in Sources */,
 				E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */,
 				E2A8E9BD1CC97DD5009A72B3 /* FTProfileViewController.swift in Sources */,
 				E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */,

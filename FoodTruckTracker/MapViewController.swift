@@ -12,6 +12,7 @@ import CoreLocation
 import Twitter
 import TwitterKit
 import TwitterCore
+import OAuthSwift
 
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
@@ -41,13 +42,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
         
 
+        let apiConsoleInfo = YelpAPIConsole()
         
-        let yelpFoodTrucksURL = NSURL(string: "https://api.yelp.com/v2/search?category_filter=foodtrucks&location=Chicago&oauth_consumer_key=nF30f57Y37owF8lkT0yunw&oauth_token=euX1y5nJ1dugqyUfuWkXCdzZU9vjHVGf&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1461603623&oauth_nonce=3CFwlz&oauth_version=1.0&oauth_signature=RB0RYvOhlSgbeZocZmJnp/08nOE=")
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(yelpFoodTrucksURL!) { (data, response, error) in
-            
+        let client = YelpAPIClient()
+        
+        
+//        let yelpFoodTrucksURL = NSURL(string: "https://api.yelp.com/v2/search?category_filter=foodtrucks&location=Chicago&oauth_consumer_key=nF30f57Y37owF8lkT0yunw&oauth_token=euX1y5nJ1dugqyUfuWkXCdzZU9vjHVGf&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1461603623&oauth_nonce=3CFwlz&oauth_version=1.0&oauth_signature=RB0RYvOhlSgbeZocZmJnp/08nOE=")
+//        let session = NSURLSession.sharedSession()
+//        let task = session.dataTaskWithURL(yelpFoodTrucksURL!) { (data, response, error) in
+        
+        var parameters = ["category_filter": "foodtrucks", "location": "Chicago"]
+        
+        client.searchPlacesWithParameters(parameters, successSearch: { (data, response) -> Void in
+           
             do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
                 print("json: \(json)")
                 if let yelpBusinesses = json["businesses"] as? [NSDictionary] {
                     var count = 0
@@ -59,20 +68,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         print("address: \(address)")
                         let phone = yelpDict?["phone"]
                         print("user: \(phone)\n")
-                    
-                
-                
+                        
+                        
+                        
                         if count == yelpBusinesses.count{
                             break
                         }
                     }
                 }
-               
+                
             } catch let jsonError as NSError {
                 print("json error: \(jsonError.localizedDescription)")
             }
-        }
-        task.resume()
+
+
+    
+            }, failureSearch: { (error) -> Void in
+                print(error)
+    })
+    
+    
+        
+
     }
 
 
