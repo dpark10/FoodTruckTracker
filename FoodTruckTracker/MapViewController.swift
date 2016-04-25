@@ -38,90 +38,43 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        
         mapView.delegate = self
         
-//        self.fetchTwitterJSON()
+
         
-        let client = TWTRAPIClient()
-        client.loadTweetWithID("20") { (tweet, error) -> Void in
-            if error != nil {
-                print("Error: \(error)")
-            } else {
-                print(tweet)
-            }
-            
-        }
-        
-        
-        //            let name = "thefatshallot"
-        
-        //            let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline/\(name).json"
-        
-        //        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=list:chifoodtruckz/tracking&count:50"
-        
-        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=%23orlando&count:50"
-        //can add hashtag to refine search
-        
-        //            let params = ["id": "20"]
-        
-        
-        var clientError : NSError?
-        
-        let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: nil, error: &clientError)
-        
-        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
-            if connectionError != nil {
-                print("Error: \(connectionError)")
-            }
+        let yelpFoodTrucksURL = NSURL(string: "https://api.yelp.com/v2/search?category_filter=foodtrucks&location=Chicago&oauth_consumer_key=nF30f57Y37owF8lkT0yunw&oauth_token=euX1y5nJ1dugqyUfuWkXCdzZU9vjHVGf&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1461603623&oauth_nonce=3CFwlz&oauth_version=1.0&oauth_signature=RB0RYvOhlSgbeZocZmJnp/08nOE=")
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(yelpFoodTrucksURL!) { (data, response, error) in
             
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
                 print("json: \(json)")
-                if let tweets = json["statuses"] as? [NSDictionary] {
+                if let yelpBusinesses = json["businesses"] as? [NSDictionary] {
                     var count = 0
-                    for tweetsDict: NSDictionary! in tweets {
+                    for yelpDict: NSDictionary! in yelpBusinesses {
                         count += 1
-                        let title = tweetsDict?["text"] as! NSString
-                        print("text: \(title)")
-                        let coordinates = tweetsDict?["coordinates"]!["coordinates"] as? [Double]
-                        print("coordinates: \(coordinates)")
-                        let user = tweetsDict?["user"]!["name"]
-                        print("user: \(user)")
-                        
-                        
-                        if coordinates != nil {
-//                            let annotation = MKPointAnnotation()
-//                            annotation.title = user! as? String
-//                            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![1], longitude: coordinates![0])
-//                            self.mapView.addAnnotation(annotation)
-                            let foodTruck = FoodTruck.init()
-                            foodTruck.name = user as! String
-                            foodTruck.lat = coordinates![1]
-                            foodTruck.long = coordinates![0]
-                            self.foodTrucks.append(foodTruck)
-                            let barViewControllers = self.tabBarController?.viewControllers
-                            let svc = barViewControllers![1] as! ListViewController
-                            svc.foodTrucks = self.foodTrucks
-                            let annotation = FoodTruckAnnotation()
-                            annotation.title = user! as? String
-                            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinates![1], longitude: coordinates![0])
-                            annotation.foodTruck = foodTruck
-                            self.mapView.addAnnotation(annotation)
-                            print("Added annotation\n")
-                        } else {
-                            print("No annotation\n")
-                        }
-                        if count == tweets.count{
+                        let name = yelpDict?["name"] as! NSString
+                        print("text: \(name)")
+                        let address = yelpDict?["location"]!["display_address"] as? [String]
+                        print("address: \(address)")
+                        let phone = yelpDict?["phone"]
+                        print("user: \(phone)\n")
+                    
+                
+                
+                        if count == yelpBusinesses.count{
                             break
                         }
                     }
                 }
+               
             } catch let jsonError as NSError {
                 print("json error: \(jsonError.localizedDescription)")
             }
         }
+        task.resume()
     }
+
 
 
     func zoomCenter() {
@@ -189,29 +142,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.zoomCenter()
     }
     
-    
-    // MARK: - Twitter methods
-//    func fetchTwitterJSON() {
-//        let client = TWTRAPIClient()
-//        let name = "ashalot"
-//        
-//        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline/\(name).json"
-//        var clientError : NSError?
-//        
-//        let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: nil, error: &clientError)
-//        
-//        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
-//            if connectionError != nil {
-//                print("Error: \(connectionError)")
-//            }
-//            do {
-//                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-//                print("json: \(json)")
-//            } catch let jsonError as NSError {
-//                print("json error: \(jsonError.localizedDescription)")
-//            }
-//        }
-//    }
 
 }
 
