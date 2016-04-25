@@ -58,9 +58,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         //            let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline/\(name).json"
         
-        //        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=list:chifoodtruckz/tracking&count:50"
+//                let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=list:chifoodtruckz/tracking&count:50"
         
-        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=%23orlando&count:50"
+        let statusesShowEndpoint  = "https://api.twitter.com/1.1/search/tweets.json?q=%23chicago&count:50"
         //can add hashtag to refine search
         
         //            let params = ["id": "20"]
