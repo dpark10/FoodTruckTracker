@@ -154,9 +154,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return nil
         }
         else {
-            let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            let pin = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            pin.image = UIImage(named: "foodTruckImage")
             pin.canShowCallout = true
             pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            print(pin.image?.description)
             return pin
         }
     }
