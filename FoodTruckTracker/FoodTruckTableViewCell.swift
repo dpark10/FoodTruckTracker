@@ -21,4 +21,5 @@ class FoodTruckTableViewCell: UITableViewCell {
     
     @IBOutlet weak var costLabel: UILabel!
     
+    @IBOutlet weak var catagoryLabel: UILabel!
 }

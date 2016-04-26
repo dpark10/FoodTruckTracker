@@ -88,6 +88,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             load_image(foodTruck.ratingImage, cell: cell, logo: false)
             cell.numberOfRatingsLabel.text = String(foodTruck.yelpReviewCount)
             cell.titleLabel.preferredMaxLayoutWidth = cell.titleLabel.frame.size.width
+            cell.catagoryLabel.text = foodTruck.category
+            cell.addressLabel.text = foodTruck.address
         }
         else{
             let foodTruck = foodTrucks[indexPath.row]
@@ -96,6 +98,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             load_image(foodTruck.ratingImage, cell: cell, logo: false)
             cell.numberOfRatingsLabel.text = String(foodTruck.yelpReviewCount)
             cell.titleLabel.preferredMaxLayoutWidth = cell.titleLabel.frame.size.width
+            cell.catagoryLabel.text = foodTruck.category
+            cell.addressLabel.text = foodTruck.address
+
 
         }
         

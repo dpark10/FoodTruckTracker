@@ -162,6 +162,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="V4c-WE-IFa" id="D3v-7T-vV7"/>
+                                            <outlet property="catagoryLabel" destination="Y28-Xq-EgK" id="1H1-Hs-OG2"/>
                                             <outlet property="costLabel" destination="b1i-Mp-B93" id="XaQ-Lg-Dhi"/>
                                             <outlet property="distanceLabel" destination="8Ku-gI-rne" id="chN-tQ-9TR"/>
                                             <outlet property="logoImage" destination="7lL-LO-gAl" id="r13-ch-e3k"/>
