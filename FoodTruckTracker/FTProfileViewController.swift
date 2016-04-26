@@ -14,9 +14,10 @@ class FTProfileViewController: UIViewController {
     @IBOutlet weak var yelpRatingImageView: UIImageView!
     @IBOutlet weak var numberOfReviewsLabel: UILabel!
     @IBOutlet weak var yelpCategoriesLabel: UILabel!
-    @IBOutlet weak var foodTruckURLLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var logoImage: UIImageView!
     
     var foodTruck = FoodTruck()
     
@@ -25,13 +26,14 @@ class FTProfileViewController: UIViewController {
         foodTruckNameLabel.text = foodTruck.name
         numberOfReviewsLabel.text = "\(foodTruck.yelpReviewCount) Reviews"
         phoneNumberLabel.text = foodTruck.phone
-        
-        load_image(foodTruck.ratingImage)
+        addressLabel.text = foodTruck.address
+        load_image(foodTruck.logo, logo: true)
+        load_image(foodTruck.ratingImage, logo: false)
         
     }
     
 
-    func load_image(urlString:String)
+    func load_image(urlString: String, logo: Bool)
     {
         let imgURL: NSURL = NSURL(string: urlString)!
         let request: NSURLRequest = NSURLRequest(URL: imgURL)
@@ -44,7 +46,14 @@ class FTProfileViewController: UIViewController {
             {
                 func display_image()
                 {
-                    self.yelpRatingImageView.image = UIImage(data: data!)
+                    if logo == true {
+                        self.logoImage.image = UIImage(data: data!)
+                        self.logoImage.layer.cornerRadius = 5
+                        self.logoImage.clipsToBounds = true
+
+                    } else {
+                        self.yelpRatingImageView.image = UIImage(data: data!)
+                    }
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), display_image)

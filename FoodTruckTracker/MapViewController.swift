@@ -71,6 +71,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         let coordinate = yelpDict?["location"]!["coordinate"] as? NSDictionary
                         print("coordinate = \(coordinate)")
                         let description = yelpDict?["snippet_text"]
+                        print("description:\(description)")
                         let reviewCount = yelpDict?["review_count"]
                         let url = yelpDict?["url"]
                         let ratingImage = yelpDict?["rating_img_url"]
@@ -80,7 +81,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                          print("catagories = \(catagories)\n")
                         
                         let business = FoodTruck.init()
-                        let fullAddress = address!.joinWithSeparator(" ")
+                        let fullAddress = address!.joinWithSeparator(", ")
                         
 //                        let catagoryString = ""
 //                        for array in catagories! {
