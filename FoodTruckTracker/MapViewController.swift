@@ -66,8 +66,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         print("text: \(name)")
                         let address = yelpDict?["location"]!["display_address"] as? [String]
                         print("address: \(address)")
-                        let phone = yelpDict?["phone"]
-                        print("phone: \(phone)")
+                        let phone = yelpDict?["display_phone"] as? String
+                        print("display_phone: \(phone)")
                         let coordinate = yelpDict?["location"]!["coordinate"] as? NSDictionary
                         print("coordinate = \(coordinate) \n")
                         let description = yelpDict?["snippet_text"]
@@ -78,7 +78,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         
                         let business = FoodTruck.init()
                         business.name = name as String
-//                        business.phoneNumber = phone as! String
+                        business.phone = phone
                         business.logo = logo as! String
                         business.desc = description as! String
                         business.ratingImage = ratingImage as! String

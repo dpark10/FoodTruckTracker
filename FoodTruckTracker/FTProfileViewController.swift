@@ -23,8 +23,8 @@ class FTProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         foodTruckNameLabel.text = foodTruck.name
-        numberOfReviewsLabel.text = "\(foodTruck.yelpReviewCount)"
-        phoneNumberLabel.text = foodTruck.phoneNumber
+        numberOfReviewsLabel.text = "\(foodTruck.yelpReviewCount) Reviews"
+        phoneNumberLabel.text = foodTruck.phone
         
         load_image(foodTruck.ratingImage)
         
