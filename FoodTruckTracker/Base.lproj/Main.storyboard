@@ -124,12 +124,6 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1i-Mp-B93">
-                                                    <rect key="frame" x="546" y="42" width="38" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4c-WE-IFa">
                                                     <rect key="frame" x="92" y="62" width="492" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -151,8 +145,6 @@
                                                 <constraint firstItem="V4c-WE-IFa" firstAttribute="top" secondItem="hEc-hh-uBB" secondAttribute="bottom" constant="4" id="d45-lN-t82"/>
                                                 <constraint firstItem="7lL-LO-gAl" firstAttribute="top" secondItem="dAy-QI-91r" secondAttribute="topMargin" constant="8" id="dKr-9d-rsd"/>
                                                 <constraint firstItem="mwC-8u-XFj" firstAttribute="centerY" secondItem="hEc-hh-uBB" secondAttribute="centerY" id="ghV-gU-Wrf"/>
-                                                <constraint firstItem="b1i-Mp-B93" firstAttribute="top" secondItem="8Ku-gI-rne" secondAttribute="bottom" constant="5" id="hgv-7i-tDK"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="b1i-Mp-B93" secondAttribute="trailing" constant="8" id="iAY-r9-5i8"/>
                                                 <constraint firstItem="mwC-8u-XFj" firstAttribute="leading" secondItem="hEc-hh-uBB" secondAttribute="trailing" constant="5" id="kjZ-cX-avG"/>
                                                 <constraint firstItem="8Ku-gI-rne" firstAttribute="top" secondItem="dAy-QI-91r" secondAttribute="topMargin" constant="11" id="or9-C8-7jK"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Y28-Xq-EgK" secondAttribute="bottom" constant="12" id="q2f-cT-W0o"/>
@@ -163,7 +155,6 @@
                                         <connections>
                                             <outlet property="addressLabel" destination="V4c-WE-IFa" id="D3v-7T-vV7"/>
                                             <outlet property="catagoryLabel" destination="Y28-Xq-EgK" id="1H1-Hs-OG2"/>
-                                            <outlet property="costLabel" destination="b1i-Mp-B93" id="XaQ-Lg-Dhi"/>
                                             <outlet property="distanceLabel" destination="8Ku-gI-rne" id="chN-tQ-9TR"/>
                                             <outlet property="logoImage" destination="7lL-LO-gAl" id="r13-ch-e3k"/>
                                             <outlet property="numberOfRatingsLabel" destination="mwC-8u-XFj" id="iCu-Ix-QDW"/>
@@ -200,6 +191,7 @@
                     <tabBarItem key="tabBarItem" title="List" id="Xai-Uz-26c"/>
                     <connections>
                         <outlet property="foodTruckTableView" destination="C0a-PT-gR5" id="oWM-Rd-eCf"/>
+                        <outlet property="searchBar" destination="llr-iv-QJf" id="3Ya-kZ-n1O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHd-u1-GNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,7 +217,7 @@
                                     <constraint firstAttribute="height" constant="15" id="oOT-Sh-p3r"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312-555-5555" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bo-7T-oac">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="312-555-5555" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bo-7T-oac">
                                 <rect key="frame" x="20" y="207" width="173" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="PUh-0I-GjR"/>
@@ -279,13 +271,10 @@
                                     <constraint firstAttribute="width" constant="70" id="z20-25-ymN"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hx5-2x-i9V">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hx5-2x-i9V">
                                 <rect key="frame" x="20" y="178" width="560" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Mxg-za-JEk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Food Truck Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vN8-Ka-JZJ">
@@ -311,7 +300,7 @@
                             <constraint firstItem="jPa-jI-RIt" firstAttribute="top" secondItem="E0Q-3V-BY5" secondAttribute="bottom" id="YUp-9H-TWc"/>
                             <constraint firstItem="BAp-x9-WjT" firstAttribute="leading" secondItem="hoV-1a-WV5" secondAttribute="leading" constant="20" id="azI-Mt-scu"/>
                             <constraint firstItem="vN8-Ka-JZJ" firstAttribute="leading" secondItem="BAp-x9-WjT" secondAttribute="trailing" constant="8" id="bc2-ry-dQV"/>
-                            <constraint firstAttribute="trailing" secondItem="hx5-2x-i9V" secondAttribute="trailing" constant="20" id="cqx-Yi-kdt"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hx5-2x-i9V" secondAttribute="trailing" constant="20" id="cqx-Yi-kdt"/>
                             <constraint firstItem="BAp-x9-WjT" firstAttribute="top" secondItem="jPa-jI-RIt" secondAttribute="bottom" constant="8" id="g8O-cC-knu"/>
                             <constraint firstItem="jPa-jI-RIt" firstAttribute="leading" secondItem="hoV-1a-WV5" secondAttribute="leading" id="ndr-y3-khl"/>
                             <constraint firstItem="0bo-7T-oac" firstAttribute="leading" secondItem="hoV-1a-WV5" secondAttribute="leading" constant="20" id="sN4-oY-4zU"/>

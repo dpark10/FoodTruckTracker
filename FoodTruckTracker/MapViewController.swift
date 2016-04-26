@@ -34,7 +34,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewDidLoad()
         
         
-        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -71,26 +70,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         let coordinate = yelpDict?["location"]!["coordinate"] as? NSDictionary
                         print("coordinate = \(coordinate)")
                         let description = yelpDict?["snippet_text"]
-                        print("description:\(description)")
                         let reviewCount = yelpDict?["review_count"]
                         let url = yelpDict?["url"]
                         let ratingImage = yelpDict?["rating_img_url"]
                         let logo = yelpDict?["image_url"]
-//                        let address = yelpDict?["address"] as! [String]
                         let catagories = yelpDict?["categories"] as? [NSArray]
                          print("catagories = \(catagories)\n")
                         
                         let business = FoodTruck.init()
                         let fullAddress = address!.joinWithSeparator(", ")
-                        
-//                        let catagoryString = ""
-//                        for array in catagories! {
-//                            let b
-//                            catagoryString.stringByAppendingString("\(array[0])")
-//                            print(catagoryString)
-//                        }
+                      //  let fullCategories = catagories!.joinWithSeparator(", ")
+                        //print(fullCategories)
                         business.address = fullAddress
-//                        business.category = catagoryString
+                      //  business.category = catagoryString
                         business.name = name as String
                         business.phone = phone
                         business.logo = logo as! String
@@ -102,17 +94,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         if coordinate != nil {
                             business.lat = coordinate!["latitude"] as! Double
                             business.long = coordinate!["longitude"] as! Double
+                            business.distance = self.currentLocation.distanceFromLocation(CLLocation(latitude: coordinate!["latitude"] as! Double, longitude: coordinate!["longitude"] as! Double)) * 0.000621371
+                            print(business.distance)
                             }
                         else {
                             //Placeholder address for nil cooridates = Mobile Makers office
                             business.lat = 41.89374
                             business.long = -87.637519
+                            business.distance = self.currentLocation.distanceFromLocation(CLLocation(latitude: 41.89374, longitude: -87.637519)) * 0.000621371
+                             print(business.distance)
                         }
-                        dispatch_async(dispatch_get_main_queue()) {
+                       
+                                dispatch_async(dispatch_get_main_queue()) {
                             self.dropPinForFoodTruck(business)
                             print("Added annotation")
                         }
                         self.foodTrucks.append(business)
+                        self.foodTrucks.sortInPlace({ $0.distance < $1.distance})
                         let barViewControllers = self.tabBarController?.viewControllers
                         let svc = barViewControllers![1] as! ListViewController
                         svc.foodTrucks = self.foodTrucks
@@ -120,7 +118,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         
                         
                         if count == yelpBusinesses.count{
+                            self.locationManager.stopUpdatingLocation()
                             break
+
                         }
                     }
                 }
@@ -167,6 +167,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.first!
+        print(currentLocation)
     }
     
     // MARK: - MKMapViewDelegate Methods
