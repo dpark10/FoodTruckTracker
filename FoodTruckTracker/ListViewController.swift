@@ -20,6 +20,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: - IBOutlets
     @IBOutlet weak var foodTruckTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     // MARK: - View Management
@@ -33,6 +34,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.foodTruckTableView.reloadData()
+    }
+    override func viewWillDisappear(animated: Bool) {
+        filteredFoodTrucks.removeAll()
+        searchBar.text = ""
+        searchActive = false
+        searchBar.resignFirstResponder()
+        
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -90,6 +98,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.titleLabel.preferredMaxLayoutWidth = cell.titleLabel.frame.size.width
             cell.catagoryLabel.text = foodTruck.category
             cell.addressLabel.text = foodTruck.address
+            cell.distanceLabel.text = String(format: "%0.2f mi.", foodTruck.distance)
         }
         else{
             let foodTruck = foodTrucks[indexPath.row]
@@ -100,6 +109,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.titleLabel.preferredMaxLayoutWidth = cell.titleLabel.frame.size.width
             cell.catagoryLabel.text = foodTruck.category
             cell.addressLabel.text = foodTruck.address
+            cell.distanceLabel.text = String(format: "%0.2f mi.", foodTruck.distance)
 
 
         }

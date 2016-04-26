@@ -124,12 +124,6 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1i-Mp-B93">
-                                                    <rect key="frame" x="546" y="42" width="38" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4c-WE-IFa">
                                                     <rect key="frame" x="92" y="62" width="492" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -151,8 +145,6 @@
                                                 <constraint firstItem="V4c-WE-IFa" firstAttribute="top" secondItem="hEc-hh-uBB" secondAttribute="bottom" constant="4" id="d45-lN-t82"/>
                                                 <constraint firstItem="7lL-LO-gAl" firstAttribute="top" secondItem="dAy-QI-91r" secondAttribute="topMargin" constant="8" id="dKr-9d-rsd"/>
                                                 <constraint firstItem="mwC-8u-XFj" firstAttribute="centerY" secondItem="hEc-hh-uBB" secondAttribute="centerY" id="ghV-gU-Wrf"/>
-                                                <constraint firstItem="b1i-Mp-B93" firstAttribute="top" secondItem="8Ku-gI-rne" secondAttribute="bottom" constant="5" id="hgv-7i-tDK"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="b1i-Mp-B93" secondAttribute="trailing" constant="8" id="iAY-r9-5i8"/>
                                                 <constraint firstItem="mwC-8u-XFj" firstAttribute="leading" secondItem="hEc-hh-uBB" secondAttribute="trailing" constant="5" id="kjZ-cX-avG"/>
                                                 <constraint firstItem="8Ku-gI-rne" firstAttribute="top" secondItem="dAy-QI-91r" secondAttribute="topMargin" constant="11" id="or9-C8-7jK"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Y28-Xq-EgK" secondAttribute="bottom" constant="12" id="q2f-cT-W0o"/>
@@ -163,7 +155,6 @@
                                         <connections>
                                             <outlet property="addressLabel" destination="V4c-WE-IFa" id="D3v-7T-vV7"/>
                                             <outlet property="catagoryLabel" destination="Y28-Xq-EgK" id="1H1-Hs-OG2"/>
-                                            <outlet property="costLabel" destination="b1i-Mp-B93" id="XaQ-Lg-Dhi"/>
                                             <outlet property="distanceLabel" destination="8Ku-gI-rne" id="chN-tQ-9TR"/>
                                             <outlet property="logoImage" destination="7lL-LO-gAl" id="r13-ch-e3k"/>
                                             <outlet property="numberOfRatingsLabel" destination="mwC-8u-XFj" id="iCu-Ix-QDW"/>
@@ -200,6 +191,7 @@
                     <tabBarItem key="tabBarItem" title="List" id="Xai-Uz-26c"/>
                     <connections>
                         <outlet property="foodTruckTableView" destination="C0a-PT-gR5" id="oWM-Rd-eCf"/>
+                        <outlet property="searchBar" destination="llr-iv-QJf" id="3Ya-kZ-n1O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHd-u1-GNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
