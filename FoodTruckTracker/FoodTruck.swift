@@ -20,6 +20,9 @@ class FoodTruck: NSObject {
     var yelpReviewCount:    Int = 0
     var url:                String = ""
     var phone:              String?
-    
+    var address:            String = ""
+    var distance:           Double = 0
+    var category:           String = ""
+    var price:              String = ""
 
 }

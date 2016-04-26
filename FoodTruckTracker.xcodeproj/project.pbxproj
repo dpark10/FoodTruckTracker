@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42E74165EE6FD21A6F048851 /* Pods_FoodTruckTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4876AFB7A32BC2F48EC3E /* Pods_FoodTruckTracker.framework */; };
 		CD1AF01E1CC96DAB00AE3E92 /* FoodTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1AF01D1CC96DAB00AE3E92 /* FoodTruck.swift */; };
+		CD1AF0271CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */; };
 		E236017B1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */; };
 		E271935E1CCEAC0900B01A40 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */; };
 		E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */; };
@@ -34,6 +35,7 @@
 		00A4876AFB7A32BC2F48EC3E /* Pods_FoodTruckTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodTruckTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7923C7EA4D0FA741FE580C73 /* Pods-FoodTruckTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		CD1AF01D1CC96DAB00AE3E92 /* FoodTruck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruck.swift; sourceTree = "<group>"; };
+		CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckTableViewCell.swift; sourceTree = "<group>"; };
 		D5C5E2DF1BDA446EC9231C7C /* Pods-FoodTruckTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.release.xcconfig"; sourceTree = "<group>"; };
 		E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckAnnotation.swift; sourceTree = "<group>"; };
 		E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				E2FE44971CC67A11005748E9 /* ListViewController.swift */,
 				E2FE448C1CC67876005748E9 /* Assets.xcassets */,
 				E2FE44861CC67876005748E9 /* Main.storyboard */,
+				CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */,
 				E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */,
 				E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */,
 				E2C5BAD41CC8035400871750 /* LoginViewController.swift */,
@@ -240,6 +243,7 @@
 				E2FE44981CC67A11005748E9 /* ListViewController.swift in Sources */,
 				E2C5BAD51CC8035400871750 /* LoginViewController.swift in Sources */,
 				E2FE44831CC67876005748E9 /* AppDelegate.swift in Sources */,
+				CD1AF0271CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
