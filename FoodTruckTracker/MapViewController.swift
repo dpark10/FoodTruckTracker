@@ -74,15 +74,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         let url = yelpDict?["url"]
                         let ratingImage = yelpDict?["rating_img_url"]
                         let logo = yelpDict?["image_url"]
-                        let catagories = yelpDict?["categories"] as? [NSArray]
-                         print("catagories = \(catagories)\n")
+                        let categories = yelpDict?["categories"] as? [NSArray]
+                         print("categories = \(categories)\n")
                         
                         let business = FoodTruck.init()
                         let fullAddress = address!.joinWithSeparator(", ")
-                      //  let fullCategories = catagories!.joinWithSeparator(", ")
-                        //print(fullCategories)
+                        var categoryArray = [String]()
+                        for array in categories! {
+                            categoryArray.append(array[0] as! String)
+                        }
+                        let fullCategories = categoryArray.joinWithSeparator(", ")
+                        print(fullCategories)
                         business.address = fullAddress
-                      //  business.category = catagoryString
+                        business.category = fullCategories
                         business.name = name as String
                         business.phone = phone
                         business.logo = logo as! String

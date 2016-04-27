@@ -29,6 +29,9 @@ class FTProfileViewController: UIViewController {
         addressLabel.text = foodTruck.address
         load_image(foodTruck.logo, logo: true)
         load_image(foodTruck.ratingImage, logo: false)
+        distanceLabel.text = String(format: "%0.2f mi." ,foodTruck.distance)
+        yelpCategoriesLabel.text = foodTruck.category
+        
         
     }
     

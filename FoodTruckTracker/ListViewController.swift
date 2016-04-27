@@ -68,7 +68,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let range = (tmp.name as NSString).rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             return range.location != NSNotFound
         })
-        if filteredFoodTrucks.count == 0 {
+        if filteredFoodTrucks.count == 0 && searchBar.text != "" {
+            searchActive = true;
+        } else if filteredFoodTrucks.count == 0 && searchBar.text == "" {
             searchActive = false;
         } else {
             searchActive = true;
@@ -89,7 +91,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = foodTruckTableView.dequeueReusableCellWithIdentifier("FoodTruckCell", forIndexPath: indexPath) as! FoodTruckTableViewCell
-        if(searchActive) {
+        if searchActive && filteredFoodTrucks.count > 0 {
             let foodTruck = filteredFoodTrucks[indexPath.row]
             cell.titleLabel.text = foodTruck.name
             load_image(foodTruck.logo, cell: cell, logo: true)
@@ -99,6 +101,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.catagoryLabel.text = foodTruck.category
             cell.addressLabel.text = foodTruck.address
             cell.distanceLabel.text = String(format: "%0.2f mi.", foodTruck.distance)
+        } else if searchActive && filteredFoodTrucks.count == 0{
+            cell.titleLabel?.text = "Your search did not match any entries. Try again."
+            
         }
         else{
             let foodTruck = foodTrucks[indexPath.row]
