@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHd-u1-GNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="956"/>
+            <point key="canvasLocation" x="1928" y="956"/>
         </scene>
         <!--Title-->
         <scene sceneID="tMA-au-sEn">
@@ -328,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLm-jz-6Ea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1958" y="956"/>
+            <point key="canvasLocation" x="2770" y="956"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="TbD-Ci-Rcu">
@@ -364,8 +364,8 @@
                                 <rect key="frame" x="200" y="388" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0eM-1D-gNQ"/>
-                                    <constraint firstAttribute="width" constant="100" id="CHh-4D-Yux"/>
+                                    <constraint firstAttribute="width" constant="200" id="YdM-ZM-jmz"/>
+                                    <constraint firstAttribute="height" constant="30" id="bJu-mU-bm7"/>
                                 </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -384,13 +384,31 @@
                                     <segue destination="L0m-w3-Z3V" kind="presentation" identifier="SignupSegue" id="26B-qn-BOs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUE-ck-YkB">
+                                <rect key="frame" x="200" y="426" width="200" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Tkq-9J-KF0"/>
+                                    <constraint firstAttribute="width" constant="200" id="U0l-xW-whA"/>
+                                </constraints>
+                                <state key="normal" title="Food Truck Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLoginButtonTapped:" destination="TO1-tL-fVc" eventType="touchUpInside" id="E6M-1Q-x8L"/>
+                                    <segue destination="oJT-te-yRL" kind="presentation" id="CvJ-cD-ypj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Mfg-9S-rcn" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="8DT-bX-cdS"/>
+                            <constraint firstItem="dUE-ck-YkB" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="DwY-n9-jHu"/>
                             <constraint firstItem="PF6-UM-FxW" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="JJK-ti-52q"/>
+                            <constraint firstItem="WFr-WS-82H" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="JkL-xP-VWt"/>
+                            <constraint firstItem="WFr-WS-82H" firstAttribute="top" secondItem="PF6-UM-FxW" secondAttribute="bottom" constant="94" id="LiZ-h2-qvk"/>
                             <constraint firstItem="vSe-75-Nza" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="cQg-MR-dgP"/>
-                            <constraint firstItem="WFr-WS-82H" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="n92-qF-rol"/>
+                            <constraint firstItem="dUE-ck-YkB" firstAttribute="top" secondItem="WFr-WS-82H" secondAttribute="bottom" constant="8" id="vKt-8Y-AND"/>
                         </constraints>
                     </view>
                     <connections>
@@ -401,7 +419,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nmf-z2-XLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-461" y="429"/>
+            <point key="canvasLocation" x="-466" y="429"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="kOb-E7-tz5">
@@ -476,6 +494,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLq-jb-01X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="305" y="429"/>
+        </scene>
+        <!--QR Scanner-->
+        <scene sceneID="faT-T5-7fV">
+            <objects>
+                <viewController id="OTh-N3-8H1" customClass="ScannerViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZVu-x3-USz"/>
+                        <viewControllerLayoutGuide type="bottom" id="wTG-MB-nfk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rLH-3g-miN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code String:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifu-TP-N4h">
+                                <rect key="frame" x="238" y="493" width="124" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR Code Detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doT-o7-eWw">
+                                <rect key="frame" x="0.0" y="522" width="600" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7Wc-xI-7r2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="doT-o7-eWw" firstAttribute="leading" secondItem="rLH-3g-miN" secondAttribute="leading" id="Dh7-of-Enp"/>
+                            <constraint firstItem="Ifu-TP-N4h" firstAttribute="centerX" secondItem="rLH-3g-miN" secondAttribute="centerX" id="eMV-vz-XEX"/>
+                            <constraint firstAttribute="trailing" secondItem="doT-o7-eWw" secondAttribute="trailing" id="gQc-TU-MSb"/>
+                            <constraint firstItem="wTG-MB-nfk" firstAttribute="top" secondItem="doT-o7-eWw" secondAttribute="bottom" constant="8" id="knZ-BC-Zk9"/>
+                            <constraint firstItem="doT-o7-eWw" firstAttribute="top" secondItem="Ifu-TP-N4h" secondAttribute="bottom" constant="8" id="zn4-pP-ESv"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="QR Scanner" id="aRq-8g-0Be"/>
+                    <connections>
+                        <outlet property="qrCodeLabel" destination="Ifu-TP-N4h" id="Vn3-3Q-iRg"/>
+                        <outlet property="qrCodeResultLabel" destination="doT-o7-eWw" id="2dk-B8-EAy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rnj-6B-pCQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="1314"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="L6i-x3-kFI">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oJT-te-yRL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="dOB-rU-f1f">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="OTh-N3-8H1" kind="relationship" relationship="viewControllers" id="kWC-H9-VzB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fad-lx-ifF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-175" y="1314"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
