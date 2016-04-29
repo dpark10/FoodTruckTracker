@@ -522,10 +522,19 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhJ-gx-b1U">
+                                <rect key="frame" x="526" y="20" width="54" height="30"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="OTh-N3-8H1" eventType="touchUpInside" id="w0O-Sf-QAq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="doT-o7-eWw" firstAttribute="leading" secondItem="rLH-3g-miN" secondAttribute="leading" id="Dh7-of-Enp"/>
+                            <constraint firstAttribute="trailing" secondItem="zhJ-gx-b1U" secondAttribute="trailing" constant="20" id="Fwe-Zb-T4m"/>
+                            <constraint firstItem="zhJ-gx-b1U" firstAttribute="top" secondItem="ZVu-x3-USz" secondAttribute="bottom" id="Ror-cg-zeC"/>
                             <constraint firstItem="Ifu-TP-N4h" firstAttribute="centerX" secondItem="rLH-3g-miN" secondAttribute="centerX" id="eMV-vz-XEX"/>
                             <constraint firstAttribute="trailing" secondItem="doT-o7-eWw" secondAttribute="trailing" id="gQc-TU-MSb"/>
                             <constraint firstItem="wTG-MB-nfk" firstAttribute="top" secondItem="doT-o7-eWw" secondAttribute="bottom" constant="8" id="knZ-BC-Zk9"/>

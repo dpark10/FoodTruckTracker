@@ -19,6 +19,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var foodTrucks = [FoodTruck]()
     var foodTruckOfAnnotation  = FoodTruck()
+    var geofences = [CLCircularRegion]()
 
     // MARK: - Properties
     var locationManager = CLLocationManager()
@@ -33,11 +34,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        locationManager.requestAlwaysAuthorization()
+
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+        self.startMonitoringForRegions()
         mapView.delegate = self
         
 
@@ -172,11 +175,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.first!
         print(currentLocation)
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
+        print("did start monitoring for region")
+        self.locationManager.requestStateForRegion(region)
+    }
+    
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("Entered region \(region.identifier)")
+    }
+    
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("Exited region\(region.identifier)")
+    }
+    
+    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
+//        print("did determine state")
+//        print(region.identifier)
+//        print(state.rawValue.description)
+        if state.rawValue.description == "1" {
+            print("\(region.identifier) is inside geofence")
+        }
     }
     
     // MARK: - MKMapViewDelegate Methods
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         self.zoomCenter()
+        self.locationManager.stopUpdatingLocation()
     }
         
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -201,6 +228,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKCircle {
+            let circleRenderer = MKCircleRenderer(overlay: overlay)
+            circleRenderer.lineWidth = 1.0
+            circleRenderer.strokeColor = UIColor.purpleColor()
+            circleRenderer.fillColor = UIColor.purpleColor().colorWithAlphaComponent(0.4)
+            return circleRenderer
+        } else {
+            return MKPolylineRenderer()
+        }
+    }
+    
+    // MARK: - prepareForSegue
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //TO DO - pass food truck to profile vc
         if (segue.identifier == "MapToProfileSegue") {
@@ -217,19 +258,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     
     func dropPinForFoodTruck(foodTruck: FoodTruck) {
-//        let geoCoder = CLGeocoder()
-//        geoCoder.geocodeAddressString(foodTruck.address) { (placemarks : [CLPlacemark]?, error : NSError?) in
-//            for placemark in placemarks! {
-                let annotation = FoodTruckAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: foodTruck.lat, longitude: foodTruck.long)
-                annotation.title = foodTruck.name
-                annotation.foodTruck = foodTruck
-                self.mapView.addAnnotation(annotation)
-                
-            }
-//        }
-//    }
+        //        let geoCoder = CLGeocoder()
+        //        geoCoder.geocodeAddressString(foodTruck.address) { (placemarks : [CLPlacemark]?, error : NSError?) in
+        //            for placemark in placemarks! {
+        let annotation = FoodTruckAnnotation()
+        let radius = CLLocationDistance(200.0)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: foodTruck.lat, longitude: foodTruck.long)
+        annotation.title = foodTruck.name
+        annotation.foodTruck = foodTruck
+        let geoRegion = CLCircularRegion(center: annotation.coordinate, radius: radius, identifier: foodTruck.name)
+        self.geofences.append(geoRegion)
+        self.locationManager.startMonitoringForRegion(geoRegion)
+        let overlay = MKCircle(centerCoordinate: annotation.coordinate, radius: radius)
+        self.mapView.addOverlay(overlay)
+        self.mapView.addAnnotation(annotation)
+        
+    }
+    //        }
+    //    }
     
+    
+    func startMonitoringForRegions() {
+        for geofence in self.geofences {
+            self.locationManager.startMonitoringForRegion(geofence)
+        }
+    }
 
 }
 
