@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FTProfileViewController: UIViewController {
+class FTProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var foodTruckNameLabel: UILabel!
     @IBOutlet weak var yelpRatingImageView: UIImageView!
@@ -18,6 +18,8 @@ class FTProfileViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var foodTruck = FoodTruck()
     
@@ -33,6 +35,7 @@ class FTProfileViewController: UIViewController {
         yelpCategoriesLabel.text = foodTruck.category
         
         
+
     }
     
 
@@ -65,6 +68,19 @@ class FTProfileViewController: UIViewController {
         }
         
         task.resume()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+        //return foodTruck.comments.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! CommentTableViewCell
+//        let comment = foodTruck.comments[indexPath.row]
+        //cell.ratingView.rating = comment
+        //cell.commentTextView.text =
+        return cell
     }
     
 
