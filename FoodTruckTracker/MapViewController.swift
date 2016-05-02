@@ -43,6 +43,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.startMonitoringForRegions()
         mapView.delegate = self
         
+        self.registerLocalNotifications()
 
         let apiConsoleInfo = YelpAPIConsole()
         
@@ -147,9 +148,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
 
     }
-
-
-
+    
+    
+    // MARK: - Notifications
+    func registerLocalNotifications() {
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+    }
+    
+    func presentLocalNotifications(foodTruck: String) {
+        guard let settings = UIApplication.sharedApplication().currentUserNotificationSettings() else { return }
+        
+        if settings.types == .None {
+            let ac = UIAlertController(title: "Notification Error",
+                                     message: "Either we don't have permission to schedule notifications or we haven't asked yet",
+                              preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
+        
+        let notification = UILocalNotification()
+        notification.fireDate = NSDate(timeIntervalSinceNow: 10)
+        notification.alertBody = "\(foodTruck) has a coupon available!"
+        notification.alertAction = "claim"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.userInfo = ["CustomField1": foodTruck]
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+    }
+    
+    // MARK: - Methods
     func zoomCenter() {
         let userLocation = mapView.userLocation
         let region = MKCoordinateRegionMakeWithDistance(userLocation.location!.coordinate, 10000, 10000)
@@ -192,11 +221,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
-//        print("did determine state")
+        print("did determine state")
 //        print(region.identifier)
 //        print(state.rawValue.description)
         if state.rawValue.description == "1" {
-            print("\(region.identifier) is inside geofence")
+            print("inside \(region.identifier) geofence")
+            self.presentLocalNotifications(region.identifier)
         }
     }
     
@@ -215,7 +245,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             pin.image = UIImage(named: "foodTruckImage")
             pin.canShowCallout = true
             pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
-            print(pin.image?.description)
             return pin
         }
     }
