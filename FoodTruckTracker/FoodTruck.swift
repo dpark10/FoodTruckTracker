@@ -23,6 +23,8 @@ class FoodTruck: NSObject {
     var address:            String = ""
     var distance:           Double = 0
     var category:           String = ""
-    var price:              String = ""
+    var menu:               NSDictionary = NSDictionary()
+    var uid:                String = ""
+    var comments:           NSDictionary = NSDictionary()
 
 }
