@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
+class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: IBOutlets
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,12 +26,14 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     @IBOutlet weak var couponDescTextField: UITextField!
     @IBOutlet weak var discountAmtTextField: UITextField!
     @IBOutlet weak var expDateTextField: UITextField!
-    
+    @IBOutlet weak var imageButton: UIButton!
     
     // MARK: Properties
     var locationManager = CLLocationManager()
     var userLocation = CLLocationCoordinate2D()
     var activeField: UITextField?
+    let imagePicker = UIImagePickerController()
+    var foodTruckLogoImage = UIImage()
     
     
     // MARK: View Management
@@ -48,9 +50,10 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
         locationManager.startUpdatingLocation()
         
         mapView.delegate = self
+        imagePicker.delegate = self
         
         self.registerForKeyboardNotifications()
-
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -136,6 +139,9 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     
     @IBAction func addImageButtonTapped(sender: AnyObject) {
         print("Button Tapped")
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        presentViewController(imagePicker, animated: true, completion: nil)
         
     }
     
@@ -152,8 +158,6 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
         expDateTextField.endEditing(true)
     }
     
-    
-    
     // MARK: CLLocationManagerDelegate Methods
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -167,6 +171,19 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
         mapView.setRegion(region, animated: true)
         self.userLocation = userLocation.location!.coordinate
         print(self.userLocation)
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.foodTruckLogoImage = pickedImage
+            imageButton.setImage(self.foodTruckLogoImage, forState: .Normal)
+        }
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
