@@ -8,11 +8,13 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    var picker = UIImagePickerController()
     
     
     @IBOutlet weak var checkBox: CheckBoxButton!
@@ -20,6 +22,7 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        picker.delegate = self
         categoryTextField.hidden = true
         addressTextField.hidden = true
         urlTextField.hidden = true
@@ -28,6 +31,8 @@ class SignupViewController: UIViewController {
         yelpTextField.hidden = true
 
     }
+    
+    //TO DO: set up image picker delegates; See InstaGram
 
     @IBAction func onCreateButtonTapped(sender: UIButton) {
         let email = emailTextField.text
@@ -47,14 +52,14 @@ class SignupViewController: UIViewController {
             } else {
                 let uid = result["uid"] as? String
                 if self.checkBox.imageView?.image == UIImage(named: "checked") {
-                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text! as String, "userID": uid!, "category": self.categoryTextField.text! as String, "address": self.addressTextField.text! as String, "url": self.urlTextField.text! as String, "phone": self.phoneTextField.text! as String, "twitter": self.twitterTextField.text! as String, "yelp": self.yelpTextField.text! as String, "comments": NSDictionary(), "userGenerated?": true]
-                    let userRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.nameTextField.text)
+                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text! as String, "userID": uid!, "category": self.categoryTextField.text! as String, "address": self.addressTextField.text! as String, "url": self.urlTextField.text! as String, "phone": self.phoneTextField.text! as String, "twitter": self.twitterTextField.text! as String, "yelp": self.yelpTextField.text! as String, "userGenerated?": true, "foodTruck?": true]
+                    let userRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(uid)
                     userRef.setValue(userDictionary)
                     print("Successfully created user account with uid: \(uid)")
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
                 else {
-                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email": self.emailTextField.text! as String, "uid": uid!, "coupons": NSDictionary()]
+                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email": self.emailTextField.text! as String, "uid": uid!, "foodTruck?": true]
                     let userRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(uid)
                     userRef.setValue(userDictionary)
                     print("Successfully created user account with uid: \(uid)")

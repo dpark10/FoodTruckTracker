@@ -16,7 +16,6 @@ class CommentTableViewCell: UITableViewCell, UITextViewDelegate{
     @IBOutlet weak var ratingView: CosmosView!
     
     var foodTruck: FoodTruck?
-    var comments: Dictionary<String, Double>?
     
     
     override func awakeFromNib() {
@@ -26,19 +25,16 @@ class CommentTableViewCell: UITableViewCell, UITextViewDelegate{
 
     }
     
-    func textViewDidChange(textView: UITextView) {
-        print(commentTextView.text)
-    
-    }
+  
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
-            let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(foodTruck?.uid)
-            comments![commentTextView.text] = ratingView.rating
-            let newComments = ["comments": comments as! NSDictionary]
-            ref.updateChildValues(newComments)
-            
+            let ref = DataService.dataService.REF_BASE.childByAppendingPath("comments").childByAutoId()
+            let comment: NSDictionary = ["rating": ratingView.rating as Double, "text": commentTextView.text as String, "foodTruck" : foodTruck!.name as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
+            ref.setValue(comment)
+            print("comment saved!")
             textView.resignFirstResponder()
+            //Use custom delegation to reload tableView
         }
         return true
     }

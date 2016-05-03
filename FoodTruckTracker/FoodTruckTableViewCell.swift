@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import Cosmos
 
 class FoodTruckTableViewCell: UITableViewCell {
     
     @IBOutlet weak var logoImage: UIImageView!
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var ratingImage: UIImageView!
     @IBOutlet weak var numberOfRatingsLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
     @IBOutlet weak var distanceLabel: UILabel!
     
-    @IBOutlet weak var costLabel: UILabel!
     
     @IBOutlet weak var catagoryLabel: UILabel!
+    
+    @IBOutlet weak var ratingView: CosmosView!
+    
 }
