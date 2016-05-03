@@ -38,7 +38,6 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
         commentTextView.layer.borderWidth = 1
         commentTextView.layer.borderColor = UIColor.redColor().CGColor
         foodTruckNameLabel.text = foodTruck!.name
-        numberOfReviewsLabel.text = "\(foodTruck!.yelpReviewCount) Reviews"
         phoneNumberLabel.text = foodTruck!.phone
         getAddressFromGeocodeCoordinate(CLLocation(latitude: foodTruck!.lat, longitude: foodTruck!.long))
         logoImage.image = conversion(foodTruck!.logo)
@@ -57,6 +56,8 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.comments.append(comment)
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
+                    let numberOfReviews = (self.foodTruck?.yelpReviewCount)! + self.comments.count
+                    self.numberOfReviewsLabel.text = "\(numberOfReviews) Reviews"
                 }
             })
         
@@ -137,19 +138,14 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
             let ref = DataService.dataService.REF_BASE.childByAppendingPath("comments").childByAutoId()
             let comment: NSDictionary = ["rating": newRatingView.rating as Double, "text": commentTextView.text as String, "foodTruck" : foodTruck!.name as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
             ref.setValue(comment)
-//            print("comment saved!")
-//            comments.removeAll()
-//            let newPostRef = DataService.dataService.REF_BASE.childByAppendingPath("comments")
-//            newPostRef.queryOrderedByChild("foodTruck").queryEqualToValue(foodTruck!.name).observeEventType(.Value, withBlock: { snapshot in
-//                let enumerator = snapshot.children
-//                while let rest = enumerator.nextObject() as? FDataSnapshot {
-//                    let comment = Comment.init(snapshot: rest)
-//                    self.comments.append(comment)
-//                    dispatch_async(dispatch_get_main_queue()) {
-//                        self.tableView.reloadData()
-//                    }
-//                }
-//            })
+            print("comment saved!")
+            let foodTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.foodTruck?.uid)
+            let newRatingNumerator = Double((foodTruck!.rating * Double(foodTruck!.yelpReviewCount)) + newRatingView.rating)
+            let newRatingDenominator = Double((foodTruck!.rating * Double(foodTruck!.yelpReviewCount)) + 5)
+            let newRating = newRatingNumerator/newRatingDenominator
+            let newNumberOfRatings = (foodTruck?.yelpReviewCount)! + 1
+            foodTruckRef.updateChildValues(["rating": newRating as Double])
+            foodTruckRef.updateChildValues(["numberOfRatings": newNumberOfRatings as Int])
             commentTextView.text = ""
             newRatingView.rating = 0
             textView.resignFirstResponder()
