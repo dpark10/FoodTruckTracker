@@ -94,8 +94,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if searchActive && filteredFoodTrucks.count > 0 {
             let foodTruck = filteredFoodTrucks[indexPath.row]
             cell.titleLabel.text = foodTruck.name
-            load_image(foodTruck.logo, cell: cell, logo: true)
-            load_image(foodTruck.ratingImage, cell: cell, logo: false)
+            cell.logoImage.image = conversion(foodTruck.logo)
+            cell.logoImage.layer.cornerRadius = 5
+            cell.logoImage.clipsToBounds = true
+            cell.ratingView.rating = foodTruck.rating
             cell.numberOfRatingsLabel.text = String(foodTruck.yelpReviewCount)
             cell.titleLabel.preferredMaxLayoutWidth = cell.titleLabel.frame.size.width
             cell.catagoryLabel.text = foodTruck.category
@@ -108,8 +110,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else{
             let foodTruck = foodTrucks[indexPath.row]
             cell.titleLabel.text = foodTruck.name
-            load_image(foodTruck.logo, cell: cell, logo: true)
-            load_image(foodTruck.ratingImage, cell: cell, logo: false)
+            cell.logoImage.image = conversion(foodTruck.logo)
+            cell.logoImage.layer.cornerRadius = 5
+            cell.logoImage.clipsToBounds = true
+            cell.ratingView.rating = foodTruck.rating
             cell.numberOfRatingsLabel.text = String(foodTruck.yelpReviewCount)
             cell.titleLabel.preferredMaxLayoutWidth = cell.titleLabel.frame.size.width
             cell.catagoryLabel.text = foodTruck.category
@@ -122,37 +126,37 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-    
-    func load_image(urlString:String, cell:FoodTruckTableViewCell, logo:Bool)
-    {
-        let imgURL: NSURL = NSURL(string: urlString)!
-        let request: NSURLRequest = NSURLRequest(URL: imgURL)
-        
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request){
-            (data, response, error) -> Void in
-            
-            if (error == nil && data != nil)
-            {
-                func display_image()
-                {
-                    if logo == true {
-                        cell.logoImage.image = UIImage(data: data!)
-                        cell.logoImage.layer.cornerRadius = 5
-                        cell.logoImage.clipsToBounds = true
-                    }
-                    else {
-                        cell.ratingImage.image = UIImage(data: data!)
-                    }
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), display_image)
-            }
-            
-        }
-        
-        task.resume()
-    }
+//    
+//    func load_image(urlString:String, cell:FoodTruckTableViewCell, logo:Bool)
+//    {
+//        let imgURL: NSURL = NSURL(string: urlString)!
+//        let request: NSURLRequest = NSURLRequest(URL: imgURL)
+//        
+//        let session = NSURLSession.sharedSession()
+//        let task = session.dataTaskWithRequest(request){
+//            (data, response, error) -> Void in
+//            
+//            if (error == nil && data != nil)
+//            {
+//                func display_image()
+//                {
+//                    if logo == true {
+//                        cell.logoImage.image = UIImage(data: data!)
+//                        cell.logoImage.layer.cornerRadius = 5
+//                        cell.logoImage.clipsToBounds = true
+//                    }
+//                    else {
+//                        cell.ratingImage.image = UIImage(data: data!)
+//                    }
+//                }
+//                
+//                dispatch_async(dispatch_get_main_queue(), display_image)
+//            }
+//            
+//        }
+//    
+//        task.resume()
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -167,6 +171,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             destVC.foodTruck = foodTruck
         }
         
+    }
+    
+    func conversion(post: String) -> UIImage {
+        let imageData = NSData(base64EncodedString: post, options: [] )
+        let image = UIImage(data: imageData!)
+        return image!
     }
 
 }

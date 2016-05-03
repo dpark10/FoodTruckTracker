@@ -13,12 +13,13 @@ import Twitter
 import TwitterKit
 import TwitterCore
 import OAuthSwift
+import Firebase
 
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var foodTrucks = [FoodTruck]()
-    var foodTruckOfAnnotation  = FoodTruck()
+    var foodTruckOfAnnotation  = FoodTruck?()
     var geofences = [CLCircularRegion]()
 
     // MARK: - Properties
@@ -54,97 +55,120 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        let session = NSURLSession.sharedSession()
 //        let task = session.dataTaskWithURL(yelpFoodTrucksURL!) { (data, response, error) in
         
-        let parameters = ["category_filter": "foodtrucks", "location": "Chicago"]
+        let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks")
         
-        client.searchPlacesWithParameters(parameters, successSearch: { (data, response) -> Void in
-           
-            do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-                print("json: \(json)")
-                if let yelpBusinesses = json["businesses"] as? [NSDictionary] {
-                    var count = 0
-                    for yelpDict: NSDictionary! in yelpBusinesses {
-                        count += 1
-                        let name = yelpDict?["name"] as! NSString
-                        print("text: \(name)")
-                        let address = yelpDict?["location"]!["display_address"] as? [String]
-                        print("address: \(address)")
-                        let phone = yelpDict?["display_phone"] as? String
-                        print("display_phone: \(phone)")
-                        let coordinate = yelpDict?["location"]!["coordinate"] as? NSDictionary
-                        print("coordinate = \(coordinate)")
-                        let description = yelpDict?["snippet_text"]
-                        let reviewCount = yelpDict?["review_count"]
-                        let url = yelpDict?["url"]
-                        let ratingImage = yelpDict?["rating_img_url"]
-                        let logo = yelpDict?["image_url"]
-                        let categories = yelpDict?["categories"] as? [NSArray]
-                         print("categories = \(categories)\n")
-                        
-                        let business = FoodTruck.init()
-                        let fullAddress = address!.joinWithSeparator(", ")
-                        var categoryArray = [String]()
-                        for array in categories! {
-                            categoryArray.append(array[0] as! String)
-                        }
-                        let fullCategories = categoryArray.joinWithSeparator(", ")
-                        print(fullCategories)
-                        business.address = fullAddress
-                        business.category = fullCategories
-                        business.name = name as String
-                        business.phone = phone
-                        business.logo = logo as! String
-                        business.desc = description as! String
-                        business.ratingImage = ratingImage as! String
-                        business.url = url as! String
-                        business.yelpReviewCount = reviewCount as! Int
-                        
-                        if coordinate != nil {
-                            business.lat = coordinate!["latitude"] as! Double
-                            business.long = coordinate!["longitude"] as! Double
-                            business.distance = self.currentLocation.distanceFromLocation(CLLocation(latitude: coordinate!["latitude"] as! Double, longitude: coordinate!["longitude"] as! Double)) * 0.000621371
-                            print(business.distance)
-                            }
-                        else {
-                            //Placeholder address for nil cooridates = Mobile Makers office
-                            business.lat = 41.89374
-                            business.long = -87.637519
-                            business.distance = self.currentLocation.distanceFromLocation(CLLocation(latitude: 41.89374, longitude: -87.637519)) * 0.000621371
-                             print(business.distance)
-                        }
-                       
-                                dispatch_async(dispatch_get_main_queue()) {
-                            self.dropPinForFoodTruck(business)
-                            print("Added annotation")
-                        }
-                        self.foodTrucks.append(business)
-                        self.foodTrucks.sortInPlace({ $0.distance < $1.distance})
-                        let barViewControllers = self.tabBarController?.viewControllers
-                        let svc = barViewControllers![1] as! ListViewController
-                        svc.foodTrucks = self.foodTrucks
-
-                        
-                        
-                        if count == yelpBusinesses.count{
-                            self.locationManager.stopUpdatingLocation()
-                            break
-
-                        }
-                    }
+        ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            print(snapshot.childrenCount)
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? FDataSnapshot {
+                let foodTruck = FoodTruck.init(snapshot: rest)
+                foodTruck.distance = self.currentLocation.distanceFromLocation(CLLocation(latitude: foodTruck.lat , longitude: foodTruck.long)) * 0.000621371
+                print(foodTruck)
+                self.foodTrucks.append(foodTruck)
+                self.foodTrucks.sortInPlace({ $0.distance < $1.distance})
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.dropPinForFoodTruck(foodTruck)
+                    print("Added annotation")
                 }
-                
-                
-            } catch let jsonError as NSError {
-                print("json error: \(jsonError.localizedDescription)")
+
+                let barViewControllers = self.tabBarController?.viewControllers
+                let svc = barViewControllers![1] as! ListViewController
+                svc.foodTrucks = self.foodTrucks
             }
-
-
-    
-            }, failureSearch: { (error) -> Void in
-                print(error)
-    })
-    
-    
+            })
+//
+//        let parameters = ["category_filter": "foodtrucks", "location": "Chicago"]
+//        
+//        client.searchPlacesWithParameters(parameters, successSearch: { (data, response) -> Void in
+//           
+//            do {
+//                let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+//                print("json: \(json)")
+//                if let yelpBusinesses = json["businesses"] as? [NSDictionary] {
+//                    var count = 0
+//                    for yelpDict: NSDictionary! in yelpBusinesses {
+//                        count += 1
+//                        let name = yelpDict?["name"] as! NSString
+//                        print("text: \(name)")
+//                        let address = yelpDict?["location"]!["display_address"] as? [String]
+//                        print("address: \(address)")
+//                        let phone = yelpDict?["display_phone"] as? String
+//                        print("display_phone: \(phone)")
+//                        let coordinate = yelpDict?["location"]!["coordinate"] as? NSDictionary
+//                        print("coordinate = \(coordinate)")
+//                        let description = yelpDict?["snippet_text"]
+//                        let reviewCount = yelpDict?["review_count"]
+//                        let url = yelpDict?["url"]
+//                        let ratingImage = yelpDict?["rating_img_url"]
+//                        let logo = yelpDict?["image_url"]
+//                        let categories = yelpDict?["categories"] as? [NSArray]
+//                         print("categories = \(categories)\n")
+//                        
+//                        let business = FoodTruck.init()
+//                        let fullAddress = address!.joinWithSeparator(", ")
+//                        var categoryArray = [String]()
+//                        for array in categories! {
+//                            categoryArray.append(array[0] as! String)
+//                        }
+//                        let fullCategories = categoryArray.joinWithSeparator(", ")
+//                        print(fullCategories)
+//                        business.address = fullAddress
+//                        business.category = fullCategories
+//                        business.name = name as String
+//                        business.phone = phone
+//                        business.logo = logo as! String
+//                        business.desc = description as! String
+//                        business.ratingImage = ratingImage as! String
+//                        business.url = url as! String
+//                        business.yelpReviewCount = reviewCount as! Int
+//                        
+//                        if coordinate != nil {
+//                            business.lat = coordinate!["latitude"] as! Double
+//                            business.long = coordinate!["longitude"] as! Double
+//                            business.distance = self.currentLocation.distanceFromLocation(CLLocation(latitude: coordinate!["latitude"] as! Double, longitude: coordinate!["longitude"] as! Double)) * 0.000621371
+//                            print(business.distance)
+//                            }
+//                        else {
+//                            //Placeholder address for nil cooridates = Mobile Makers office
+//                            business.lat = 41.89374
+//                            business.long = -87.637519
+//                            business.distance = self.currentLocation.distanceFromLocation(CLLocation(latitude: 41.89374, longitude: -87.637519)) * 0.000621371
+//                             print(business.distance)
+//                        }
+//                       
+//                                dispatch_async(dispatch_get_main_queue()) {
+//                            self.dropPinForFoodTruck(business)
+//                            print("Added annotation")
+//                        }
+//                        self.foodTrucks.append(business)
+//                        self.foodTrucks.sortInPlace({ $0.distance < $1.distance})
+//                        let barViewControllers = self.tabBarController?.viewControllers
+//                        let svc = barViewControllers![1] as! ListViewController
+//                        svc.foodTrucks = self.foodTrucks
+//
+//                        
+//                        
+//                        if count == yelpBusinesses.count{
+//                            self.locationManager.stopUpdatingLocation()
+//                            break
+//
+//                        }
+//                    }
+//                }
+//                
+//                
+//            } catch let jsonError as NSError {
+//                print("json error: \(jsonError.localizedDescription)")
+//            }
+//
+//
+//    
+//            }, failureSearch: { (error) -> Void in
+//                print(error)
+//    })
+//    
+//    
         
 
     }
