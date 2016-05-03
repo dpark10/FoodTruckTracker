@@ -12,6 +12,7 @@
 		CD1AF0271CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */; };
 		CDB85E471CD29D3A0011FC84 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */; };
 		CDB85E491CD703700011FC84 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E481CD703700011FC84 /* CommentTableViewCell.swift */; };
+		CDB85E6B1CD920220011FC84 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E6A1CD920220011FC84 /* Comment.swift */; };
 		E236017B1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */; };
 		E271935E1CCEAC0900B01A40 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */; };
 		E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */; };
@@ -42,6 +43,7 @@
 		CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckTableViewCell.swift; sourceTree = "<group>"; };
 		CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 		CDB85E481CD703700011FC84 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		CDB85E6A1CD920220011FC84 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D5C5E2DF1BDA446EC9231C7C /* Pods-FoodTruckTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.release.xcconfig"; sourceTree = "<group>"; };
 		E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckAnnotation.swift; sourceTree = "<group>"; };
 		E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				E2AFFE0E1CD813E200F5C2B5 /* CouponViewController.swift */,
 				CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */,
 				E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */,
+				CDB85E6A1CD920220011FC84 /* Comment.swift */,
 				CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */,
 				E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */,
 				E2C5BAD41CC8035400871750 /* LoginViewController.swift */,
@@ -250,6 +253,7 @@
 				E271935E1CCEAC0900B01A40 /* YelpAPIClient.swift in Sources */,
 				E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */,
 				CDB85E471CD29D3A0011FC84 /* CheckBoxButton.swift in Sources */,
+				CDB85E6B1CD920220011FC84 /* Comment.swift in Sources */,
 				E2A8E9BD1CC97DD5009A72B3 /* FTProfileViewController.swift in Sources */,
 				E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */,
 				CDB85E491CD703700011FC84 /* CommentTableViewCell.swift in Sources */,

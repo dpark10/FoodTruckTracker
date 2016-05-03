@@ -45,11 +45,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
         
         self.registerLocalNotifications()
-
-        let apiConsoleInfo = YelpAPIConsole()
-        
-        let client = YelpAPIClient()
-        
+//
+//        let apiConsoleInfo = YelpAPIConsole()
+//        
+//        let client = YelpAPIClient()
+//        
         
 //        let yelpFoodTrucksURL = NSURL(string: "https://api.yelp.com/v2/search?category_filter=foodtrucks&location=Chicago&oauth_consumer_key=nF30f57Y37owF8lkT0yunw&oauth_token=euX1y5nJ1dugqyUfuWkXCdzZU9vjHVGf&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1461603623&oauth_nonce=3CFwlz&oauth_version=1.0&oauth_signature=RB0RYvOhlSgbeZocZmJnp/08nOE=")
 //        let session = NSURLSession.sharedSession()

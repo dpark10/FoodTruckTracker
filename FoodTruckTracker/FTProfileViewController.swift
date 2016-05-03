@@ -9,8 +9,9 @@
 import UIKit
 import Cosmos
 import CoreLocation
+import Firebase
 
-class FTProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FTProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
 
     @IBOutlet weak var foodTruckNameLabel: UILabel!
     @IBOutlet weak var numberOfReviewsLabel: UILabel!
@@ -22,12 +23,20 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var newRatingView: CosmosView!
+    
+    @IBOutlet weak var commentTextView: UITextView!
+    
     
     @IBOutlet weak var ratingView: CosmosView!
     var foodTruck = FoodTruck?()
+    var comments = [Comment]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        commentTextView.delegate = self
+        commentTextView.layer.borderWidth = 1
+        commentTextView.layer.borderColor = UIColor.redColor().CGColor
         foodTruckNameLabel.text = foodTruck!.name
         numberOfReviewsLabel.text = "\(foodTruck!.yelpReviewCount) Reviews"
         phoneNumberLabel.text = foodTruck!.phone
@@ -38,6 +47,19 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
         ratingView.rating = foodTruck!.rating
         distanceLabel.text = String(format: "%0.2f mi." ,foodTruck!.distance)
         yelpCategoriesLabel.text = foodTruck!.category
+        
+        let ref = DataService.dataService.REF_BASE.childByAppendingPath("comments")
+        
+        ref.queryOrderedByChild("foodTruck").queryEqualToValue(foodTruck!.name).observeEventType(.ChildAdded, withBlock: { snapshot in
+//            let enumerator = snapshot.children
+//            while let rest = enumerator.nextObject() as? FDataSnapshot {
+                let comment = Comment.init(snapshot: snapshot)
+                self.comments.append(comment)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                }
+            })
+        
         
         
 
@@ -76,16 +98,15 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
 //    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-        //return foodTruck.comments.count
+        return self.comments.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! CommentTableViewCell
         cell.foodTruck = foodTruck
-//        let comment = foodTruck.comments[indexPath.row]
-        //cell.ratingView.rating = comment
-        //cell.commentTextView.text =
+        let comment = comments[indexPath.row]
+        cell.ratingView.rating = comment.rating
+        cell.commentTextView.text = comment.text
         return cell
     }
     
@@ -109,6 +130,31 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.addressLabel.text = address
             }
         }
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            let ref = DataService.dataService.REF_BASE.childByAppendingPath("comments").childByAutoId()
+            let comment: NSDictionary = ["rating": newRatingView.rating as Double, "text": commentTextView.text as String, "foodTruck" : foodTruck!.name as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
+            ref.setValue(comment)
+//            print("comment saved!")
+//            comments.removeAll()
+//            let newPostRef = DataService.dataService.REF_BASE.childByAppendingPath("comments")
+//            newPostRef.queryOrderedByChild("foodTruck").queryEqualToValue(foodTruck!.name).observeEventType(.Value, withBlock: { snapshot in
+//                let enumerator = snapshot.children
+//                while let rest = enumerator.nextObject() as? FDataSnapshot {
+//                    let comment = Comment.init(snapshot: rest)
+//                    self.comments.append(comment)
+//                    dispatch_async(dispatch_get_main_queue()) {
+//                        self.tableView.reloadData()
+//                    }
+//                }
+//            })
+            commentTextView.text = ""
+            newRatingView.rating = 0
+            textView.resignFirstResponder()
+        }
+        return true
     }
     
     
