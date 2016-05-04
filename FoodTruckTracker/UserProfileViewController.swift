@@ -15,8 +15,10 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK: Properties
-    let visitedTrucks = ["Joni's", "Jeff's", "Joey's"]
+    let otherTrucks = ["Joni's", "Jeff's", "Joey's"]
     let couponTrucks = ["Joni's"]
+    var visitedTrucks = [VisitedTruck]()
+    var coupons = [Coupon]()
     
     // MARK: View Management
     
@@ -24,6 +26,25 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        let truckRef = DataService.dataService.REF_BASE.childByAppendingPath("visitedTrucks")
+        truckRef.queryOrderedByChild("userID").queryEqualToValue(NSUserDefaults.standardUserDefaults().valueForKey("uid")).observeEventType(.ChildAdded, withBlock: { snapshot in
+            let visitedTruck = VisitedTruck.init(snapshot: snapshot)
+            self.visitedTrucks.append(visitedTruck)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+        })
+        
+        let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons")
+        couponRef.queryOrderedByChild("userID").queryEqualToValue(NSUserDefaults.standardUserDefaults().valueForKey("uid")).observeEventType(.ChildAdded, withBlock: { snapshot in
+            let coupon = Coupon.init(snapshot: snapshot)
+            self.coupons.append(coupon)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+        })
+        
 
     }
     
@@ -38,7 +59,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             returnValue = visitedTrucks.count
             break
         case 1:
-            returnValue = couponTrucks.count
+            returnValue = coupons.count
             break
         default:
             break
@@ -52,10 +73,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         switch (segmentedControl.selectedSegmentIndex) {
         case 0:
-            cell?.textLabel!.text = visitedTrucks[indexPath.row]
+            let visitedTruck = visitedTrucks[indexPath.row] as VisitedTruck
+            cell?.textLabel!.text = visitedTruck.name
             break
         case 1:
-            cell?.textLabel!.text = couponTrucks[indexPath.row]
+            let coupon = coupons[indexPath.row]
+            cell?.textLabel!.text = coupon.foodTruck
+            cell?.detailTextLabel!.text = coupon.couponDiscount
             break
         default:
             break
@@ -70,6 +94,14 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         } else {
             return
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//         let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+        let indexPath = tableView.indexPathForSelectedRow
+        let coupon = coupons[indexPath!.row]
+        let destVC = segue.destinationViewController as! QRCodeViewController
+        destVC.coupon = coupon
     }
 
     

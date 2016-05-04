@@ -19,16 +19,18 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var qrCodeImage: UIImageView!
     
     // MARK: Properties
-    
-    let couponCode = "coupon code"
+    var coupon = Coupon?()
     
     // MARK: View Management
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = self.generateQRCodeFromString(couponCode)
+        let image = self.generateQRCodeFromString(coupon!.couponCode)
         qrCodeImage.image = image
+        foodTruckNameLabel.text = coupon?.foodTruck
+        couponDescriptionLabel.text = coupon?.couponDesc
+        expDateLabel.text = coupon?.couponExp
 
     }
     
