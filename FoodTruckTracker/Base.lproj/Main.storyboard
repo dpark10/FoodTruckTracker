@@ -66,11 +66,88 @@
                     <connections>
                         <outlet property="segmentedControl" destination="5QB-HO-2mi" id="gqG-w3-86G"/>
                         <outlet property="tableView" destination="fDb-pO-fEz" id="BNj-q9-O6A"/>
+                        <segue destination="Xpo-XD-bq1" kind="presentation" identifier="couponSegue" id="2a5-ru-ExA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPt-iy-1nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1412" y="-569"/>
+            <point key="canvasLocation" x="1430" y="-569"/>
+        </scene>
+        <!--Code View Controller-->
+        <scene sceneID="AX7-yS-NbO">
+            <objects>
+                <viewController id="Xpo-XD-bq1" customClass="QRCodeViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jO8-jd-xoD"/>
+                        <viewControllerLayoutGuide type="bottom" id="V4y-dY-eHa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XIo-Vf-fID">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e69-rR-5jU">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="G8n-8Z-ySQ"/>
+                                    <constraint firstAttribute="height" constant="200" id="Yi4-1X-vQa"/>
+                                </constraints>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xw2-Aj-MwH">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Coupon" id="lJI-ds-UpW">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="CKt-62-mlz">
+                                            <connections>
+                                                <action selector="onDoneButtonTapped:" destination="Xpo-XD-bq1" id="pCL-eO-6od"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBc-1J-Xpf">
+                                <rect key="frame" x="279" y="84" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vau-TK-WJc">
+                                <rect key="frame" x="279" y="113" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Je3-66-JZp">
+                                <rect key="frame" x="279" y="142" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DBc-1J-Xpf" firstAttribute="top" secondItem="Xw2-Aj-MwH" secondAttribute="bottom" constant="12" id="1XU-ia-Yd6"/>
+                            <constraint firstItem="e69-rR-5jU" firstAttribute="centerX" secondItem="XIo-Vf-fID" secondAttribute="centerX" id="4dd-xP-lI2"/>
+                            <constraint firstAttribute="trailing" secondItem="Xw2-Aj-MwH" secondAttribute="trailing" id="QtD-Gr-Rj0"/>
+                            <constraint firstItem="Xw2-Aj-MwH" firstAttribute="leading" secondItem="XIo-Vf-fID" secondAttribute="leading" id="WWb-iu-N4l"/>
+                            <constraint firstItem="vau-TK-WJc" firstAttribute="top" secondItem="DBc-1J-Xpf" secondAttribute="bottom" constant="8" id="aMv-3Y-N3y"/>
+                            <constraint firstItem="Je3-66-JZp" firstAttribute="centerX" secondItem="XIo-Vf-fID" secondAttribute="centerX" id="dmQ-EQ-9d7"/>
+                            <constraint firstItem="DBc-1J-Xpf" firstAttribute="centerX" secondItem="XIo-Vf-fID" secondAttribute="centerX" id="eHW-P6-a6J"/>
+                            <constraint firstItem="vau-TK-WJc" firstAttribute="centerX" secondItem="XIo-Vf-fID" secondAttribute="centerX" id="n67-0y-LOg"/>
+                            <constraint firstItem="e69-rR-5jU" firstAttribute="centerY" secondItem="XIo-Vf-fID" secondAttribute="centerY" id="rNp-qV-8S3"/>
+                            <constraint firstItem="Je3-66-JZp" firstAttribute="top" secondItem="vau-TK-WJc" secondAttribute="bottom" constant="8" id="tef-1y-k9p"/>
+                            <constraint firstItem="Xw2-Aj-MwH" firstAttribute="top" secondItem="jO8-jd-xoD" secondAttribute="bottom" constant="8" id="tmt-h7-Snj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="couponDescriptionLabel" destination="vau-TK-WJc" id="tb3-eB-eq0"/>
+                        <outlet property="expDateLabel" destination="Je3-66-JZp" id="XyY-cl-r4y"/>
+                        <outlet property="foodTruckNameLabel" destination="DBc-1J-Xpf" id="aq9-7X-XTv"/>
+                        <outlet property="qrCodeImage" destination="e69-rR-5jU" id="EMf-sJ-RCG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sqa-Z3-lem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2101" y="-569"/>
         </scene>
         <!--Map-->
         <scene sceneID="tne-QT-ifu">

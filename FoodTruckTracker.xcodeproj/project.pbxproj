@@ -16,6 +16,7 @@
 		CDB85E6F1CDA3FD00011FC84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */; };
 		E236017B1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */; };
 		E271935E1CCEAC0900B01A40 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */; };
+		E28373201CDA8A4E00804BD7 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283731F1CDA8A4E00804BD7 /* QRCodeViewController.swift */; };
 		E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */; };
 		E2A8E9B91CC92AA5009A72B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B81CC92AA5009A72B3 /* DataService.swift */; };
 		E2A8E9BD1CC97DD5009A72B3 /* FTProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */; };
@@ -49,6 +50,7 @@
 		D5C5E2DF1BDA446EC9231C7C /* Pods-FoodTruckTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.release.xcconfig"; sourceTree = "<group>"; };
 		E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckAnnotation.swift; sourceTree = "<group>"; };
 		E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
+		E283731F1CDA8A4E00804BD7 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E2A8E9B81CC92AA5009A72B3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTProfileViewController.swift; sourceTree = "<group>"; };
@@ -141,10 +143,11 @@
 				E2FE44971CC67A11005748E9 /* ListViewController.swift */,
 				CDB85E481CD703700011FC84 /* CommentTableViewCell.swift */,
 				E2FE448C1CC67876005748E9 /* Assets.xcassets */,
-				E2AFFE0E1CD813E200F5C2B5 /* CouponViewController.swift */,
 				CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */,
+				E2AFFE0E1CD813E200F5C2B5 /* CouponViewController.swift */,
 				E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */,
 				CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */,
+				E283731F1CDA8A4E00804BD7 /* QRCodeViewController.swift */,
 				E2AAEFBF1CDA6C0A008B64FB /* UserProfileViewController.swift */,
 				CDB85E6A1CD920220011FC84 /* Comment.swift */,
 				CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */,
@@ -267,6 +270,7 @@
 				E2FE448B1CC67876005748E9 /* FoodTruckTracker.xcdatamodeld in Sources */,
 				E2FE44981CC67A11005748E9 /* ListViewController.swift in Sources */,
 				E2C5BAD51CC8035400871750 /* LoginViewController.swift in Sources */,
+				E28373201CDA8A4E00804BD7 /* QRCodeViewController.swift in Sources */,
 				E2FE44831CC67876005748E9 /* AppDelegate.swift in Sources */,
 				CD1AF0271CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift in Sources */,
 			);
