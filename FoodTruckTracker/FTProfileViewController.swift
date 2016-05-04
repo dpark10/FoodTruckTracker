@@ -155,7 +155,7 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func onGetCouponButtonTapped(sender: AnyObject) {
         print("coupon button tapped")
         let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAutoId()
-        let couponDict = ["couponCode": "\(foodTruck!.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")).\(couponRef.key)", "couponDesc": (foodTruck?.couponDesc)! as String, "couponDiscount": (foodTruck?.couponDiscount)! as String, "active?": true, "couponExp": (foodTruck?.couponExp)! as String, "foodTruck": (foodTruck?.name)! as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
+        let couponDict = ["couponCode": "\(foodTruck!.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")!).\(couponRef.key)", "couponDesc": (foodTruck?.couponDesc)! as String, "couponDiscount": (foodTruck?.couponDiscount)! as String, "active?": true, "couponExp": (foodTruck?.couponExp)! as String, "foodTruck": (foodTruck?.name)! as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
         couponRef.setValue(couponDict)
     }
     
