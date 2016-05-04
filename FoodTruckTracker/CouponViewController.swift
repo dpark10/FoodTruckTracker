@@ -55,6 +55,9 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
                 self.websiteTextField.text = foodTruck.url
                 self.yelpIDTextField.text = foodTruck.yelpID
                 //see loader function
+                let barViewControllers = self.tabBarController?.viewControllers
+                let svc = barViewControllers![1] as! ScannerViewController
+                svc.foodTruck = foodTruck
             }
             })
         
@@ -208,12 +211,10 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
 
     @IBAction func onSaveButtonTapped(sender: AnyObject) {
         let foodTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String)
-        let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text!, "category": self.categoryTextField.text! as String, "lat": Double(self.userLocation.latitude), "long": Double(self.userLocation.longitude), "logo": conversion((imageButton.imageView?.image)!) as String, "url": self.websiteTextField.text! as String, "phone": self.phoneTextField.text! as String, "yelp": self.yelpIDTextField.text! as String]
+        let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text!, "category": self.categoryTextField.text! as String, "lat": Double(self.userLocation.latitude), "long": Double(self.userLocation.longitude), "logo": conversion((imageButton.imageView?.image)!) as String, "url": self.websiteTextField.text! as String, "phone": self.phoneTextField.text! as String, "yelp": self.yelpIDTextField.text! as String, "couponDesc": couponDescTextField.text! as String, "couponCode": (self.nameTextField.text! + self.couponDescTextField.text! + self.discountAmtTextField.text! + self.expDateTextField.text!) as String, "couponDiscount": discountAmtTextField.text! as String, "couponExp": expDateTextField.text! as String]
         
         foodTruckRef.updateChildValues(userDictionary as [NSObject : AnyObject])
-        let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAppendingPath(self.nameTextField.text! as String)
-        let couponDictionary : NSDictionary = ["foodTruck": self.nameTextField.text!, "description": self.couponDescTextField.text! as String, "discount": (self.discountAmtTextField.text! as String), "expDate": (self.expDateTextField.text! as String), "active?": true]
-        couponRef.setValue(couponDictionary)
+
         print("successfully saved info!")
     }
     
