@@ -50,6 +50,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1ie-Jx-CQU">
+                                                    <rect key="frame" x="15" y="2" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -59,6 +60,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OZU-PM-Kdr">
+                                                    <rect key="frame" x="15" y="22.5" width="59" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -401,7 +403,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-7A-5Lr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="10 reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-7A-5Lr">
                                 <rect key="frame" x="176" y="125" width="120" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="2rk-jN-qCM"/>
@@ -439,7 +441,7 @@
                                     <rect key="frame" x="20" y="150" width="360" height="18"/>
                                 </variation>
                             </label>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-rq-Aqm" customClass="CosmosView" customModule="Cosmos">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-rq-Aqm" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="88" y="127" width="80" height="12"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -493,9 +495,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="135" y="1" width="229" height="62"/>
-                                        </variation>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -509,7 +508,7 @@
                                     <constraint firstItem="MTH-2m-79b" firstAttribute="leading" secondItem="g9y-Au-aRa" secondAttribute="trailing" constant="8" id="a1U-Bx-hN0"/>
                                     <constraint firstAttribute="height" constant="72" id="hLB-5k-3sF"/>
                                 </constraints>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="10" y="227" width="372" height="63"/>
                                 </variation>
                             </view>
@@ -569,9 +568,6 @@
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="45" width="95" height="19"/>
-                                                    </variation>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ba-vL-6Zg">
                                                     <rect key="frame" x="101" y="0.0" width="479" height="71"/>
@@ -599,7 +595,7 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="10" y="298" width="372" height="302"/>
                                 </variation>
                                 <connections>
@@ -829,42 +825,37 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dye-wf-PBN">
-                                                                        <rect key="frame" x="0.0" y="120" width="83" height="30"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-1y-ePv">
-                                                                        <rect key="frame" x="0.0" y="150" width="83" height="30"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tCN-vp-tgf">
                                                                         <rect key="frame" x="0.0" y="180" width="83" height="30"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tFR-UZ-qSB">
-                                                                        <rect key="frame" x="0.0" y="210" width="83" height="30"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Yelp ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RNI-wJ-5uA">
-                                                                        <rect key="frame" x="0.0" y="240" width="83" height="30"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                                            <rect key="frame" x="0.0" y="120" width="83" height="30"/>
+                                                                        </variation>
                                                                     </textField>
                                                                 </subviews>
+                                                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="83" height="150"/>
+                                                                </variation>
                                                             </stackView>
                                                         </subviews>
+                                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="83" height="150"/>
+                                                        </variation>
                                                     </stackView>
                                                 </subviews>
+                                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="83" height="150"/>
+                                                </variation>
                                             </stackView>
                                         </subviews>
+                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="83" height="150"/>
+                                        </variation>
                                     </stackView>
                                 </subviews>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="158" y="163" width="83" height="270"/>
+                                    <rect key="frame" x="158" y="163" width="83" height="150"/>
                                 </variation>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h7-3y-Ili">
@@ -901,16 +892,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addressTextField" destination="Dye-wf-PBN" id="tKT-Ve-Nno"/>
                         <outlet property="categoryTextField" destination="MIm-zP-CAe" id="mw8-Be-eUl"/>
                         <outlet property="checkBox" destination="UWo-y6-Wqu" id="1Tl-qP-ij3"/>
                         <outlet property="emailTextField" destination="0GY-dL-9xL" id="RXA-xS-oU4"/>
                         <outlet property="nameTextField" destination="qLD-Sn-R6k" id="kfa-4X-xSP"/>
                         <outlet property="passwordTextField" destination="PRI-AL-CDD" id="Tj6-Pw-iAy"/>
                         <outlet property="phoneTextField" destination="tCN-vp-tgf" id="kUe-PZ-v2M"/>
-                        <outlet property="twitterTextField" destination="tFR-UZ-qSB" id="EzZ-Rk-XCg"/>
-                        <outlet property="urlTextField" destination="wgJ-1y-ePv" id="4Rs-hn-0wg"/>
-                        <outlet property="yelpTextField" destination="RNI-wJ-5uA" id="Mvd-Ld-HZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zp2-4Z-0bW" userLabel="First Responder" sceneMemberID="firstResponder"/>

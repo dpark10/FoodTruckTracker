@@ -52,9 +52,7 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
                 self.nameTextField.text = foodTruck.name
                 self.categoryTextField.text = foodTruck.category
                 self.phoneTextField.text = foodTruck.phone
-                self.websiteTextField.text = foodTruck.url
-                self.yelpIDTextField.text = foodTruck.yelpID
-                //see loader function
+                
                 let barViewControllers = self.tabBarController?.viewControllers
                 let svc = barViewControllers![1] as! ScannerViewController
                 svc.foodTruck = foodTruck

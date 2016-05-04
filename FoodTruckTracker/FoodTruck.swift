@@ -31,23 +31,24 @@ class FoodTruck: NSObject {
     var couponCode:         String = ""
     var couponDiscount:     String = ""
     var couponExp:          String = ""
+    var departureTime:      String = ""
     
     init(snapshot: FDataSnapshot) {
         lat = snapshot.value.objectForKey("lat") as! Double
         long = snapshot.value.objectForKey("long") as! Double
         name = snapshot.value.objectForKey("name") as! String
-        yelpID = snapshot.value.objectForKey("yelp") as! String
         category = snapshot.value.objectForKey("category") as! String
         logo = snapshot.value.objectForKey("logo") as! String
-        url = snapshot.value.objectForKey("url") as! String
         yelpReviewCount = snapshot.value.objectForKey("numberOfRatings") as! Int
         rating = snapshot.value.objectForKey("rating") as! Double
         phone = snapshot.value.objectForKey("phone") as! String
         uid = snapshot.value.objectForKey("userID") as! String
+        menu = snapshot.value.objectForKey("menu") as! String
         couponDesc = snapshot.value.objectForKey("couponDesc") as! String
         couponCode = snapshot.value.objectForKey("couponCode") as! String
         couponDiscount = snapshot.value.objectForKey("couponDiscount") as! String
         couponExp = snapshot.value.objectForKey("couponExp") as! String
+        departureTime = snapshot.value.objectForKey("departureTime") as! String
         
     }
 

@@ -27,7 +27,6 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         addressTextField.hidden = true
         urlTextField.hidden = true
         phoneTextField.hidden = true
-        twitterTextField.hidden = true
         yelpTextField.hidden = true
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -56,7 +55,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 let uid = result["uid"] as? String
                 if self.checkBox.imageView?.image == UIImage(named: "checked") {
-                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text! as String, "userID": uid!, "category": self.categoryTextField.text! as String, "lat": 0 as Double, "long": 0 as Double, "logo": "" as String, "rating": 0 as Double, "numberOfRatings": 0 as Int, "url": self.urlTextField.text! as String, "phone": self.phoneTextField.text! as String, "twitter": self.twitterTextField.text! as String, "yelp": self.yelpTextField.text! as String, "userGenerated?": true, "foodTruck?": true, "couponDesc": "" as String, "couponCode": "" as String, "couponDiscount": "" as String, "couponExp": "" as String]
+                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text! as String, "userID": uid!, "category": self.categoryTextField.text! as String, "lat": 0 as Double, "long": 0 as Double, "logo": "" as String, "rating": 0 as Double, "numberOfRatings": 0 as Int, "menu": "" as String, "phone": self.phoneTextField.text! as String, "userGenerated?": true, "foodTruck?": true, "couponDesc": "" as String, "couponCode": "" as String, "couponDiscount": "" as String, "couponExp": "" as String, "departureTime": "" as String]
                     let userRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(uid)
                     userRef.setValue(userDictionary)
                     let oldTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.nameTextField!.text)
@@ -105,7 +104,6 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         addressTextField.hidden = false
         urlTextField.hidden = false
         phoneTextField.hidden = false
-        twitterTextField.hidden = false
         yelpTextField.hidden = false
         }
         else {
@@ -113,7 +111,6 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
             addressTextField.hidden = true
             urlTextField.hidden = true
             phoneTextField.hidden = true
-            twitterTextField.hidden = true
             yelpTextField.hidden = true
         }
 
