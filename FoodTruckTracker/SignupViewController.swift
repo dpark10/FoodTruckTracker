@@ -50,11 +50,14 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(error)
                 self.alertSignupError()
             } else {
+                
                 let uid = result["uid"] as? String
                 if self.checkBox.imageView?.image == UIImage(named: "checked") {
-                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text! as String, "userID": uid!, "category": self.categoryTextField.text! as String, "address": self.addressTextField.text! as String, "url": self.urlTextField.text! as String, "phone": self.phoneTextField.text! as String, "twitter": self.twitterTextField.text! as String, "yelp": self.yelpTextField.text! as String, "userGenerated?": true, "foodTruck?": true]
+                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text! as String, "userID": uid!, "category": self.categoryTextField.text! as String, "lat": 0 as Double, "long": 0 as Double, "logo": "" as String, "rating": 0 as Double, "numberOfRatings": 0 as Int, "url": self.urlTextField.text! as String, "phone": self.phoneTextField.text! as String, "twitter": self.twitterTextField.text! as String, "yelp": self.yelpTextField.text! as String, "userGenerated?": true, "foodTruck?": true]
                     let userRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(uid)
                     userRef.setValue(userDictionary)
+                    let oldTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.nameTextField!.text)
+                    oldTruckRef.removeValue()
                     print("Successfully created user account with uid: \(uid)")
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }

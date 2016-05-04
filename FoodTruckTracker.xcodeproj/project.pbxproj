@@ -13,6 +13,7 @@
 		CDB85E471CD29D3A0011FC84 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */; };
 		CDB85E491CD703700011FC84 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E481CD703700011FC84 /* CommentTableViewCell.swift */; };
 		CDB85E6B1CD920220011FC84 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E6A1CD920220011FC84 /* Comment.swift */; };
+		CDB85E6F1CDA3FD00011FC84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */; };
 		E236017B1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */; };
 		E271935E1CCEAC0900B01A40 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */; };
 		E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */; };
@@ -27,7 +28,6 @@
 		E2DE72261CD295AA009583C5 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DE72251CD295AA009583C5 /* QRScannerViewController.swift */; };
 		E2FE44831CC67876005748E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44821CC67876005748E9 /* AppDelegate.swift */; };
 		E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44841CC67876005748E9 /* MapViewController.swift */; };
-		E2FE44881CC67876005748E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2FE44861CC67876005748E9 /* Main.storyboard */; };
 		E2FE448B1CC67876005748E9 /* FoodTruckTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2FE44891CC67876005748E9 /* FoodTruckTracker.xcdatamodeld */; };
 		E2FE448D1CC67876005748E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2FE448C1CC67876005748E9 /* Assets.xcassets */; };
 		E2FE44901CC67876005748E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2FE448E1CC67876005748E9 /* LaunchScreen.storyboard */; };
@@ -44,6 +44,7 @@
 		CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 		CDB85E481CD703700011FC84 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		CDB85E6A1CD920220011FC84 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
 		D5C5E2DF1BDA446EC9231C7C /* Pods-FoodTruckTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.release.xcconfig"; sourceTree = "<group>"; };
 		E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckAnnotation.swift; sourceTree = "<group>"; };
 		E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		E2FE447F1CC67876005748E9 /* FoodTruckTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTruckTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2FE44821CC67876005748E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2FE44841CC67876005748E9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		E2FE44871CC67876005748E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2FE448A1CC67876005748E9 /* FoodTruckTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodTruckTracker.xcdatamodel; sourceTree = "<group>"; };
 		E2FE448C1CC67876005748E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2FE448F1CC67876005748E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,10 +139,10 @@
 				E2FE44971CC67A11005748E9 /* ListViewController.swift */,
 				CDB85E481CD703700011FC84 /* CommentTableViewCell.swift */,
 				E2FE448C1CC67876005748E9 /* Assets.xcassets */,
-				E2FE44861CC67876005748E9 /* Main.storyboard */,
 				E2AFFE0E1CD813E200F5C2B5 /* CouponViewController.swift */,
 				CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */,
 				E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */,
+				CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */,
 				CDB85E6A1CD920220011FC84 /* Comment.swift */,
 				CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */,
 				E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */,
@@ -219,7 +219,7 @@
 				E2D0109E1CC7CF4C00E61AAC /* TwitterKitResources.bundle in Resources */,
 				E2FE44901CC67876005748E9 /* LaunchScreen.storyboard in Resources */,
 				E2FE448D1CC67876005748E9 /* Assets.xcassets in Resources */,
-				E2FE44881CC67876005748E9 /* Main.storyboard in Resources */,
+				CDB85E6F1CDA3FD00011FC84 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,14 +271,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E2FE44861CC67876005748E9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E2FE44871CC67876005748E9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E2FE448E1CC67876005748E9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

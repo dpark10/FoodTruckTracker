@@ -67,9 +67,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 self.foodTrucks.append(foodTruck)
                 self.foodTrucks.sortInPlace({ $0.distance < $1.distance})
                 
+                if foodTruck.lat != 0  && foodTruck.long != 0 {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.dropPinForFoodTruck(foodTruck)
                     print("Added annotation")
+                }
                 }
 
                 let barViewControllers = self.tabBarController?.viewControllers

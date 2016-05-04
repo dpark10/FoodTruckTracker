@@ -27,6 +27,7 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     @IBOutlet weak var discountAmtTextField: UITextField!
     @IBOutlet weak var expDateTextField: UITextField!
     @IBOutlet weak var imageButton: UIButton!
+//    var foodTruck = FoodTruck?()
     
     // MARK: Properties
     var locationManager = CLLocationManager()
@@ -39,6 +40,23 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     // MARK: View Management
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(NSUserDefaults.standardUserDefaults().valueForKey("uid"))
+
+        
+        let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String)
+        
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            let foodTruck = FoodTruck.init(snapshot: snapshot)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.nameTextField.text = foodTruck.name
+                self.categoryTextField.text = foodTruck.category
+                self.phoneTextField.text = foodTruck.phone
+                self.websiteTextField.text = foodTruck.url
+                self.yelpIDTextField.text = foodTruck.yelpID
+                //see loader function
+            }
+            })
         
         scrollView.delegate = self
         scrollView.addSubview(contentView)
@@ -134,6 +152,7 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     
     @IBAction func setFoodTruckLocation(sender: UIButton) {
         print("Button Tapped")
+        //TO DO: Add food truck pin to mapView
 
     }
     
@@ -186,4 +205,23 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+
+    @IBAction func onSaveButtonTapped(sender: AnyObject) {
+        let foodTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String)
+        let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text!, "category": self.categoryTextField.text! as String, "lat": Double(self.userLocation.latitude), "long": Double(self.userLocation.longitude), "logo": conversion((imageButton.imageView?.image)!) as String, "url": self.websiteTextField.text! as String, "phone": self.phoneTextField.text! as String, "yelp": self.yelpIDTextField.text! as String]
+        
+        foodTruckRef.updateChildValues(userDictionary as [NSObject : AnyObject])
+        let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAppendingPath(self.nameTextField.text! as String)
+        let couponDictionary : NSDictionary = ["foodTruck": self.nameTextField.text!, "description": self.couponDescTextField.text! as String, "discount": (self.discountAmtTextField.text! as String), "expDate": (self.expDateTextField.text! as String), "active?": true]
+        couponRef.setValue(couponDictionary)
+        print("successfully saved info!")
+    }
+    
+    func conversion(image: UIImage) -> String {
+        let data = UIImageJPEGRepresentation(image, 0.5)
+        let base64String = data!.base64EncodedStringWithOptions([])
+        return base64String
+    }
+    
+    
 }

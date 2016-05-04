@@ -20,20 +20,20 @@ class LoginViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil {
-            self.performSegueWithIdentifier("ToMapSegue", sender: nil)
-        }
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil {
+//            self.performSegueWithIdentifier("ToMapSegue", sender: nil)
+//        }
+//    }
     
     
     @IBAction func onLoginButtonTapped(sender: UIButton) {
         guard let email = self.emailAddressTextField!.text where !email.isEmpty else { return }
         guard let password = self.passwordTextField!.text where !password.isEmpty else { return }
-        self.loginUser(email, password: password)
+        loginUser(email, password: password, foodTruck: false)
     }
     
-    func loginUser(email: String, password: String) {
+    func loginUser(email: String, password: String, foodTruck: Bool) {
         let ref = DataService.dataService.REF_BASE
         ref.authUser(email, password: password) { (error, authData) in
             if error != nil {
@@ -42,7 +42,13 @@ class LoginViewController: UIViewController {
             } else {
                 NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
                 print("Succesfully logged in")
-                self.performSegueWithIdentifier("ToMapSegue", sender: nil)
+                if foodTruck {
+                   self.performSegueWithIdentifier("foodTruckSegue", sender: nil)
+                }
+                else {
+                    self.performSegueWithIdentifier("ToMapSegue", sender: nil)
+                }
+                
             }
         }
     }
@@ -54,5 +60,10 @@ class LoginViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 
+    @IBAction func onFoodTruckLoginTapped(sender: AnyObject) {
+        guard let email = self.emailAddressTextField!.text where !email.isEmpty else { return }
+        guard let password = self.passwordTextField!.text where !password.isEmpty else { return }
+        loginUser(email, password: password, foodTruck: true)
+    }
 
 }
