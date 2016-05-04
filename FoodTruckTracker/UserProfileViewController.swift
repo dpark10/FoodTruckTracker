@@ -75,6 +75,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         case 0:
             let visitedTruck = visitedTrucks[indexPath.row] as VisitedTruck
             cell?.textLabel!.text = visitedTruck.name
+            cell?.detailTextLabel!.text = ""
             break
         case 1:
             let coupon = coupons[indexPath.row]
