@@ -29,6 +29,9 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         phoneTextField.hidden = true
         twitterTextField.hidden = true
         yelpTextField.hidden = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
 
     }
     
@@ -116,4 +119,9 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
 
         
     }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
