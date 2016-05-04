@@ -40,6 +40,7 @@ class FoodTruck: NSObject {
         yelpReviewCount = snapshot.value.objectForKey("numberOfRatings") as! Int
         rating = snapshot.value.objectForKey("rating") as! Double
         phone = snapshot.value.objectForKey("phone") as! String
+        uid = snapshot.value.objectForKey("userID") as! String
     }
 
 }
