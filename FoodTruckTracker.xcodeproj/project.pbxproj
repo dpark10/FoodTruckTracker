@@ -14,6 +14,8 @@
 		CDB85E491CD703700011FC84 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E481CD703700011FC84 /* CommentTableViewCell.swift */; };
 		CDB85E6B1CD920220011FC84 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E6A1CD920220011FC84 /* Comment.swift */; };
 		CDB85E6F1CDA3FD00011FC84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */; };
+		CDB85E711CDA8C1F0011FC84 /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E701CDA8C1F0011FC84 /* Coupon.swift */; };
+		CDB85E731CDA8D130011FC84 /* VisitedTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB85E721CDA8D130011FC84 /* VisitedTruck.swift */; };
 		E236017B1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */; };
 		E271935E1CCEAC0900B01A40 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */; };
 		E28373201CDA8A4E00804BD7 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283731F1CDA8A4E00804BD7 /* QRCodeViewController.swift */; };
@@ -47,6 +49,8 @@
 		CDB85E481CD703700011FC84 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		CDB85E6A1CD920220011FC84 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CDB85E701CDA8C1F0011FC84 /* Coupon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
+		CDB85E721CDA8D130011FC84 /* VisitedTruck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitedTruck.swift; sourceTree = "<group>"; };
 		D5C5E2DF1BDA446EC9231C7C /* Pods-FoodTruckTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruckTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTruckTracker/Pods-FoodTruckTracker.release.xcconfig"; sourceTree = "<group>"; };
 		E236017A1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTruckAnnotation.swift; sourceTree = "<group>"; };
 		E271935D1CCEAC0900B01A40 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */,
 				E2AFFE0E1CD813E200F5C2B5 /* CouponViewController.swift */,
 				E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */,
+				CDB85E701CDA8C1F0011FC84 /* Coupon.swift */,
+				CDB85E721CDA8D130011FC84 /* VisitedTruck.swift */,
 				CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */,
 				E283731F1CDA8A4E00804BD7 /* QRCodeViewController.swift */,
 				E2AAEFBF1CDA6C0A008B64FB /* UserProfileViewController.swift */,
@@ -255,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E236017B1CCA8C4D00AA8F5D /* FoodTruckAnnotation.swift in Sources */,
+				CDB85E711CDA8C1F0011FC84 /* Coupon.swift in Sources */,
 				E2A8E9B91CC92AA5009A72B3 /* DataService.swift in Sources */,
 				E271935E1CCEAC0900B01A40 /* YelpAPIClient.swift in Sources */,
 				E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */,
@@ -267,6 +274,7 @@
 				E2AFFE0F1CD813E200F5C2B5 /* CouponViewController.swift in Sources */,
 				E2DE72261CD295AA009583C5 /* QRScannerViewController.swift in Sources */,
 				CD1AF01E1CC96DAB00AE3E92 /* FoodTruck.swift in Sources */,
+				CDB85E731CDA8D130011FC84 /* VisitedTruck.swift in Sources */,
 				E2FE448B1CC67876005748E9 /* FoodTruckTracker.xcdatamodeld in Sources */,
 				E2FE44981CC67A11005748E9 /* ListViewController.swift in Sources */,
 				E2C5BAD51CC8035400871750 /* LoginViewController.swift in Sources */,

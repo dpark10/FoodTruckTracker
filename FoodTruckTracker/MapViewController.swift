@@ -244,7 +244,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         truckRef.observeEventType(.Value, withBlock: { snapshot in
             let foodTruck = FoodTruck.init(snapshot: snapshot)
             let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAutoId()
-            let couponDict = ["couponCode": "\(foodTruck.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")).\(couponRef.key)", "couponDesc": (foodTruck.couponDesc) as String, "couponDiscount": (foodTruck.couponDiscount) as String, "active?": true, "couponExp": (foodTruck.couponExp) as String, "foodTruck": (foodTruck.uid) as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
+            let couponDict = ["couponCode": "\(foodTruck.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")).\(couponRef.key)", "couponDesc": (foodTruck.couponDesc) as String, "couponDiscount": (foodTruck.couponDiscount) as String, "active?": true, "couponExp": (foodTruck.couponExp) as String, "foodTruck": (foodTruck.name) as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
             couponRef.setValue(couponDict)
                 self.presentLocalNotifications(foodTruck.name)
         })
@@ -261,7 +261,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         truckRef.observeEventType(.Value, withBlock: { snapshot in
             let foodTruck = FoodTruck.init(snapshot: snapshot)
             let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAutoId()
-            let couponDict = ["couponCode": "\(foodTruck.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")).\(couponRef.key)", "couponDesc": (foodTruck.couponDesc) as String, "couponDiscount": (foodTruck.couponDiscount) as String, "active?": true, "couponExp": (foodTruck.couponExp) as String, "foodTruck": (foodTruck.uid) as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
+            let couponDict = ["couponCode": "\(foodTruck.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")).\(couponRef.key)", "couponDesc": (foodTruck.couponDesc) as String, "couponDiscount": (foodTruck.couponDiscount) as String, "active?": true, "couponExp": (foodTruck.couponExp) as String, "foodTruck": (foodTruck.name) as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
             couponRef.setValue(couponDict)
             if state.rawValue.description == "1" {
                 

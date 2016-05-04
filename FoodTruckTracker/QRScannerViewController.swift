@@ -105,7 +105,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     let truckDict = ["name": (foodTruck?.name)! as String, "truckID": (foodTruck?.uid)! as String, "userID": userID]
                     truckRef.setValue(truckDict)
                     let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAppendingPath(couponID)
-                    let couponDict = ["couponCode": "NotValid", "active?": false]
+                    let couponDict = ["couponCode": "Not Valid", "active?": false]
                     couponRef.updateChildValues(couponDict)
                     //Present Alert with coupon
                     
