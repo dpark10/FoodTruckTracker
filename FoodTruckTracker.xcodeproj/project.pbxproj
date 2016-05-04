@@ -19,6 +19,7 @@
 		E2A8E9B31CC91C0E009A72B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */; };
 		E2A8E9B91CC92AA5009A72B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9B81CC92AA5009A72B3 /* DataService.swift */; };
 		E2A8E9BD1CC97DD5009A72B3 /* FTProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */; };
+		E2AAEFC01CDA6C0A008B64FB /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AAEFBF1CDA6C0A008B64FB /* UserProfileViewController.swift */; };
 		E2AFFE0F1CD813E200F5C2B5 /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFFE0E1CD813E200F5C2B5 /* CouponViewController.swift */; };
 		E2C5BAD51CC8035400871750 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5BAD41CC8035400871750 /* LoginViewController.swift */; };
 		E2D0109C1CC7CF4C00E61AAC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D010981CC7CF4C00E61AAC /* Fabric.framework */; };
@@ -51,6 +52,7 @@
 		E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E2A8E9B81CC92AA5009A72B3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTProfileViewController.swift; sourceTree = "<group>"; };
+		E2AAEFBF1CDA6C0A008B64FB /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E2AFFE0E1CD813E200F5C2B5 /* CouponViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
 		E2C5BAD41CC8035400871750 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E2D010981CC7CF4C00E61AAC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				CDB85E461CD29D3A0011FC84 /* CheckBoxButton.swift */,
 				E2A8E9BC1CC97DD5009A72B3 /* FTProfileViewController.swift */,
 				CDB85E6E1CDA3FD00011FC84 /* Main.storyboard */,
+				E2AAEFBF1CDA6C0A008B64FB /* UserProfileViewController.swift */,
 				CDB85E6A1CD920220011FC84 /* Comment.swift */,
 				CD1AF0261CCFBF3C00AE3E92 /* FoodTruckTableViewCell.swift */,
 				E2A8E9B21CC91C0E009A72B3 /* SignupViewController.swift */,
@@ -255,6 +258,7 @@
 				CDB85E471CD29D3A0011FC84 /* CheckBoxButton.swift in Sources */,
 				CDB85E6B1CD920220011FC84 /* Comment.swift in Sources */,
 				E2A8E9BD1CC97DD5009A72B3 /* FTProfileViewController.swift in Sources */,
+				E2AAEFC01CDA6C0A008B64FB /* UserProfileViewController.swift in Sources */,
 				E2FE44851CC67876005748E9 /* MapViewController.swift in Sources */,
 				CDB85E491CD703700011FC84 /* CommentTableViewCell.swift in Sources */,
 				E2AFFE0F1CD813E200F5C2B5 /* CouponViewController.swift in Sources */,
