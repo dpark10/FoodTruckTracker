@@ -83,7 +83,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         if metadataObjects == nil || metadataObjects.count == 0 {
             vwQRCode?.frame = CGRectZero
-            qrCodeResultLabel.text = "NO QR Code text detected"
+            qrCodeResultLabel.text = "No QR Code"
             return
         }
         let objMetadataMachineReadableCodeObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
@@ -101,17 +101,35 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                     vwQRCode?.layer.borderColor = UIColor.greenColor().CGColor
                     objCaptureSession?.stopRunning()
-                    let truckRef = DataService.dataService.REF_BASE.childByAppendingPath("visitedTrucks").childByAutoId()
+                    let truckRef = DataService.dataService.REF_BASE.childByAppendingPath("visitedTrucks").childByAppendingPath("\(foodTruck?.name)\(userID)")
                     let truckDict = ["name": (foodTruck?.name)! as String, "truckID": (foodTruck?.uid)! as String, "userID": userID]
                     truckRef.setValue(truckDict)
                     let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAppendingPath(couponID)
                     let couponDict = ["couponCode": "Not Valid", "active?": false]
                     couponRef.updateChildValues(couponDict)
-                    //Present Alert with coupon
+                    self.validCodeAlert(couponCode)
                     
                 }
             }
         }
+    }
+    
+    func validCodeAlert(couponCode: String) {
+        let alert = UIAlertController(title: "This is a valid coupon", message: "Coupon code: \(couponCode)", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default) { UIAlertAction in
+            self.reloadView()
+        }
+        alert.addAction(okAction)
+     
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func reloadView() {
+        super.viewDidLoad()
+        
+        self.configureVideoCapture()
+        self.addVideoPreviewLayer()
+        self.initializeQRView()
     }
     
     @IBAction func dismissButtonTapped(sender: UIButton) {
