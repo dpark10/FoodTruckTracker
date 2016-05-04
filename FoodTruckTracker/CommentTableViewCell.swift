@@ -19,8 +19,8 @@ class CommentTableViewCell: UITableViewCell{
     
     
     override func awakeFromNib() {
-        commentTextView.layer.borderWidth = 1
-        commentTextView.layer.borderColor = UIColor.redColor().CGColor
+//        commentTextView.layer.borderWidth = 1
+//        commentTextView.layer.borderColor = UIColor.redColor().CGColor
 
     }
     
