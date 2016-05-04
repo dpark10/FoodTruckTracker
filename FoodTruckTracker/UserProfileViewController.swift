@@ -64,6 +64,15 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         return cell!
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (self.segmentedControl.selectedSegmentIndex == 1) {
+            performSegueWithIdentifier("couponSegue", sender: indexPath.row)
+        } else {
+            return
+        }
+    }
+
+    
     // MARK: IBActions
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         
