@@ -63,7 +63,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }
                 else {
                     let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email": self.emailTextField.text! as String, "uid": uid!, "foodTruck?": true]
-                    let userRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(uid)
+                    let userRef = DataService.dataService.REF_BASE.childByAppendingPath("users").childByAppendingPath(uid)
                     userRef.setValue(userDictionary)
                     print("Successfully created user account with uid: \(uid)")
                     self.dismissViewControllerAnimated(true, completion: nil)
