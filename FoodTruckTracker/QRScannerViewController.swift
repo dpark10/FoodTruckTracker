@@ -17,7 +17,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var objCaptureSession: AVCaptureSession?
     var objCaptureVideoPreviewLayer: AVCaptureVideoPreviewLayer?
     var vwQRCode: UIView?
-    var couponString = "FoodTruckCouponTest"
+    var foodTruck = FoodTruck?()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,10 +92,23 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             vwQRCode?.frame = objBarCode.bounds;
             if objMetadataMachineReadableCodeObject.stringValue != nil {
                 qrCodeResultLabel.text = objMetadataMachineReadableCodeObject.stringValue
-                if qrCodeResultLabel.text == couponString {
+                let qrCode = qrCodeResultLabel.text
+                let qrArray = qrCode!.characters.split{$0 == "."}.map(String.init)
+                let couponCode = qrArray[0]
+                let userID = qrArray[1]
+                let couponID = qrArray[2]
+                if couponCode == foodTruck?.couponCode {
                     AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                     vwQRCode?.layer.borderColor = UIColor.greenColor().CGColor
                     objCaptureSession?.stopRunning()
+                    let truckRef = DataService.dataService.REF_BASE.childByAppendingPath("visitedTrucks").childByAutoId()
+                    let truckDict = ["name": (foodTruck?.name)! as String, "truckID": (foodTruck?.uid)! as String, "userID": userID]
+                    truckRef.setValue(truckDict)
+                    let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAppendingPath(couponID)
+                    let couponDict = ["couponCode": "NotValid", "active?": false]
+                    couponRef.updateChildValues(couponDict)
+                    //Present Alert with coupon
+                    
                 }
             }
         }

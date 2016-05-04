@@ -143,9 +143,8 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
             let newRatingNumerator = Double((foodTruck!.rating * Double(foodTruck!.yelpReviewCount)) + newRatingView.rating)
             let newRatingDenominator = Double((foodTruck!.rating * Double(foodTruck!.yelpReviewCount)) + 5)
             let newRating = newRatingNumerator/newRatingDenominator
-            let newNumberOfRatings = (foodTruck?.yelpReviewCount)! + 1
-            foodTruckRef.updateChildValues(["rating": newRating as Double])
-            foodTruckRef.updateChildValues(["numberOfRatings": newNumberOfRatings as Int])
+            let newNumberOfRatings = (foodTruck?.yelpReviewCount)! + comments.count + 1
+            foodTruckRef.updateChildValues(["rating": newRating as Double, "numberOfRatings": newNumberOfRatings as Int])
             commentTextView.text = ""
             newRatingView.rating = 0
             textView.resignFirstResponder()
@@ -153,6 +152,12 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
         return true
     }
     
+    @IBAction func onGetCouponButtonTapped(sender: AnyObject) {
+        print("coupon button tapped")
+        let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAutoId()
+        let couponDict = ["couponCode": "\(foodTruck!.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")).\(couponRef.key)", "couponDesc": (foodTruck?.couponDesc)! as String, "couponDiscount": (foodTruck?.couponDiscount)! as String, "active?": true, "couponExp": (foodTruck?.couponExp)! as String, "foodTruck": (foodTruck?.uid)! as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
+        couponRef.setValue(couponDict)
+    }
     
 
 

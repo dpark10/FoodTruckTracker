@@ -240,6 +240,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("Entered region \(region.identifier)")
+        let truckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(region.identifier)
+        truckRef.observeEventType(.Value, withBlock: { snapshot in
+            let foodTruck = FoodTruck.init(snapshot: snapshot)
+            let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAutoId()
+            let couponDict = ["couponCode": "\(foodTruck.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")).\(couponRef.key)", "couponDesc": (foodTruck.couponDesc) as String, "couponDiscount": (foodTruck.couponDiscount) as String, "active?": true, "couponExp": (foodTruck.couponExp) as String, "foodTruck": (foodTruck.uid) as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
+            couponRef.setValue(couponDict)
+                self.presentLocalNotifications(foodTruck.name)
+        })
+
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -248,12 +257,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
         print("did determine state")
-//        print(region.identifier)
-//        print(state.rawValue.description)
-        if state.rawValue.description == "1" {
-            print("inside \(region.identifier) geofence")
-            self.presentLocalNotifications(region.identifier)
-        }
+        let truckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(region.identifier)
+        truckRef.observeEventType(.Value, withBlock: { snapshot in
+            let foodTruck = FoodTruck.init(snapshot: snapshot)
+            let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAutoId()
+            let couponDict = ["couponCode": "\(foodTruck.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")).\(couponRef.key)", "couponDesc": (foodTruck.couponDesc) as String, "couponDiscount": (foodTruck.couponDiscount) as String, "active?": true, "couponExp": (foodTruck.couponExp) as String, "foodTruck": (foodTruck.uid) as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
+            couponRef.setValue(couponDict)
+            if state.rawValue.description == "1" {
+                
+                print("inside \(region.identifier) geofence")
+                self.presentLocalNotifications(foodTruck.name)
+            }
+            })
+  
     }
     
     // MARK: - MKMapViewDelegate Methods
@@ -321,7 +337,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         annotation.coordinate = CLLocationCoordinate2D(latitude: foodTruck.lat, longitude: foodTruck.long)
         annotation.title = foodTruck.name
         annotation.foodTruck = foodTruck
-        let geoRegion = CLCircularRegion(center: annotation.coordinate, radius: radius, identifier: foodTruck.name)
+        let geoRegion = CLCircularRegion(center: annotation.coordinate, radius: radius, identifier: foodTruck.uid)
         self.geofences.append(geoRegion)
         self.locationManager.startMonitoringForRegion(geoRegion)
         let overlay = MKCircle(centerCoordinate: annotation.coordinate, radius: radius)

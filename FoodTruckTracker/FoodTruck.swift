@@ -25,9 +25,12 @@ class FoodTruck: NSObject {
     var address:            String = ""
     var distance:           Double = 0
     var category:           String = ""
-    var menu:               NSDictionary = NSDictionary()
+    var menu:               String = ""
     var uid:                String = ""
-    var comments:           NSDictionary = NSDictionary()
+    var couponDesc:         String = ""
+    var couponCode:         String = ""
+    var couponDiscount:     String = ""
+    var couponExp:          String = ""
     
     init(snapshot: FDataSnapshot) {
         lat = snapshot.value.objectForKey("lat") as! Double
@@ -41,6 +44,11 @@ class FoodTruck: NSObject {
         rating = snapshot.value.objectForKey("rating") as! Double
         phone = snapshot.value.objectForKey("phone") as! String
         uid = snapshot.value.objectForKey("userID") as! String
+        couponDesc = snapshot.value.objectForKey("couponDesc") as! String
+        couponCode = snapshot.value.objectForKey("couponCode") as! String
+        couponDiscount = snapshot.value.objectForKey("couponDiscount") as! String
+        couponExp = snapshot.value.objectForKey("couponExp") as! String
+        
     }
 
 }
