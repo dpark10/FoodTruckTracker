@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -27,10 +28,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dylan Bruschi and Dan Park" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLi-5i-Jez">
+                                <rect key="frame" x="194" y="469" width="212" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="TfJ-5X-gMn"/>
+                                    <constraint firstAttribute="width" constant="212" id="ieD-q0-K0j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Pz0-fK-bwC" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="65" id="5je-Mg-TBw"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PLi-5i-Jez" secondAttribute="bottom" constant="110" id="6Bk-8q-Hez"/>
+                            <constraint firstItem="PLi-5i-Jez" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="174" id="KhY-PS-BAE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PLi-5i-Jez" secondAttribute="trailing" constant="174" id="kBm-Zg-5zQ"/>
                             <constraint firstItem="Pz0-fK-bwC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="noV-F6-Bu0"/>
                         </constraints>
                     </view>
