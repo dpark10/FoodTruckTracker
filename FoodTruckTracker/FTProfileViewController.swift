@@ -157,8 +157,15 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
         let couponRef = DataService.dataService.REF_BASE.childByAppendingPath("coupons").childByAutoId()
         let couponDict = ["couponCode": "\(foodTruck!.couponCode).\(NSUserDefaults.standardUserDefaults().valueForKey("uid")!).\(couponRef.key)", "couponDesc": (foodTruck?.couponDesc)! as String, "couponDiscount": (foodTruck?.couponDiscount)! as String, "active?": true, "couponExp": (foodTruck?.couponExp)! as String, "foodTruck": (foodTruck?.name)! as String, "userID": NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String]
         couponRef.setValue(couponDict)
+        self.couponClaimedAlert()
     }
     
-
+    func couponClaimedAlert() {
+        let alert = UIAlertController(title: "Coupon claimed!", message: "This coupon has been added to your User Profile", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 
 }

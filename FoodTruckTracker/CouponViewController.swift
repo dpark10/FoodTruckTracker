@@ -236,5 +236,13 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
         return base64String
     }
     
+    @IBAction func onLogoutButtonTapped(sender: UIBarButtonItem) {
+        
+        let ref = DataService.dataService.REF_BASE
+        ref.unauth()
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     
 }

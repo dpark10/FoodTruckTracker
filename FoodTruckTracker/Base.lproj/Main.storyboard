@@ -21,7 +21,13 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6g-or-ICi">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Profile" id="P31-QR-KoE"/>
+                                    <navigationItem title="Profile" id="P31-QR-KoE">
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="H5x-Je-3TG">
+                                            <connections>
+                                                <action selector="onLogoutButtonTapped:" destination="4Uf-zj-cXB" id="bJo-iP-tdF"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5QB-HO-2mi">
@@ -685,7 +691,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSe-75-Nza">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSe-75-Nza">
                                 <rect key="frame" x="200" y="188" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Kqg-9j-sYC"/>
@@ -697,7 +703,7 @@
                                     <rect key="frame" x="100" y="188" width="200" height="30"/>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfg-9S-rcn">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfg-9S-rcn">
                                 <rect key="frame" x="200" y="226" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="8Vb-8s-CEd"/>
@@ -709,8 +715,8 @@
                                     <rect key="frame" x="100" y="226" width="200" height="30"/>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFr-WS-82H">
-                                <rect key="frame" x="200" y="388" width="200" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFr-WS-82H">
+                                <rect key="frame" x="200" y="382" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="YdM-ZM-jmz"/>
@@ -726,8 +732,8 @@
                                     <action selector="onLoginButtonTapped:" destination="TO1-tL-fVc" eventType="touchUpInside" id="MtK-Hn-YaJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF6-UM-FxW">
-                                <rect key="frame" x="200" y="264" width="200" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF6-UM-FxW">
+                                <rect key="frame" x="222" y="264" width="156" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Don't have an account?  Sign up">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -736,8 +742,8 @@
                                     <segue destination="L0m-w3-Z3V" kind="presentation" identifier="SignupSegue" id="26B-qn-BOs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUE-ck-YkB">
-                                <rect key="frame" x="200" y="426" width="200" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUE-ck-YkB">
+                                <rect key="frame" x="200" y="420" width="200" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tkq-9J-KF0"/>
@@ -753,16 +759,31 @@
                                     <action selector="onFoodTruckLoginTapped:" destination="TO1-tL-fVc" eventType="touchUpInside" id="NvY-PG-l8O"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Truck Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbM-mh-rQT">
+                                <rect key="frame" x="153" y="85" width="295" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="WEt-Py-g4U"/>
+                                    <constraint firstAttribute="width" constant="295" id="WRV-A9-sKT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Mfg-9S-rcn" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="8DT-bX-cdS"/>
+                            <constraint firstItem="fbM-mh-rQT" firstAttribute="top" secondItem="VKt-WA-zdc" secondAttribute="bottom" constant="65" id="Ada-6H-uet"/>
                             <constraint firstItem="dUE-ck-YkB" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="DwY-n9-jHu"/>
                             <constraint firstItem="PF6-UM-FxW" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="JJK-ti-52q"/>
                             <constraint firstItem="WFr-WS-82H" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="JkL-xP-VWt"/>
                             <constraint firstItem="WFr-WS-82H" firstAttribute="top" secondItem="PF6-UM-FxW" secondAttribute="bottom" constant="94" id="LiZ-h2-qvk"/>
+                            <constraint firstItem="Mfg-9S-rcn" firstAttribute="top" secondItem="vSe-75-Nza" secondAttribute="bottom" constant="8" id="Xfw-LP-ovz"/>
+                            <constraint firstItem="fbM-mh-rQT" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="Yx8-4i-KCI"/>
                             <constraint firstItem="vSe-75-Nza" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="cQg-MR-dgP"/>
+                            <constraint firstItem="PF6-UM-FxW" firstAttribute="top" secondItem="Mfg-9S-rcn" secondAttribute="bottom" constant="8" id="n5t-4O-0Zw"/>
                             <constraint firstItem="dUE-ck-YkB" firstAttribute="top" secondItem="WFr-WS-82H" secondAttribute="bottom" constant="8" id="vKt-8Y-AND"/>
+                            <constraint firstItem="vSe-75-Nza" firstAttribute="top" secondItem="fbM-mh-rQT" secondAttribute="bottom" constant="44" id="yLx-ri-RJs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1253,7 +1274,11 @@
                                 <rect key="frame" x="0.0" y="20" width="340" height="44"/>
                                 <items>
                                     <navigationItem id="UJG-cy-vNP">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sb2-r5-QoV"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="sb2-r5-QoV">
+                                            <connections>
+                                                <action selector="onLogoutButtonTapped:" destination="2ho-kS-8rC" id="Y1b-1q-cIK"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="7Iw-j0-HoY">
                                             <connections>
                                                 <action selector="onSaveButtonTapped:" destination="2ho-kS-8rC" id="Z9k-XC-HhH"/>

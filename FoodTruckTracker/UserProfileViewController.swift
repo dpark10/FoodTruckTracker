@@ -112,5 +112,10 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         self.tableView.reloadData()
     }
     
+    @IBAction func onLogoutButtonTapped(sender: UIBarButtonItem) {
+        let ref = DataService.dataService.REF_BASE
+        ref.unauth()
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }
