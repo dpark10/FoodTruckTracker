@@ -330,6 +330,15 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                                            <color key="value" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                                            <color key="value" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                                            <color key="value" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxR-uA-qTD">
@@ -571,6 +580,15 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                         <real key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                        <color key="value" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                        <color key="value" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312-555-5555" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bo-7T-oac">
@@ -612,6 +630,9 @@
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                                <color key="value" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
                                                 <color key="value" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
@@ -1080,9 +1101,23 @@
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h7-3y-Ili">
                                 <rect key="frame" x="200" y="502" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Hdj-Xb-UCJ"/>
+                                </constraints>
                                 <state key="normal" title="Create New Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Hdj-Xb-UCJ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="99" y="410" width="200" height="30"/>
+                                    <mask key="constraints">
+                                        <include reference="Hdj-Xb-UCJ"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="onCreateButtonTapped:" destination="L0m-w3-Z3V" eventType="touchUpInside" id="dwc-jH-mPz"/>
                                 </connections>
@@ -1109,13 +1144,22 @@
                                     <action selector="onBoxChecked:" destination="L0m-w3-Z3V" eventType="touchUpInside" id="87H-tu-jgU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Food Truck Owner?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVc-Zn-Wes">
+                                <rect key="frame" x="225" y="113" width="150" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="129" y="119" width="196" height="20"/>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about yourself!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXh-jw-aEF">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="74" y="60" width="252" height="31.5"/>
+                                    <rect key="frame" x="60" y="60" width="280.5" height="32.5"/>
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r9t-94-v4T">
@@ -1148,15 +1192,33 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Food Truck Owner?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVc-Zn-Wes">
-                                <rect key="frame" x="225" y="113" width="150" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="129" y="118" width="196" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cY6-3C-Uv9">
+                                <rect key="frame" x="200" y="502" width="200" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.01026766514" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QBU-oz-dSW"/>
+                                    <constraint firstAttribute="width" constant="200" id="k4R-rY-MD3"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QBU-oz-dSW"/>
+                                        <exclude reference="k4R-rY-MD3"/>
+                                    </mask>
                                 </variation>
-                            </label>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="QBU-oz-dSW"/>
+                                        <include reference="k4R-rY-MD3"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onBackButtonTapped:" destination="L0m-w3-Z3V" eventType="touchUpInside" id="yKk-HQ-Hsg"/>
+                                    <action selector="onCreateButtonTapped:" destination="L0m-w3-Z3V" eventType="touchUpInside" id="oMU-gj-8xk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1170,15 +1232,20 @@
                             <constraint firstItem="BVc-Zn-Wes" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="QxQ-qf-Yd8"/>
                             <constraint firstItem="BVc-Zn-Wes" firstAttribute="leading" secondItem="UWo-y6-Wqu" secondAttribute="trailing" constant="34" id="UjC-IV-9Ai"/>
                             <constraint firstItem="r9t-94-v4T" firstAttribute="leading" secondItem="laP-Tj-VU9" secondAttribute="leadingMargin" constant="20" id="Vti-gF-a7u"/>
+                            <constraint firstItem="cY6-3C-Uv9" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="ZzQ-HC-OSE"/>
                             <constraint firstItem="2h7-3y-Ili" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="aEs-YW-hf7"/>
                             <constraint firstItem="UWo-y6-Wqu" firstAttribute="top" secondItem="MKr-td-sZ0" secondAttribute="bottom" constant="89" id="cae-Gk-iN9"/>
+                            <constraint firstItem="cY6-3C-Uv9" firstAttribute="top" secondItem="2h7-3y-Ili" secondAttribute="bottom" constant="15" id="eIn-zz-49S"/>
                             <constraint firstItem="r9t-94-v4T" firstAttribute="top" secondItem="BVc-Zn-Wes" secondAttribute="bottom" constant="60" id="fTP-km-8JC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BVc-Zn-Wes" secondAttribute="trailing" constant="55" id="kHH-O3-XnV"/>
+                            <constraint firstItem="cY6-3C-Uv9" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="lqO-Rc-jV6"/>
+                            <constraint firstItem="4e2-WM-fy3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cY6-3C-Uv9" secondAttribute="bottom" constant="50" id="x7u-Ho-LR6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="YXh-jw-aEF"/>
                                 <exclude reference="r9t-94-v4T"/>
+                                <exclude reference="cY6-3C-Uv9"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="1eX-0W-FVp"/>
@@ -1193,12 +1260,17 @@
                                 <exclude reference="Vti-gF-a7u"/>
                                 <exclude reference="fTP-km-8JC"/>
                                 <exclude reference="HHY-09-ayZ"/>
+                                <exclude reference="ZzQ-HC-OSE"/>
+                                <exclude reference="eIn-zz-49S"/>
+                                <exclude reference="lqO-Rc-jV6"/>
+                                <exclude reference="x7u-Ho-LR6"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="YXh-jw-aEF"/>
                                 <include reference="r9t-94-v4T"/>
+                                <include reference="cY6-3C-Uv9"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="1eX-0W-FVp"/>
@@ -1214,6 +1286,10 @@
                                 <include reference="Vti-gF-a7u"/>
                                 <include reference="fTP-km-8JC"/>
                                 <include reference="HHY-09-ayZ"/>
+                                <include reference="ZzQ-HC-OSE"/>
+                                <include reference="eIn-zz-49S"/>
+                                <include reference="lqO-Rc-jV6"/>
+                                <include reference="x7u-Ho-LR6"/>
                             </mask>
                         </variation>
                     </view>

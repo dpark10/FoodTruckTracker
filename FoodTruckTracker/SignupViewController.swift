@@ -120,4 +120,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         view.endEditing(true)
     }
     
+    @IBAction func onBackButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
