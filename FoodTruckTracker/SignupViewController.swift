@@ -48,12 +48,10 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         guard password?.characters.count > 0 else { return }
         self.newUserCreation(email!, password: password!)
         if (delegate != nil){
-            if sender.imageView?.image == UIImage(named: "checked") {
-               let foodTruck = true
-                delegate!.isUserFoodTruck(foodTruck)
-            }else {
-                let foodTruck = false
-                delegate!.isUserFoodTruck(foodTruck)
+            if checkBox.imageView?.image! == UIImage(named: "checked") {
+                delegate!.isUserFoodTruck(true)
+            }else if checkBox.imageView?.image! == UIImage(named: "unchecked") {
+                delegate!.isUserFoodTruck(false)
             }
         }
     }

@@ -875,13 +875,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uy-fC-NRh">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="🚩"/>
-                                <connections>
-                                    <action selector="onFlagTapped:" destination="0mk-yT-d1U" eventType="touchUpInside" id="4Pj-nI-kyh"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dOE-zh-i3o">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
@@ -901,6 +894,13 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uy-fC-NRh">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="🚩"/>
+                                <connections>
+                                    <action selector="onFlagTapped:" destination="0mk-yT-d1U" eventType="touchUpInside" id="4Pj-nI-kyh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -917,8 +917,8 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="LOs-vf-SXZ"/>
-                                <exclude reference="6uy-fC-NRh"/>
                                 <exclude reference="dOE-zh-i3o"/>
+                                <exclude reference="6uy-fC-NRh"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="JWs-fC-Wva"/>
@@ -935,8 +935,8 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="LOs-vf-SXZ"/>
-                                <include reference="6uy-fC-NRh"/>
                                 <include reference="dOE-zh-i3o"/>
+                                <include reference="6uy-fC-NRh"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="JWs-fC-Wva"/>

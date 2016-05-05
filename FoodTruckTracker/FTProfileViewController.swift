@@ -179,6 +179,7 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
             let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.foodTruck!.uid)
             let truckDict = ["logo": ""]
             ref.updateChildValues(truckDict)
+            self.logoImage.image = UIImage(named: "question")!
         }
         let noAction = UIAlertAction(title: "No", style: .Default, handler: nil)
         alert.addAction(yesAction)

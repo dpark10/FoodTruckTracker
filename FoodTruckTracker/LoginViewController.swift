@@ -30,7 +30,7 @@ class LoginViewController: UIViewController, FoodTruckDelegate {
     
     func isUserFoodTruck(foodTruck: Bool) {
         if foodTruck{
-            print("User is a foodTruck")
+            foodTruckLoginButton.hidden = false
         } else {
             foodTruckLoginButton.hidden = true
         }

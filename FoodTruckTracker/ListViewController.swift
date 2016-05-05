@@ -44,7 +44,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func tableCellFlagTapped(cell: UITableViewCell) {
+    func tableCellFlagTapped(cell: FoodTruckTableViewCell) {
         let indexPath = foodTruckTableView.indexPathForCell(cell)
         if (searchActive) {
             let foodTruck = filteredFoodTrucks[indexPath!.row]
@@ -53,6 +53,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(foodTruck.uid)
                 let truckDict = ["menu": ""]
                 ref.updateChildValues(truckDict)
+                cell.logoImage.image = UIImage(named: "question")!
             }
             let noAction = UIAlertAction(title: "No", style: .Default, handler: nil)
             alert.addAction(yesAction)
@@ -67,6 +68,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(foodTruck.uid)
                 let truckDict = ["logo": ""]
                 ref.updateChildValues(truckDict)
+                cell.logoImage.image = UIImage(named: "question")!
             }
             let noAction = UIAlertAction(title: "No", style: .Default, handler: nil)
             alert.addAction(yesAction)

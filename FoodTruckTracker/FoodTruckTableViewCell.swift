@@ -10,7 +10,7 @@ import UIKit
 import Cosmos
 
 protocol TableCellFlagDelegate {
-    func tableCellFlagTapped(sender:UITableViewCell)
+    func tableCellFlagTapped(sender:FoodTruckTableViewCell)
 }
 
 class FoodTruckTableViewCell: UITableViewCell {

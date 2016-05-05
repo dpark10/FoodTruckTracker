@@ -30,6 +30,7 @@ class MenuViewController: UIViewController {
             let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.foodTruck!.uid)
             let truckDict = ["menu": ""]
             ref.updateChildValues(truckDict)
+            self.imageView.image = UIImage(named: "question")!
         }
         let noAction = UIAlertAction(title: "No", style: .Default, handler: nil)
         alert.addAction(yesAction)
