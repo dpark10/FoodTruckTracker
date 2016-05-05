@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, TableCellFlagDelegate {
 
     
     // MARK: - Properties
@@ -41,6 +42,41 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchActive = false
         searchBar.resignFirstResponder()
         
+    }
+    
+    func tableCellFlagTapped(cell: UITableViewCell) {
+        let indexPath = foodTruckTableView.indexPathForCell(cell)
+        if (searchActive) {
+            let foodTruck = filteredFoodTrucks[indexPath!.row]
+            let alert = UIAlertController(title: "Flag this image as inappropriate?", message: "Flagging an image will hide it from all users", preferredStyle: .Alert)
+            let yesAction = UIAlertAction(title: "Yes", style: .Default) { UIAlertAction in
+                let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(foodTruck.uid)
+                let truckDict = ["menu": ""]
+                ref.updateChildValues(truckDict)
+            }
+            let noAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+            alert.addAction(yesAction)
+            alert.addAction(noAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+         
+        } else {
+            let foodTruck = foodTrucks[indexPath!.row]
+            let alert = UIAlertController(title: "Flag this image as inappropriate?", message: "Flagging an image will hide it from all users", preferredStyle: .Alert)
+            let yesAction = UIAlertAction(title: "Yes", style: .Default) { UIAlertAction in
+                let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(foodTruck.uid)
+                let truckDict = ["logo": ""]
+                ref.updateChildValues(truckDict)
+            }
+            let noAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+            alert.addAction(yesAction)
+            alert.addAction(noAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+
+           
+
+    }
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -93,6 +129,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = foodTruckTableView.dequeueReusableCellWithIdentifier("FoodTruckCell", forIndexPath: indexPath) as! FoodTruckTableViewCell
         if searchActive && filteredFoodTrucks.count > 0 {
             let foodTruck = filteredFoodTrucks[indexPath.row]
+            getAddressFromGeocodeCoordinate(CLLocation(latitude: foodTruck.lat, longitude: foodTruck.long), cell: cell)
+            cell.delegate = self
             cell.titleLabel.text = foodTruck.name
             cell.logoImage.image = conversion(foodTruck.logo)
             cell.logoImage.layer.cornerRadius = 5
@@ -109,6 +147,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         else{
             let foodTruck = foodTrucks[indexPath.row]
+            getAddressFromGeocodeCoordinate(CLLocation(latitude: foodTruck.lat, longitude: foodTruck.long), cell: cell)
+            cell.delegate = self
             cell.titleLabel.text = foodTruck.name
             cell.logoImage.image = conversion(foodTruck.logo)
             cell.logoImage.layer.cornerRadius = 5
@@ -124,6 +164,17 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         return cell
+    }
+    
+    func getAddressFromGeocodeCoordinate(location: CLLocation, cell:FoodTruckTableViewCell) {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks: [CLPlacemark]?, error: NSError?) in
+            let placemark = placemarks?.first
+            if let subT = placemark?.subThoroughfare {
+                let address = "\(subT) \(placemark!.thoroughfare!), \(placemark!.locality!)"
+                cell.addressLabel.text = address
+            }
+        }
     }
     
 //    
@@ -174,9 +225,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func conversion(post: String) -> UIImage {
+        if post == "" {
+            return UIImage(named: "question")!
+        } else {
         let imageData = NSData(base64EncodedString: post, options: [] )
         let image = UIImage(data: imageData!)
         return image!
+        }
     }
 
 }

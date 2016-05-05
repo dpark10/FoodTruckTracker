@@ -25,6 +25,7 @@ class Coupon: NSObject {
         couponExp = snapshot.value.objectForKey("couponExp") as! String
         foodTruck = snapshot.value.objectForKey("foodTruck") as! String
         userID = snapshot.value.objectForKey("userID") as! String
+        active = snapshot.value.objectForKey("active") as? Bool
         
     }
 

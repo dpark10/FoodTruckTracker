@@ -8,7 +8,8 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FoodTruckDelegate {
+    @IBOutlet weak var foodTruckLoginButton: UIButton!
 
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -17,6 +18,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.passwordTextField.secureTextEntry = true
+        foodTruckLoginButton.hidden = false
         
     }
     
@@ -25,6 +27,14 @@ class LoginViewController: UIViewController {
 //            self.performSegueWithIdentifier("ToMapSegue", sender: nil)
 //        }
 //    }
+    
+    func isUserFoodTruck(foodTruck: Bool) {
+        if foodTruck{
+            print("User is a foodTruck")
+        } else {
+            foodTruckLoginButton.hidden = true
+        }
+    }
     
     
     @IBAction func onLoginButtonTapped(sender: UIButton) {
@@ -64,6 +74,13 @@ class LoginViewController: UIViewController {
         guard let email = self.emailAddressTextField!.text where !email.isEmpty else { return }
         guard let password = self.passwordTextField!.text where !password.isEmpty else { return }
         loginUser(email, password: password, foodTruck: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SignupSegue" {
+            let destVC = segue.destinationViewController as! SignupViewController
+            destVC.delegate = self
+        }
     }
 
 }

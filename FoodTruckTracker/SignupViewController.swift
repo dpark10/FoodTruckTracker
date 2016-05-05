@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FoodTruckDelegate {
+    func isUserFoodTruck(foodTruck:Bool)
+}
+
 class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
@@ -15,6 +19,8 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var passwordTextField: UITextField!
     
     var picker = UIImagePickerController()
+    
+    var delegate: FoodTruckDelegate? = nil
     
     
     @IBOutlet weak var checkBox: CheckBoxButton!
@@ -24,11 +30,8 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         picker.delegate = self
         categoryTextField.hidden = true
-        addressTextField.hidden = true
-        urlTextField.hidden = true
         phoneTextField.hidden = true
-        twitterTextField.hidden = true
-        yelpTextField.hidden = true
+
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -44,6 +47,15 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
         guard email?.characters.count > 0 else { return }
         guard password?.characters.count > 0 else { return }
         self.newUserCreation(email!, password: password!)
+        if (delegate != nil){
+            if sender.imageView?.image == UIImage(named: "checked") {
+               let foodTruck = true
+                delegate!.isUserFoodTruck(foodTruck)
+            }else {
+                let foodTruck = false
+                delegate!.isUserFoodTruck(foodTruck)
+            }
+        }
     }
     
     func newUserCreation (email: String, password: String) {
@@ -56,7 +68,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 let uid = result["uid"] as? String
                 if self.checkBox.imageView?.image == UIImage(named: "checked") {
-                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text! as String, "userID": uid!, "category": self.categoryTextField.text! as String, "lat": 0 as Double, "long": 0 as Double, "logo": "" as String, "rating": 0 as Double, "numberOfRatings": 0 as Int, "url": self.urlTextField.text! as String, "phone": self.phoneTextField.text! as String, "twitter": self.twitterTextField.text! as String, "yelp": self.yelpTextField.text! as String, "userGenerated?": true, "foodTruck?": true, "couponDesc": "" as String, "couponCode": "" as String, "couponDiscount": "" as String, "couponExp": "" as String]
+                    let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text! as String, "userID": uid!, "category": self.categoryTextField.text! as String, "lat": 0 as Double, "long": 0 as Double, "logo": "" as String, "rating": 0 as Double, "numberOfRatings": 0 as Int, "menu": "" as String, "phone": self.phoneTextField.text! as String, "userGenerated?": true, "foodTruck?": true, "couponDesc": "" as String, "couponCode": "" as String, "couponDiscount": "" as String, "couponExp": "" as String, "departureTime": "" as String]
                     let userRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(uid)
                     userRef.setValue(userDictionary)
                     let oldTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.nameTextField!.text)
@@ -77,15 +89,9 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     @IBOutlet weak var categoryTextField: UITextField!
     
-    @IBOutlet weak var addressTextField: UITextField!
-    
-    @IBOutlet weak var urlTextField: UITextField!
     
     @IBOutlet weak var phoneTextField: UITextField!
     
-    @IBOutlet weak var twitterTextField: UITextField!
-    
-    @IBOutlet weak var yelpTextField: UITextField!
     
     
     
@@ -102,19 +108,11 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
     
         if sender.imageView?.image == UIImage(named: "unchecked") {
         categoryTextField.hidden = false
-        addressTextField.hidden = false
-        urlTextField.hidden = false
         phoneTextField.hidden = false
-        twitterTextField.hidden = false
-        yelpTextField.hidden = false
         }
         else {
             categoryTextField.hidden = true
-            addressTextField.hidden = true
-            urlTextField.hidden = true
             phoneTextField.hidden = true
-            twitterTextField.hidden = true
-            yelpTextField.hidden = true
         }
 
         

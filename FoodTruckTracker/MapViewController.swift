@@ -336,6 +336,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let radius = CLLocationDistance(200.0)
         annotation.coordinate = CLLocationCoordinate2D(latitude: foodTruck.lat, longitude: foodTruck.long)
         annotation.title = foodTruck.name
+        annotation.subtitle = "Departing \(foodTruck.departureTime)"
         annotation.foodTruck = foodTruck
         let geoRegion = CLCircularRegion(center: annotation.coordinate, radius: radius, identifier: foodTruck.uid)
         self.geofences.append(geoRegion)
