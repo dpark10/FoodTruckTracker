@@ -25,9 +25,12 @@ class QRCodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if coupon!.couponCode == "Not Valid" || coupon!.couponCode == "Unavailable" {
+            qrCodeImage.image = UIImage(named: "question")
+        } else {
         let image = self.generateQRCodeFromString(coupon!.couponCode)
         qrCodeImage.image = image
+        }
         foodTruckNameLabel.text = coupon?.foodTruck
         couponDescriptionLabel.text = coupon?.couponDesc
         expDateLabel.text = coupon?.couponExp
