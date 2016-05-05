@@ -146,7 +146,7 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
             print("comment saved!")
             let foodTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.foodTruck!.uid)
             let newRatingNumerator = Double((foodTruck!.rating * Double(foodTruck!.yelpReviewCount)) + newRatingView.rating)
-            let newRatingDenominator = Double((foodTruck!.rating * Double(foodTruck!.yelpReviewCount)) + 5)
+            let newRatingDenominator = Double((5 * Double(foodTruck!.yelpReviewCount)) + 5)
             let newRating = (newRatingNumerator/newRatingDenominator) * 5
             let newNumberOfRatings = (foodTruck?.yelpReviewCount)! + comments.count + 1
             foodTruckRef.updateChildValues(["rating": newRating as Double, "numberOfRatings": newNumberOfRatings as Int])
