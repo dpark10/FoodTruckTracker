@@ -18,34 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Truck Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pz0-fK-bwC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Food Truck Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pz0-fK-bwC">
                                 <rect key="frame" x="153" y="85" width="295" height="59"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="295" id="l0x-dl-R3E"/>
-                                    <constraint firstAttribute="height" constant="59" id="s2h-0R-jlK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dylan Bruschi and Dan Park" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLi-5i-Jez">
-                                <rect key="frame" x="194" y="469" width="212" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="TfJ-5X-gMn"/>
-                                    <constraint firstAttribute="width" constant="212" id="ieD-q0-K0j"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dylan Bruschi and Dan Park" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLi-5i-Jez">
+                                <rect key="frame" x="20" y="571" width="560" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Pz0-fK-bwC" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="65" id="5je-Mg-TBw"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PLi-5i-Jez" secondAttribute="bottom" constant="110" id="6Bk-8q-Hez"/>
-                            <constraint firstItem="PLi-5i-Jez" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="174" id="KhY-PS-BAE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PLi-5i-Jez" secondAttribute="trailing" constant="174" id="kBm-Zg-5zQ"/>
-                            <constraint firstItem="Pz0-fK-bwC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="noV-F6-Bu0"/>
+                            <constraint firstItem="PLi-5i-Jez" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="1zO-ZU-4tA"/>
+                            <constraint firstItem="PLi-5i-Jez" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="Gpf-gG-psB"/>
+                            <constraint firstItem="Pz0-fK-bwC" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="65" id="QzZ-aM-9V1"/>
+                            <constraint firstItem="Pz0-fK-bwC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Sec-df-YXT"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PLi-5i-Jez" secondAttribute="bottom" constant="8" id="gcJ-qY-YWI"/>
                         </constraints>
                     </view>
                 </viewController>
