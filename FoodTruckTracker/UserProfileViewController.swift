@@ -80,7 +80,11 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             cell?.textLabel!.text = coupon.foodTruck
             if (coupon.couponCode == "Not Valid"){
             cell?.detailTextLabel!.text = "Used"
-            }else {
+            }
+            else if (coupon.couponCode == "Unavailable") {
+               cell?.detailTextLabel!.text = "Unavailable"
+            }
+            else {
             cell?.detailTextLabel!.text = "Valid"
             }
             break
