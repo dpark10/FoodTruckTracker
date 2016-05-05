@@ -15,8 +15,6 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK: Properties
-    let otherTrucks = ["Joni's", "Jeff's", "Joey's"]
-    let couponTrucks = ["Joni's"]
     var visitedTrucks = [VisitedTruck]()
     var coupons = [Coupon]()
     
@@ -80,7 +78,11 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         case 1:
             let coupon = coupons[indexPath.row]
             cell?.textLabel!.text = coupon.foodTruck
-            cell?.detailTextLabel!.text = coupon.couponDiscount
+            if ((coupon.active) == true){
+            cell?.detailTextLabel!.text = "Valid"
+            }else {
+            cell?.detailTextLabel!.text = "Used"
+            }
             break
         default:
             break
@@ -98,7 +100,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//         let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+
         let indexPath = tableView.indexPathForSelectedRow
         let coupon = coupons[indexPath!.row]
         let destVC = segue.destinationViewController as! QRCodeViewController

@@ -117,10 +117,15 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func conversion(post: String) -> UIImage {
-        let imageData = NSData(base64EncodedString: post, options: [] )
-        let image = UIImage(data: imageData!)
-        return image!
+        if post == "" {
+            return UIImage(named: "question")!
+        } else {
+            let imageData = NSData(base64EncodedString: post, options: [] )
+            let image = UIImage(data: imageData!)
+            return image!
+        }
     }
+    
     
     func getAddressFromGeocodeCoordinate(location: CLLocation) {
         let geocoder = CLGeocoder()
@@ -142,7 +147,7 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
             let foodTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.foodTruck!.uid)
             let newRatingNumerator = Double((foodTruck!.rating * Double(foodTruck!.yelpReviewCount)) + newRatingView.rating)
             let newRatingDenominator = Double((foodTruck!.rating * Double(foodTruck!.yelpReviewCount)) + 5)
-            let newRating = newRatingNumerator/newRatingDenominator
+            let newRating = (newRatingNumerator/newRatingDenominator) * 5
             let newNumberOfRatings = (foodTruck?.yelpReviewCount)! + comments.count + 1
             foodTruckRef.updateChildValues(["rating": newRating as Double, "numberOfRatings": newNumberOfRatings as Int])
             commentTextView.text = ""
@@ -159,6 +164,28 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
         couponRef.setValue(couponDict)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "menuSegue"{
+            let destVC = segue.destinationViewController as! MenuViewController
+            destVC.foodTruck = foodTruck
+            
+    }
+    }
+    
+    @IBAction func onFlagTapped(sender: AnyObject) {
+        let alert = UIAlertController(title: "Flag this image as inappropriate?", message: "Flagging an image will hide it from all users", preferredStyle: .Alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .Default) { UIAlertAction in
+            let ref = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(self.foodTruck!.uid)
+            let truckDict = ["logo": ""]
+            ref.updateChildValues(truckDict)
+        }
+        let noAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
 
 
 }

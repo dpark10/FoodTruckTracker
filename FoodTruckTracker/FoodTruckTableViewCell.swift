@@ -9,7 +9,14 @@
 import UIKit
 import Cosmos
 
+protocol TableCellFlagDelegate {
+    func tableCellFlagTapped(sender:UITableViewCell)
+}
+
 class FoodTruckTableViewCell: UITableViewCell {
+    
+    var userID: String = ""
+    var delegate: TableCellFlagDelegate? = nil
     
     @IBOutlet weak var logoImage: UIImageView!
 
@@ -23,5 +30,15 @@ class FoodTruckTableViewCell: UITableViewCell {
     @IBOutlet weak var catagoryLabel: UILabel!
     
     @IBOutlet weak var ratingView: CosmosView!
+    
+
+    @IBAction func onFlagTapped(sender: AnyObject) {
+        if (delegate != nil){
+            let cell = self
+                delegate!.tableCellFlagTapped(cell)
+            
+            }
+    }
+
     
 }
