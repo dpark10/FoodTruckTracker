@@ -18,15 +18,16 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var twitterTextField: UITextField!
-    @IBOutlet weak var yelpIDTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var couponDescTextField: UITextField!
     @IBOutlet weak var discountAmtTextField: UITextField!
     @IBOutlet weak var expDateTextField: UITextField!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var departureTimeTextField: UITextField!
+    @IBOutlet weak var menuButton: UIButton!
+    
+    
 //    var foodTruck = FoodTruck?()
     
     // MARK: Properties
@@ -35,6 +36,8 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     var activeField: UITextField?
     let imagePicker = UIImagePickerController()
     var foodTruckLogoImage = UIImage()
+    var menuImage = UIImage()
+    var logo: Bool = false
     
     
     // MARK: View Management
@@ -52,8 +55,6 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
                 self.nameTextField.text = foodTruck.name
                 self.categoryTextField.text = foodTruck.category
                 self.phoneTextField.text = foodTruck.phone
-                self.websiteTextField.text = foodTruck.url
-                self.yelpIDTextField.text = foodTruck.yelpID
                 //see loader function
                 let barViewControllers = self.tabBarController?.viewControllers
                 let svc = barViewControllers![1] as! ScannerViewController
@@ -161,23 +162,29 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     
     @IBAction func addImageButtonTapped(sender: AnyObject) {
         print("Button Tapped")
+        logo = true
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
         
     }
     
+    @IBAction func addMenuImageButtonTapped(sender: UIButton) {
+        logo = false
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        presentViewController(imagePicker, animated: true, completion: nil)
+        
+    }
     @IBAction func hideKeyboard(sender: AnyObject) {
         nameTextField.endEditing(true)
         categoryTextField.endEditing(true)
         phoneTextField.endEditing(true)
-        websiteTextField.endEditing(true)
         emailTextField.endEditing(true)
-        twitterTextField.endEditing(true)
-        yelpIDTextField.endEditing(true)
         couponDescTextField.endEditing(true)
         discountAmtTextField.endEditing(true)
         expDateTextField.endEditing(true)
+        departureTimeTextField.endEditing(true)
     }
     
     // MARK: CLLocationManagerDelegate Methods
@@ -198,8 +205,13 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
     // MARK: - UIImagePickerControllerDelegate Methods
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if self.logo == true{
             self.foodTruckLogoImage = pickedImage
             imageButton.setImage(self.foodTruckLogoImage, forState: .Normal)
+            } else {
+                self.menuImage = pickedImage
+                menuButton.setImage(self.menuImage, forState: .Normal)
+            }
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -211,7 +223,7 @@ class CouponViewController: UIViewController, UIScrollViewDelegate, MKMapViewDel
 
     @IBAction func onSaveButtonTapped(sender: AnyObject) {
         let foodTruckRef = DataService.dataService.REF_BASE.childByAppendingPath("foodTrucks").childByAppendingPath(NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String)
-        let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text!, "category": self.categoryTextField.text! as String, "lat": Double(self.userLocation.latitude), "long": Double(self.userLocation.longitude), "logo": conversion((imageButton.imageView?.image)!) as String, "url": self.websiteTextField.text! as String, "phone": self.phoneTextField.text! as String, "yelp": self.yelpIDTextField.text! as String, "couponDesc": couponDescTextField.text! as String, "couponCode": (self.nameTextField.text! + self.couponDescTextField.text! + self.discountAmtTextField.text! + self.expDateTextField.text!) as String, "couponDiscount": discountAmtTextField.text! as String, "couponExp": expDateTextField.text! as String]
+        let userDictionary : NSDictionary = ["name": self.nameTextField.text! as String, "email":  self.emailTextField.text!, "category": self.categoryTextField.text! as String, "lat": Double(self.userLocation.latitude), "long": Double(self.userLocation.longitude), "logo": conversion((imageButton.imageView?.image)!) as String, "phone": self.phoneTextField.text! as String, "couponDesc": couponDescTextField.text! as String, "couponCode": (self.nameTextField.text! + self.couponDescTextField.text! + self.discountAmtTextField.text! + self.expDateTextField.text!) as String, "couponDiscount": discountAmtTextField.text! as String, "couponExp": expDateTextField.text! as String]
         
         foodTruckRef.updateChildValues(userDictionary as [NSObject : AnyObject])
 
