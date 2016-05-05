@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, FoodTruckDelegate {
+class LoginViewController: UIViewController, FoodTruckDelegate, UITextFieldDelegate {
     @IBOutlet weak var foodTruckLoginButton: UIButton!
 
     @IBOutlet weak var emailAddressTextField: UITextField!
@@ -34,6 +34,11 @@ class LoginViewController: UIViewController, FoodTruckDelegate {
         } else {
             foodTruckLoginButton.hidden = true
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     
@@ -81,6 +86,9 @@ class LoginViewController: UIViewController, FoodTruckDelegate {
             let destVC = segue.destinationViewController as! SignupViewController
             destVC.delegate = self
         }
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 }

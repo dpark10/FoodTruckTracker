@@ -918,14 +918,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dOE-zh-i3o" firstAttribute="top" secondItem="LOs-vf-SXZ" secondAttribute="bottom" id="5NJ-3C-VyC"/>
-                            <constraint firstItem="6uy-fC-NRh" firstAttribute="top" secondItem="LOs-vf-SXZ" secondAttribute="bottom" constant="17" id="HsB-P4-qBS"/>
+                            <constraint firstItem="LOs-vf-SXZ" firstAttribute="top" secondItem="3qs-0S-mko" secondAttribute="topMargin" id="2Iq-Ov-084"/>
                             <constraint firstItem="y7H-63-pey" firstAttribute="top" secondItem="dOE-zh-i3o" secondAttribute="bottom" id="JWs-fC-Wva"/>
-                            <constraint firstItem="LOs-vf-SXZ" firstAttribute="leading" secondItem="3qs-0S-mko" secondAttribute="leadingMargin" constant="-20" id="JcV-ZV-gi9"/>
+                            <constraint firstItem="LOs-vf-SXZ" firstAttribute="leading" secondItem="3qs-0S-mko" secondAttribute="leadingMargin" id="KwA-40-vRd"/>
+                            <constraint firstItem="6uy-fC-NRh" firstAttribute="trailing" secondItem="3qs-0S-mko" secondAttribute="trailingMargin" id="PBF-vZ-uo5"/>
                             <constraint firstItem="dOE-zh-i3o" firstAttribute="leading" secondItem="3qs-0S-mko" secondAttribute="leadingMargin" constant="-13" id="RJl-ij-ksF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LOs-vf-SXZ" secondAttribute="trailing" constant="-20" id="WSa-kE-OvK"/>
-                            <constraint firstItem="LOs-vf-SXZ" firstAttribute="top" secondItem="3qs-0S-mko" secondAttribute="topMargin" id="fRZ-zo-tdK"/>
+                            <constraint firstItem="dOE-zh-i3o" firstAttribute="top" secondItem="LOs-vf-SXZ" secondAttribute="bottom" id="gsK-DZ-EMU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dOE-zh-i3o" secondAttribute="trailing" constant="-13" id="pv1-D3-PU7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LOs-vf-SXZ" secondAttribute="trailing" id="ruB-Eo-Q5c"/>
+                            <constraint firstItem="6uy-fC-NRh" firstAttribute="top" secondItem="LOs-vf-SXZ" secondAttribute="bottom" constant="17" id="uWd-v3-XeF"/>
                             <constraint firstItem="6uy-fC-NRh" firstAttribute="trailing" secondItem="3qs-0S-mko" secondAttribute="trailingMargin" id="uy2-Qs-Uyr"/>
                         </constraints>
                         <variation key="default">
@@ -935,15 +936,16 @@
                                 <exclude reference="6uy-fC-NRh"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="JWs-fC-Wva"/>
-                                <exclude reference="HsB-P4-qBS"/>
-                                <exclude reference="uy2-Qs-Uyr"/>
-                                <exclude reference="JcV-ZV-gi9"/>
-                                <exclude reference="WSa-kE-OvK"/>
-                                <exclude reference="fRZ-zo-tdK"/>
-                                <exclude reference="5NJ-3C-VyC"/>
+                                <exclude reference="2Iq-Ov-084"/>
+                                <exclude reference="KwA-40-vRd"/>
+                                <exclude reference="ruB-Eo-Q5c"/>
                                 <exclude reference="RJl-ij-ksF"/>
+                                <exclude reference="gsK-DZ-EMU"/>
                                 <exclude reference="pv1-D3-PU7"/>
+                                <exclude reference="PBF-vZ-uo5"/>
+                                <exclude reference="uWd-v3-XeF"/>
+                                <exclude reference="uy2-Qs-Uyr"/>
+                                <exclude reference="JWs-fC-Wva"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -953,15 +955,16 @@
                                 <include reference="6uy-fC-NRh"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="JWs-fC-Wva"/>
-                                <include reference="HsB-P4-qBS"/>
-                                <include reference="uy2-Qs-Uyr"/>
-                                <include reference="JcV-ZV-gi9"/>
-                                <include reference="WSa-kE-OvK"/>
-                                <include reference="fRZ-zo-tdK"/>
-                                <include reference="5NJ-3C-VyC"/>
+                                <include reference="2Iq-Ov-084"/>
+                                <include reference="KwA-40-vRd"/>
+                                <include reference="ruB-Eo-Q5c"/>
                                 <include reference="RJl-ij-ksF"/>
+                                <include reference="gsK-DZ-EMU"/>
                                 <include reference="pv1-D3-PU7"/>
+                                <include reference="PBF-vZ-uo5"/>
+                                <include reference="uWd-v3-XeF"/>
+                                <include reference="uy2-Qs-Uyr"/>
+                                <exclude reference="JWs-fC-Wva"/>
                             </mask>
                         </variation>
                     </view>
@@ -993,6 +996,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TO1-tL-fVc" id="kiL-F1-Pvk"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfg-9S-rcn">
                                 <rect key="frame" x="200" y="226" width="200" height="30"/>
@@ -1002,6 +1008,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TO1-tL-fVc" id="DCS-Jj-aDE"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFr-WS-82H">
                                 <rect key="frame" x="200" y="382" width="200" height="30"/>
@@ -1013,9 +1022,6 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="100" y="388" width="200" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="onLoginButtonTapped:" destination="TO1-tL-fVc" eventType="touchUpInside" id="MtK-Hn-YaJ"/>
                                 </connections>
@@ -1040,9 +1046,6 @@
                                 <state key="normal" title="Food Truck Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="100" y="426" width="200" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="onFoodTruckLoginTapped:" destination="TO1-tL-fVc" eventType="touchUpInside" id="NvY-PG-l8O"/>
                                 </connections>
@@ -1060,6 +1063,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MoD-oE-dvY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dUE-ck-YkB" secondAttribute="bottom" constant="8" id="0VX-Mg-pGE"/>
                             <constraint firstItem="Mfg-9S-rcn" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="8DT-bX-cdS"/>
                             <constraint firstItem="fbM-mh-rQT" firstAttribute="top" secondItem="VKt-WA-zdc" secondAttribute="bottom" constant="65" id="Ada-6H-uet"/>
                             <constraint firstItem="dUE-ck-YkB" firstAttribute="centerX" secondItem="wGC-EC-Ty6" secondAttribute="centerX" id="DwY-n9-jHu"/>
@@ -1073,6 +1077,16 @@
                             <constraint firstItem="dUE-ck-YkB" firstAttribute="top" secondItem="WFr-WS-82H" secondAttribute="bottom" constant="8" id="vKt-8Y-AND"/>
                             <constraint firstItem="vSe-75-Nza" firstAttribute="top" secondItem="fbM-mh-rQT" secondAttribute="bottom" constant="44" id="yLx-ri-RJs"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0VX-Mg-pGE"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="0VX-Mg-pGE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="emailAddressTextField" destination="vSe-75-Nza" id="TVC-Qq-apr"/>
@@ -1150,7 +1164,7 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="129" y="119" width="196" height="20"/>
+                                    <rect key="frame" x="129" y="119" width="211.5" height="20"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about yourself!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXh-jw-aEF">
@@ -1237,7 +1251,6 @@
                             <constraint firstItem="UWo-y6-Wqu" firstAttribute="top" secondItem="MKr-td-sZ0" secondAttribute="bottom" constant="89" id="cae-Gk-iN9"/>
                             <constraint firstItem="cY6-3C-Uv9" firstAttribute="top" secondItem="2h7-3y-Ili" secondAttribute="bottom" constant="15" id="eIn-zz-49S"/>
                             <constraint firstItem="r9t-94-v4T" firstAttribute="top" secondItem="BVc-Zn-Wes" secondAttribute="bottom" constant="60" id="fTP-km-8JC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BVc-Zn-Wes" secondAttribute="trailing" constant="55" id="kHH-O3-XnV"/>
                             <constraint firstItem="cY6-3C-Uv9" firstAttribute="centerX" secondItem="laP-Tj-VU9" secondAttribute="centerX" id="lqO-Rc-jV6"/>
                             <constraint firstItem="4e2-WM-fy3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cY6-3C-Uv9" secondAttribute="bottom" constant="50" id="x7u-Ho-LR6"/>
                         </constraints>
@@ -1254,7 +1267,6 @@
                                 <exclude reference="cae-Gk-iN9"/>
                                 <exclude reference="1e3-pI-Ju6"/>
                                 <exclude reference="UjC-IV-9Ai"/>
-                                <exclude reference="kHH-O3-XnV"/>
                                 <exclude reference="IwY-Sx-I5g"/>
                                 <exclude reference="JBu-cq-WhC"/>
                                 <exclude reference="Vti-gF-a7u"/>
@@ -1280,7 +1292,6 @@
                                 <include reference="1e3-pI-Ju6"/>
                                 <exclude reference="QxQ-qf-Yd8"/>
                                 <include reference="UjC-IV-9Ai"/>
-                                <include reference="kHH-O3-XnV"/>
                                 <include reference="IwY-Sx-I5g"/>
                                 <include reference="JBu-cq-WhC"/>
                                 <include reference="Vti-gF-a7u"/>

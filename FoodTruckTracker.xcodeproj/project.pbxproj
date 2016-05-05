@@ -204,7 +204,7 @@
 				TargetAttributes = {
 					E2FE447E1CC67876005748E9 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 88A2PPWC48;
+						DevelopmentTeam = TL36D5C45K;
 					};
 				};
 			};
@@ -398,7 +398,7 @@
 				);
 				INFOPLIST_FILE = FoodTruckTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dp.FoodTruckTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = dp.FoodTruckTrackerz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -417,7 +417,7 @@
 				);
 				INFOPLIST_FILE = FoodTruckTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dp.FoodTruckTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = dp.FoodTruckTrackerz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
