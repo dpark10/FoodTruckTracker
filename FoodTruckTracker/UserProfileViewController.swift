@@ -78,11 +78,13 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         case 1:
             let coupon = coupons[indexPath.row]
             cell?.textLabel!.text = coupon.foodTruck
-            if (coupon.couponCode == "Not Valid"){
+            let qrArray = coupon.couponCode.characters.split{$0 == "."}.map(String.init)
+            let finalCode: String = qrArray[0] as String
+            if (finalCode == "Not Valid"){
             cell?.detailTextLabel!.text = "Used"
             }
-            else if (coupon.couponCode == "Unavailable") {
-               cell?.detailTextLabel!.text = "Unavailable"
+            else if (finalCode == "Unavailable") {
+            cell?.detailTextLabel!.text = "Unavailable"
             }
             else {
             cell?.detailTextLabel!.text = "Valid"

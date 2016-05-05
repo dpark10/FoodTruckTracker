@@ -56,7 +56,7 @@ class FTProfileViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.comments.append(comment)
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
-                    let numberOfReviews = (self.foodTruck?.yelpReviewCount)! + self.comments.count
+                    let numberOfReviews = (self.foodTruck?.yelpReviewCount)!
                     self.numberOfReviewsLabel.text = "\(numberOfReviews) Reviews"
                 }
             })

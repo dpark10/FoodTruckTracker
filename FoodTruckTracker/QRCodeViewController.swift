@@ -25,8 +25,11 @@ class QRCodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if coupon!.couponCode == "Not Valid" || coupon!.couponCode == "Unavailable" {
-            qrCodeImage.image = UIImage(named: "question")
+        print(coupon!.couponCode)
+        let qrArray = coupon!.couponCode.characters.split{$0 == "."}.map(String.init)
+        let finalCode: String = qrArray[0] as String
+        if finalCode == "Unavailable" {
+            qrCodeImage.image = UIImage(named: "checkBack")
         } else {
         let image = self.generateQRCodeFromString(coupon!.couponCode)
         qrCodeImage.image = image
