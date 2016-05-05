@@ -142,7 +142,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.titleLabel.preferredMaxLayoutWidth = cell.titleLabel.frame.size.width
             cell.catagoryLabel.text = foodTruck.category
             cell.addressLabel.text = foodTruck.address
+            if (foodTruck.lat == 0 && foodTruck.long == 0) {
+                cell.distanceLabel.text = "Location not listed"
+            } else {
             cell.distanceLabel.text = String(format: "%0.2f mi.", foodTruck.distance)
+            }
         } else if searchActive && filteredFoodTrucks.count == 0{
             cell.titleLabel?.text = "Your search did not match any entries. Try again."
             
@@ -160,7 +164,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.titleLabel.preferredMaxLayoutWidth = cell.titleLabel.frame.size.width
             cell.catagoryLabel.text = foodTruck.category
             cell.addressLabel.text = foodTruck.address
-            cell.distanceLabel.text = String(format: "%0.2f mi.", foodTruck.distance)
+            if (foodTruck.lat == 0 && foodTruck.long == 0) {
+                cell.distanceLabel.text = "Location not listed"
+            } else {
+                cell.distanceLabel.text = String(format: "%0.2f mi.", foodTruck.distance)
+            }
 
 
         }
